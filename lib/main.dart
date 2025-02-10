@@ -1,6 +1,9 @@
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:super_fitness/core/resources/theme_manager.dart';
+import 'core/resources/color_manager.dart';
 import 'core/resources/routes_manager.dart';
 import 'core/utils/cashed_data_shared_preferences.dart';
 import 'core/utils/my_bloc_observer.dart';
@@ -36,6 +39,7 @@ class SuperFitness extends StatelessWidget {
               Locale('en'),
               Locale('ar'),
             ],
+            theme: getApplicationTheme(),
             debugShowCheckedModeBanner: false,
             onGenerateRoute: RouteGenerator.getRoute,
             initialRoute: RoutesManager.onBoarding,
