@@ -50,6 +50,12 @@ dev_dependencies:
   json_serializable: ^6.8.0
   lints: ^5.0.0
   retrofit_generator: ^9.1.4
+  flutter_launcher_icons: "^0.14.3"
+flutter_launcher_icons:
+    android: true
+    ios: true
+    image_path: "assets/images/logo_icon.png"
+    min_sdk_android: 21
 flutter:
   generate: true
   uses-material-design: true
@@ -88,3 +94,8 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/to/font-from-package
+  assets:
+    - assets/
+    - assets/fonts/
+    - assets/images/
+
