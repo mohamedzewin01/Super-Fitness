@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../on_boarding.dart';
+import '../../onBoarding/presentation/screens/on_boarding.dart';
 
 class RoutesManager {
   static const String onBoarding = '/';
