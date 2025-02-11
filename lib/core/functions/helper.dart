@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
-import '../resources/values_manager.dart';
 import '../resources/color_manager.dart';
 
 String? validateNotEmpty(String? value, String messageEmpty,
@@ -31,7 +29,7 @@ String? validatePasswordMatch({
   required String password,
   required String confirmPassword,
   required String message,
-   String? messageIsEmpty,
+  String? messageIsEmpty,
 }) {
   if (password.trim().isEmpty) {
     return messageIsEmpty;
@@ -51,7 +49,7 @@ void validationMethod({
     actionPress();
     updateButtonColor(ColorManager.orange);
   } else {
-   // updateButtonColor(ColorManager.darkGrey);
+    // updateButtonColor(ColorManager.darkGrey);
   }
 }
 
@@ -66,7 +64,6 @@ Widget passwordHidden({
     onPressed: onPressed,
   );
 }
-
 
 //
 // Widget buildIcon(String assetPath, int index, int currentIndex) {
@@ -102,11 +99,9 @@ String? validatePassword({
       RegExp(r'^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[\W_]).{8,}$');
   if (password.trim().isEmpty) {
     return message;
-  }
-  else if (password.length < 8) {
+  } else if (password.length < 8) {
     return messageLength;
-  }
-  else if (!passwordRegExp.hasMatch(password)) {
+  } else if (!passwordRegExp.hasMatch(password)) {
     return messageInvalid;
   }
   return null;
