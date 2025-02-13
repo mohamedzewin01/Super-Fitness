@@ -61,52 +61,10 @@ class CustomRegisterStep extends StatelessWidget {
                     .withAlpha(160),
               ),
               child: Padding(
-                padding: const EdgeInsets.all(24.0),
+                padding: const EdgeInsets.symmetric(vertical: 16),
                 child: Column(
                   spacing: 16,
                   children: [
-                    // Column(
-                    //   children: [
-                    //     GestureDetector(
-                    //       onTap: () {
-                    //         viewModel.isMale = true;
-                    //         viewModel.currentIndicator = 1;
-                    //       },
-                    //       child: Container(
-                    //         decoration: BoxDecoration(
-                    //           shape: BoxShape.circle,
-                    //           color: viewModel.isMale &&
-                    //               viewModel.currentIndicator ==
-                    //                   1
-                    //               ? ColorManager.orange
-                    //               : Colors.transparent,
-                    //         ),
-                    //         child: SvgPicture.asset(
-                    //           AssetsManager.male,
-                    //         ),
-                    //       ),
-                    //     ),
-                    //     GestureDetector(
-                    //       onTap: () {
-                    //         viewModel.isMale = false;
-                    //         viewModel.currentIndicator = 1;
-                    //       },
-                    //       child: Container(
-                    //         decoration: BoxDecoration(
-                    //           shape: BoxShape.circle,
-                    //           color: !viewModel.isMale &&
-                    //               viewModel.currentIndicator ==
-                    //                   1
-                    //               ? ColorManager.orange
-                    //               : Colors.transparent,
-                    //         ),
-                    //         child: SvgPicture.asset(
-                    //           AssetsManager.female,
-                    //         ),
-                    //       ),
-                    //     ),
-                    //   ],
-                    // ),
                     bodyScreen,
                     viewModel.currentIndicator == 0
                         ? SizedBox()
@@ -114,13 +72,16 @@ class CustomRegisterStep extends StatelessWidget {
                       children: [
                         Expanded(
                           child:
-                          CustomElevatedButton(
-                              buttonColor:
-                              ColorManager
-                                  .orange,
-                              title: 'NEXT',
-                              onPressed:
-                              onPressed),
+                          Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 16),
+                            child: CustomElevatedButton(
+                                buttonColor:
+                                ColorManager
+                                    .orange,
+                                title: 'NEXT',
+                                onPressed:
+                                onPressed),
+                          ),
                         ),
                       ],
                     )

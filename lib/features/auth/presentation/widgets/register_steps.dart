@@ -12,6 +12,7 @@ import '../../../../core/resources/style_manager.dart';
 import '../view_model/view_model_cubit.dart';
 import 'custom_percent_indicator.dart';
 import 'custom_register_step.dart';
+import 'custom_step_two.dart';
 
 class RegisterSteps extends StatefulWidget {
   const RegisterSteps({super.key});
@@ -128,10 +129,10 @@ class _RegisterStepsState extends State<RegisterSteps> {
                                     log(viewModel.currentIndicator.toString());
                                   }),
                               CustomRegisterStep(
-                                  title: 'TELL US ABOUT YOURSELF',
-                                  subTitle: 'We Need To Know Your Gender',
+                                  title: 'How Old Are you ?',
+                                  subTitle: 'this helps us create Your personalized plan',
                                   viewModel: viewModel,
-                                  bodyScreen: CustomStepOne(
+                                  bodyScreen: CustomStepTwo(
                                     viewModel: viewModel,
                                   ),
                                   onPressed: () {
@@ -143,22 +144,7 @@ class _RegisterStepsState extends State<RegisterSteps> {
 
                                     log(viewModel.currentIndicator.toString());
                                   }),
-                              CustomRegisterStep(
-                                  title: 'TELL US ABOUT YOURSELF',
-                                  subTitle: 'We Need To Know Your Gender',
-                                  viewModel: viewModel,
-                                  bodyScreen: CustomStepOne(
-                                    viewModel: viewModel,
-                                  ),
-                                  onPressed: () {
-                                    _controller.nextPage(
-                                        duration: Duration(milliseconds: 500),
-                                        curve: Curves.easeIn);
-                                    viewModel.changeIndicator(
-                                      4);
 
-                                    log(viewModel.currentIndicator.toString());
-                                  }),
 
                             ],
                           ),

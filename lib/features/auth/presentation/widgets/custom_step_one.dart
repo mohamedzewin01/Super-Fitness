@@ -35,6 +35,7 @@ class CustomStepOne extends StatelessWidget {
             ),
           ),
         ),
+        SizedBox(height: 16 ,),
         GestureDetector(
           onTap:
 
