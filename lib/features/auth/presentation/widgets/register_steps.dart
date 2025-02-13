@@ -5,6 +5,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 import 'package:super_fitness/core/widgets/custom_elevated_button.dart';
+import 'package:super_fitness/features/auth/presentation/widgets/custom_step_five.dart';
+import 'package:super_fitness/features/auth/presentation/widgets/custom_step_four.dart';
 import 'package:super_fitness/features/auth/presentation/widgets/custom_step_one.dart';
 import '../../../../core/resources/assets_manager.dart';
 import '../../../../core/resources/color_manager.dart';
@@ -12,6 +14,7 @@ import '../../../../core/resources/style_manager.dart';
 import '../view_model/view_model_cubit.dart';
 import 'custom_percent_indicator.dart';
 import 'custom_register_step.dart';
+import 'custom_step_three.dart';
 import 'custom_step_two.dart';
 
 class RegisterSteps extends StatefulWidget {
@@ -124,13 +127,13 @@ class _RegisterStepsState extends State<RegisterSteps> {
                                     _controller.nextPage(
                                         duration: Duration(milliseconds: 500),
                                         curve: Curves.easeIn);
-                                    viewModel.changeIndicator(
-                                        2);
+                                    viewModel.changeIndicator(2);
                                     log(viewModel.currentIndicator.toString());
                                   }),
                               CustomRegisterStep(
                                   title: 'How Old Are you ?',
-                                  subTitle: 'this helps us create Your personalized plan',
+                                  subTitle:
+                                      'this helps us create Your personalized plan',
                                   viewModel: viewModel,
                                   bodyScreen: CustomStepTwo(
                                     viewModel: viewModel,
@@ -139,13 +142,58 @@ class _RegisterStepsState extends State<RegisterSteps> {
                                     _controller.nextPage(
                                         duration: Duration(milliseconds: 500),
                                         curve: Curves.easeIn);
-                                    viewModel.changeIndicator(
-                                        3);
+                                    viewModel.changeIndicator(3);
 
                                     log(viewModel.currentIndicator.toString());
                                   }),
-
-
+                              CustomRegisterStep(
+                                title: 'How Old Are you ?',
+                                subTitle:
+                                    'this helps us create Your personalized plan',
+                                viewModel: viewModel,
+                                bodyScreen: CustomStepThree(
+                                  viewModel: viewModel,
+                                ),
+                                onPressed: () {
+                                  _controller.nextPage(
+                                      duration: Duration(milliseconds: 500),
+                                      curve: Curves.easeIn);
+                                  viewModel.changeIndicator(4);
+                                  log(viewModel.currentIndicator.toString());
+                                },
+                              ),
+                              CustomRegisterStep(
+                                title: 'How Old Are you ?',
+                                subTitle:
+                                    'this helps us create Your personalized plan',
+                                viewModel: viewModel,
+                                bodyScreen: CustomStepFour(
+                                  viewModel: viewModel,
+                                ),
+                                onPressed: () {
+                                  _controller.nextPage(
+                                      duration: Duration(milliseconds: 500),
+                                      curve: Curves.easeIn);
+                                  viewModel.changeIndicator(4);
+                                  log(viewModel.currentIndicator.toString());
+                                },
+                              ),
+                              CustomRegisterStep(
+                                title: 'How Old Are you ?',
+                                subTitle:
+                                    'this helps us create Your personalized plan',
+                                viewModel: viewModel,
+                                bodyScreen: CustomStepFive(
+                                  viewModel: viewModel,
+                                ),
+                                onPressed: () {
+                                  _controller.nextPage(
+                                      duration: Duration(milliseconds: 500),
+                                      curve: Curves.easeIn);
+                                  viewModel.changeIndicator(4);
+                                  log(viewModel.currentIndicator.toString());
+                                },
+                              ),
                             ],
                           ),
                         ),
