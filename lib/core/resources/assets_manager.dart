@@ -1,4 +1,9 @@
 class AssetsManager {
 
 static String backgroundOnboarding = 'assets/images/background_onboarding.png';
+static String backgroundRegister = 'assets/images/background-register.png';
+static String logo = 'assets/images/logo_icon.png';
+static String female = 'assets/images/female.svg';
+static String male = 'assets/images/male.svg';
+static String back = 'assets/images/Back.svg';
 }
