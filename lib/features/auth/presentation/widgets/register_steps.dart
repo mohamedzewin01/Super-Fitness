@@ -174,7 +174,7 @@ class _RegisterStepsState extends State<RegisterSteps> {
                                   _controller.nextPage(
                                       duration: Duration(milliseconds: 500),
                                       curve: Curves.easeIn);
-                                  viewModel.changeIndicator(4);
+                                  viewModel.changeIndicator(5);
                                   log(viewModel.currentIndicator.toString());
                                 },
                               ),
@@ -190,7 +190,7 @@ class _RegisterStepsState extends State<RegisterSteps> {
                                   _controller.nextPage(
                                       duration: Duration(milliseconds: 500),
                                       curve: Curves.easeIn);
-                                  viewModel.changeIndicator(4);
+                                  viewModel.changeIndicator(6);
                                   log(viewModel.currentIndicator.toString());
                                 },
                               ),

@@ -22,6 +22,8 @@ class CustomStepOne extends StatelessWidget {
 
           },
           child: Container(
+
+
             decoration: BoxDecoration(
               shape: BoxShape.circle,
               color: viewModel.isMale &&

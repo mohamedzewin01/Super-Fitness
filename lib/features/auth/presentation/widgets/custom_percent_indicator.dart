@@ -15,17 +15,17 @@ class CustomPercentIndicator extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    int totalSteps = 6;
+    int totalSteps = 10;
     return CircularPercentIndicator(
       radius: 25.0,
       lineWidth: 6.0,
       percent: viewModel.currentIndicator / totalSteps,
       animationDuration: 1200,
-      startAngle: 240,
+      startAngle: 250,
       animation: true,
       curve: Curves.linear,
       center: Text(
-        "${viewModel.currentIndicator}/$totalSteps",
+        "${viewModel.currentIndicator}/6",
         style:
         getBoldStyle(color: Colors.white, fontSize: 16),
       ),
