@@ -3,11 +3,11 @@ import 'package:flutter_svg/svg.dart';
 
 import '../../../../core/resources/assets_manager.dart';
 import '../../../../core/resources/color_manager.dart';
-import '../view_model/view_model_cubit.dart';
+import '../view_model/register_cubit.dart';
 
-class CustomStepOne extends StatelessWidget {
-  const CustomStepOne({super.key, required this.viewModel});
-  final ViewModelCubit viewModel;
+class CustomStepGender extends StatelessWidget {
+  const CustomStepGender({super.key, required this.viewModel});
+  final RegisterCubit viewModel;
 
   @override
   Widget build(BuildContext context) {
@@ -15,15 +15,11 @@ class CustomStepOne extends StatelessWidget {
       children: [
         GestureDetector(
            onTap:
-
               () {
              viewModel.changeGender(true);
              viewModel.changeIndicator(1);
-
           },
           child: Container(
-
-
             decoration: BoxDecoration(
               shape: BoxShape.circle,
               color: viewModel.isMale &&

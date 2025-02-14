@@ -5,7 +5,7 @@ import '../../../../core/resources/assets_manager.dart';
 import '../../../../core/resources/color_manager.dart';
 import '../../../../core/resources/style_manager.dart';
 import '../../../../core/widgets/custom_elevated_button.dart';
-import '../view_model/view_model_cubit.dart';
+import '../view_model/register_cubit.dart';
 
 class CustomRegisterStep extends StatelessWidget {
   const CustomRegisterStep(
@@ -13,7 +13,7 @@ class CustomRegisterStep extends StatelessWidget {
 
   final String title;
   final String subTitle;
-  final ViewModelCubit viewModel;
+  final RegisterCubit viewModel;
   final void Function() onPressed;
   final Widget bodyScreen;
 
@@ -78,7 +78,7 @@ class CustomRegisterStep extends StatelessWidget {
                                 buttonColor:
                                 ColorManager
                                     .orange,
-                                title: 'NEXT',
+                                title:viewModel.currentIndicator == 6 ? 'REGISTER' : 'NEXT',
                                 onPressed:
                                 onPressed),
                           ),
