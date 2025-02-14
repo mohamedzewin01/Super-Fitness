@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:super_fitness/core/resources/style_manager.dart';
 import '../resources/color_manager.dart';
-import '../resources/font_manager.dart';
-
-import '../resources/values_manager.dart';
 
 class CustomElevatedButton extends StatelessWidget {
   const CustomElevatedButton({
@@ -23,19 +20,16 @@ class CustomElevatedButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return ElevatedButton(
       onPressed: onPressed,
-        style: ElevatedButton.styleFrom(
+      style: ElevatedButton.styleFrom(
         backgroundColor: ColorManager.orange,
         minimumSize: const Size(31, 38),
-    shape: const RoundedRectangleBorder(
-    borderRadius: BorderRadius.all(
-    Radius.circular(24)),
-    ),
+        shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.all(Radius.circular(24)),
         ),
-      child: Text(
-        title
-        style: style ??
-            getSemiBoldStyle(color: ColorManager.white,fontSize: 16)
       ),
+      child: Text(title,
+          style: style ??
+              getSemiBoldStyle(color: ColorManager.white, fontSize: 16)),
     );
   }
 }
