@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import '../resources/color_manager.dart';
-import '../resources/font_manager.dart';
 import '../resources/values_manager.dart';
 
 class CustomElevatedButton extends StatelessWidget {
@@ -9,11 +8,13 @@ class CustomElevatedButton extends StatelessWidget {
     required this.buttonColor,
     required this.title,
     required this.onPressed,
+    this.style,
   });
 
   final Color buttonColor;
   final String title;
   final void Function() onPressed;
+  final TextStyle? style;
 
   @override
   Widget build(BuildContext context) {
@@ -28,11 +29,12 @@ class CustomElevatedButton extends StatelessWidget {
       ),
       child: Text(
         title,
-        style: TextStyle(
-          color: ColorManager.white,
-          fontSize: FontSize.s16,
-          fontWeight: FontWeightManager.bold,
-        ),
+        style: style ??
+            const TextStyle(
+              color: ColorManager.white,
+              fontSize: 16,
+              fontWeight: FontWeight.w600,
+            ),
       ),
     );
   }
