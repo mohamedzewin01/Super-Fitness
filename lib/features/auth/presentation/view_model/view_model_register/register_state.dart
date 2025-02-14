@@ -11,3 +11,14 @@ final class WeightChange extends RegisterState {}
 final class HeightChange extends RegisterState {}
 final class GoalChange extends RegisterState {}
 final class ActivityLevelChange extends RegisterState {}
+class SuccessRegisterState extends RegisterState {
+  final RegisterEntity registerEntity;
+  SuccessRegisterState(this.registerEntity);
+}
+class LoadingRegisterState extends RegisterState {}
+
+class ErrorRegisterState extends RegisterState {
+  final Exception? exception;
+
+  ErrorRegisterState(this.exception);
+}

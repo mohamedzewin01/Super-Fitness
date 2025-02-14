@@ -2,7 +2,7 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:super_fitness/core/resources/app_constants.dart';
 import 'package:super_fitness/features/auth/presentation/widgets/custom_carouse_slider.dart';
-import '../view_model/register_cubit.dart';
+import '../view_model/view_model_register/register_cubit.dart';
 
 class CustomStepWeight extends StatelessWidget {
   const CustomStepWeight({super.key, required this.viewModel});

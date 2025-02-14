@@ -2,7 +2,7 @@ import 'dart:developer';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:super_fitness/features/auth/presentation/widgets/register_form.dart';
-import '../view_model/register_cubit.dart';
+import '../view_model/view_model_register/register_cubit.dart';
 import 'custom_register_step.dart';
 import 'custom_step_Age.dart';
 import 'custom_step_activity_level.dart';
@@ -121,10 +121,7 @@ class CustomRegisterPagesView extends StatelessWidget {
               viewModel: viewModel,
             ),
             onPressed: () {
-              // viewModel.pageController.nextPage(
-              //     duration: Duration(milliseconds: 500),
-              //     curve: Curves.easeIn);
-              // viewModel.changeIndicator(6);
+           viewModel.register();
               log(viewModel.currentIndicator.toString());
             },
           ),

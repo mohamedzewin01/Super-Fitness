@@ -3,7 +3,7 @@ import 'package:flutter_svg/svg.dart';
 
 import '../../../../core/resources/assets_manager.dart';
 import '../../../../core/resources/color_manager.dart';
-import '../view_model/register_cubit.dart';
+import '../view_model/view_model_register/register_cubit.dart';
 
 class CustomStepGender extends StatelessWidget {
   const CustomStepGender({super.key, required this.viewModel});
@@ -12,7 +12,9 @@ class CustomStepGender extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
+      spacing: 16,
       children: [
+        SizedBox(height: 16 ,),
         GestureDetector(
            onTap:
               () {
@@ -33,7 +35,6 @@ class CustomStepGender extends StatelessWidget {
             ),
           ),
         ),
-        SizedBox(height: 16 ,),
         GestureDetector(
           onTap:
 

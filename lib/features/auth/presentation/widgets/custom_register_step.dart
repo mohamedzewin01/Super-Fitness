@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../../../../core/resources/color_manager.dart';
 import '../../../../core/resources/style_manager.dart';
 import '../../../../core/widgets/custom_elevated_button.dart';
-import '../view_model/register_cubit.dart';
+import '../view_model/view_model_register/register_cubit.dart';
 
 class CustomRegisterStep extends StatelessWidget {
   const CustomRegisterStep(
@@ -67,8 +67,8 @@ class CustomRegisterStep extends StatelessWidget {
                             children: [
                               Expanded(
                                 child: Padding(
-                                  padding: const EdgeInsets.symmetric(
-                                      horizontal: 10),
+                                  padding: const EdgeInsets.only(
+                                      right: 10, left: 16, top: 16),
                                   child: CustomElevatedButton(
                                       buttonColor: ColorManager.orange,
                                       title: viewModel.currentIndicator == 6

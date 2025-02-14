@@ -4,19 +4,12 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:super_fitness/core/resources/color_manager.dart';
 import '../../../../core/widgets/custom_text_form_field.dart';
-import '../view_model/register_cubit.dart';
+import '../view_model/view_model_register/register_cubit.dart';
 
-class CustomActivityLevel extends StatefulWidget {
+class CustomActivityLevel extends StatelessWidget {
   const CustomActivityLevel({super.key, required this.viewModel});
 
   final RegisterCubit viewModel;
-
-  @override
-  State<CustomActivityLevel> createState() => _CustomActivityLevelState();
-}
-
-class _CustomActivityLevelState extends State<CustomActivityLevel> {
-  int selectedIndex = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -31,99 +24,83 @@ class _CustomActivityLevelState extends State<CustomActivityLevel> {
             children: [
               CustomTextFormFieldRegister(
                 onTap: () {
-                  setState(() {});
-                  selectedIndex = 1;
+
+                  viewModel.changeActivityLevel(1);
                 },
                 controller: TextEditingController(),
                 enabled: true,
                 hintText: 'Rookie',
-                suffix: Radio(
+                suffix: Radio<int>(
                     value: 1,
-                    groupValue: selectedIndex,
+                    groupValue: viewModel.currentRadioActivityLevel,
                     fillColor: WidgetStateProperty.all(ColorManager.white),
                     onChanged: (value) {
-                      setState(() {
-                        setState(() {});
-                        selectedIndex = value as int;
-                        log('Rookie $selectedIndex');
-                      });
+                      viewModel.changeActivityLevel(value!);
+                      // setState(() {
+                      //   setState(() {});
+                      //   selectedIndex = value as int;
+                      //   log('Rookie $selectedIndex');
+                      // });
                     }),
               ),
               CustomTextFormFieldRegister(
                 onTap: () {
-                  setState(() {});
-                  selectedIndex = 2;
+                  viewModel.changeActivityLevel(2);
                 },
                 controller: TextEditingController(),
                 enabled: true,
                 hintText: 'Beginner',
                 suffix: Radio(
                     value: 2,
-                    groupValue: selectedIndex,
+                    groupValue:  viewModel.currentRadioActivityLevel,
                     fillColor: WidgetStateProperty.all(ColorManager.white),
                     onChanged: (value) {
-                      setState(() {
-                        selectedIndex = value as int;
-                        log('Beginner $selectedIndex');
-                      });
+                      viewModel.changeActivityLevel(value!);
                     }),
               ),
               CustomTextFormFieldRegister(
                 onTap: () {
-                  setState(() {});
-                  selectedIndex = 3;
+                  viewModel.changeActivityLevel(3);
                 },
                 controller: TextEditingController(),
                 enabled: true,
                 hintText: 'Intermediate',
                 suffix: Radio(
                     value: 3,
-                    groupValue: selectedIndex,
+                    groupValue:  viewModel.currentRadioActivityLevel,
                     fillColor: WidgetStateProperty.all(ColorManager.white),
                     onChanged: (value) {
-                      setState(() {
-                        selectedIndex = value as int;
-                        log('Intermediate $selectedIndex');
-                      });
+                      viewModel.changeActivityLevel(value!);
                     }),
               ),
               CustomTextFormFieldRegister(
                 onTap: () {
-                  setState(() {
-                    selectedIndex = 4;
-                  });
+                  viewModel.changeActivityLevel(4);
                 },
                 controller: TextEditingController(),
                 enabled: true,
                 hintText: 'Advance',
                 suffix: Radio(
                     value: 4,
-                    groupValue: selectedIndex,
+                    groupValue: viewModel.currentRadioActivityLevel,
                     fillColor: WidgetStateProperty.all(ColorManager.white),
                     onChanged: (value) {
-                      setState(() {
-                        selectedIndex = value as int;
-                        log('Advance $selectedIndex');
-                      });
+                      viewModel.changeActivityLevel(value!);
                     }),
               ),
               CustomTextFormFieldRegister(
                 onTap: () {
-                  setState(() {});
-                  selectedIndex = 5;
+                  viewModel.changeActivityLevel(5);
                 },
                 controller: TextEditingController(),
                 enabled: true,
                 hintText: 'True Beast',
                 suffix: Radio(
                     value: 5,
-                    groupValue: selectedIndex,
+                    groupValue: viewModel.currentRadioActivityLevel,
                     fillColor: WidgetStateProperty.all(ColorManager.white),
                     onChanged: (value) {
-                      setState(() {
-                        selectedIndex = value as int;
-                        log('True Beast $selectedIndex');
-                      });
+                      viewModel.changeActivityLevel(value!);
                     }),
               ),
 

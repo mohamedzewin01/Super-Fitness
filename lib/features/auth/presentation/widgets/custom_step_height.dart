@@ -3,7 +3,7 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import '../../../../core/resources/app_constants.dart';
-import '../view_model/register_cubit.dart';
+import '../view_model/view_model_register/register_cubit.dart';
 import 'custom_carouse_slider.dart';
 
 class CustomStepHeight extends StatelessWidget {

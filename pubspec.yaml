@@ -52,7 +52,7 @@ dev_dependencies:
   json_serializable: ^6.8.0
   lints: ^5.0.0
   retrofit_generator: ^9.1.4
-  flutter_launcher_icons: "^0.14.3"
+  flutter_launcher_icons: ^0.14.3
 flutter_launcher_icons:
     android: true
     ios: true

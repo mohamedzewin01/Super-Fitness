@@ -1,13 +1,12 @@
-
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:super_fitness/core/di/di.dart';
 import '../../../../core/resources/assets_manager.dart';
-import '../view_model/register_cubit.dart';
+import '../view_model/view_model_register/register_cubit.dart';
 import '../widgets/custom_percent_indicator.dart';
 import '../widgets/custom_register_pages_view_body.dart';
-
 
 class RegisterView extends StatefulWidget {
   const RegisterView({super.key});
@@ -21,7 +20,7 @@ class _RegisterViewState extends State<RegisterView> {
 
   @override
   void initState() {
-    viewModel = RegisterCubit();
+    viewModel = getIt<RegisterCubit>();
     super.initState();
   }
 
@@ -49,7 +48,32 @@ class _RegisterViewState extends State<RegisterView> {
                   child: SizedBox(),
                 ),
                 BlocConsumer<RegisterCubit, RegisterState>(
-                  listener: (context, state) {},
+                  listener: (context, state) {
+                    if (state is SuccessRegisterState) {
+                      Navigator.pop(context);
+                      showDialog(
+                        context: context,
+                        builder: (context) => AlertDialog(
+                          content: Text('Success'),
+                          actions: [
+                            TextButton(
+                                onPressed: () => Navigator.pop(context),
+                                child: Text('ok'))
+                          ],
+                        ),
+                      );
+                    }
+                    if (state is LoadingRegisterState) {
+                      showDialog(
+                        barrierDismissible: true,
+                        context: context,
+                        builder: (context) => AlertDialog(
+                          content: CircularProgressIndicator(),
+                        ),
+                      );
+                    }
+                    if (state is ErrorRegisterState) {}
+                  },
                   builder: (context, state) {
                     return Column(
                       spacing: 16,
@@ -60,7 +84,8 @@ class _RegisterViewState extends State<RegisterView> {
                             alignment: Alignment.center,
                             child: Stack(
                               children: [
-                                viewModel.currentIndicator == 0||  viewModel.currentIndicator==1
+                                viewModel.currentIndicator == 0 ||
+                                        viewModel.currentIndicator == 1
                                     ? Container()
                                     : GestureDetector(
                                         onTap: () {
@@ -68,7 +93,8 @@ class _RegisterViewState extends State<RegisterView> {
                                               duration:
                                                   Duration(milliseconds: 1000),
                                               curve: Curves.easeIn);
-                                          viewModel.changeIndicator(viewModel.currentIndicator-1);
+                                          viewModel.changeIndicator(
+                                              viewModel.currentIndicator - 1);
                                         },
                                         child: Padding(
                                           padding: const EdgeInsets.all(8.0),
@@ -97,12 +123,10 @@ class _RegisterViewState extends State<RegisterView> {
                           height: 6,
                         ),
                         Visibility(
-                          visible: viewModel.currentIndicator != 0,
-                            child: CustomPercentIndicator(viewModel: viewModel)),
-                        SizedBox(
-                          height: 6,
-                        ),
-                        CustomRegisterPagesView( viewModel: viewModel),
+                            visible: viewModel.currentIndicator != 0,
+                            child:
+                                CustomPercentIndicator(viewModel: viewModel)),
+                        CustomRegisterPagesView(viewModel: viewModel),
                         // RegisterForm(viewModel: viewModel),
                       ],
                     );
@@ -116,5 +140,3 @@ class _RegisterViewState extends State<RegisterView> {
     );
   }
 }
-
-

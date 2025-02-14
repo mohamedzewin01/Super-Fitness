@@ -2,7 +2,7 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:super_fitness/core/resources/color_manager.dart';
 import 'package:super_fitness/core/widgets/custom_text_form_field.dart';
-import '../view_model/register_cubit.dart';
+import '../view_model/view_model_register/register_cubit.dart';
 
 class CustomStepGoal extends StatelessWidget {
   const CustomStepGoal({super.key, required this.viewModel});
