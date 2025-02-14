@@ -2,6 +2,23 @@
   "@@locale": "ar",
   "helloWorld": "مرحبا بالعالم!",
   "name": "أحمد",
-  "appName": "لياقة بدنية ممتازة"
-
+  "appName": "لياقة بدنية ممتازة",
+  "messageLength3": "لازم 3 حروف على الأقل",
+  "firstName": "الاسم الاول",
+  "lastName": "الاسم الاخير",
+  "female": "انثي",
+  "male": "ذكر",
+  "email": "البريد الالكتروني",
+  "enterYourEmail": "ادخل بريدك الالكتروني",
+  "enterValidEmail": "ادخل بريد الكتروني صحيح",
+  "password": "كلمة المرور",
+  "passwordIsEmpty": "كلمة المرور فارغة",
+  "passwordInvalidFormat": "صيغة كلمة المرور غير صالحة",
+  "passwordCharactersLong": "لازم 8 حروف على الأقل",
+  "alreadyHaveAccount": "هل لديك حساب بالفعل؟",
+  "entervalidfirstName": "ادخل اسم اول صحيح",
+  "entervalidLastName": "ادخل اسم اخير صحيح",
+  "invalidInput": "بيانات مش صحيحة",
+  "emailIsEmpty": "الإيميل فاضي",
+  "passwordNotMatch": "كلمات السر مش متطابقة"
 }

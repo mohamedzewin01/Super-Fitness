@@ -1,147 +1,142 @@
-
 import 'dart:ui';
-
 import 'package:flutter/material.dart';
-
-import '../../../../core/functions/helper.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:super_fitness/core/di/di.dart';
 import '../../../../core/resources/assets_manager.dart';
-import '../../../../core/resources/color_manager.dart';
-import '../../../../core/resources/style_manager.dart';
-import '../../../../core/widgets/custom_text_form_field.dart';
+import '../view_model/view_model_register/register_cubit.dart';
+import '../widgets/custom_percent_indicator.dart';
+import '../widgets/custom_register_pages_view_body.dart';
 
-class RegisterView extends StatelessWidget {
+class RegisterView extends StatefulWidget {
   const RegisterView({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    return SafeArea(
-      child: GestureDetector(
-        onTap: () {
-          FocusScope.of(context).unfocus();
-        },
-        child: Stack(
-          children: [
-            SizedBox(
-              height: double.infinity,
-              width: double.infinity,
-              child: ImageFiltered(
-                imageFilter: ImageFilter.blur(sigmaX: 3.0, sigmaY: 3.0),
-                child: Image.asset(
-                  AssetsManager.backgroundOnboarding,
-                  fit: BoxFit.fill,
-                ),
-              ),
-            ),
-            Scaffold(
-              backgroundColor: Colors.transparent,
-              body: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.center,
-                spacing: 16,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.all(16.0),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          // AppLocalizations.of(context)?.name ?? '',
-                          'Hey There',
-                          style: getMediumStyle(
-                              color: Colors.white, fontSize: 18),
-                        ),
-                        Text(
-                          // AppLocalizations.of(context)?.name ?? '',
-                          'create an account',
-                          style: getSemiBoldStyle(
-                              color: Colors.white, fontSize: 20),
-                        ),
-                      ],
-                    ),
-                  ),
-                  Stack(
-                    alignment: Alignment.center,
-                    children: [
-                      // ShaderMask(
-                      //   shaderCallback: (bounds) {
-                      //     return RadialGradient(
-                      //       // center: Alignment.center,
-                      //       // radius: 0.5,
-                      //       colors: [
-                      //         Colors.transparent,
-                      //         ColorManager.white.withAlpha(250),
-                      //       ],
-                      //
-                      //       // stops: const [0.5, 1.0],
-                      //     ).createShader(bounds);
-                      //   },
-                      //   child: Container(
-                      //     decoration: BoxDecoration(
-                      //       borderRadius: BorderRadius.circular(30),
-                      //       color: ColorManager.primary,
-                      //     ),
-                      //     height: 300,
-                      //     width: double.infinity,
-                      //
-                      //   ),
-                      // ),
-                      Positioned.fill(
-                        child: BackdropFilter(
-                          filter: ImageFilter.blur(sigmaX: 10.0, sigmaY: 10.0),
-                          child: Container(
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(30),
-                              color: ColorManager.primary.withOpacity(.6), // لون شفاف لتحسين الوضوح
-                            ),
+  State<RegisterView> createState() => _RegisterViewState();
+}
 
-                          ),
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.all(16.0),
-                        child: Column(
-                          spacing: 16,
-                          children: [
-                            Text(
-                              // AppLocalizations.of(context)?.name ?? '',
-                              'Register',
-                              style: getSemiBoldStyle(
-                                  color: Colors.white, fontSize: 20),
-                            ),
-                            CustomTextFormField(
-                              controller: TextEditingController(),
-                              hintText: 'Email',
-                              prefixIcon: Icon(
-                                Icons.mail,
-                                color: ColorManager.placeHolderColor,
-                              ),
-                            ),
-                            CustomTextFormField(
-                              controller: TextEditingController(),
-                              hintText: 'Email',
-                              prefixIcon: Icon(
-                                Icons.lock,
-                                color: ColorManager.placeHolderColor,
-                              ),
-                              suffix: passwordHidden(
-                                isPasswordHidden: true,
-                                onPressed: () {},
-                              ),
-                            ),
+class _RegisterViewState extends State<RegisterView> {
+  late RegisterCubit viewModel;
+
+  @override
+  void initState() {
+    viewModel = getIt<RegisterCubit>();
+    super.initState();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocProvider(
+      create: (context) => viewModel,
+      child: SafeArea(
+        child: GestureDetector(
+          onTap: () {
+            FocusScope.of(context).unfocus();
+          },
+          child: Scaffold(
+            backgroundColor: Colors.transparent,
+            body: Stack(
+              children: [
+                Image.asset(
+                  AssetsManager.backgroundRegister,
+                  fit: BoxFit.cover,
+                  width: double.infinity,
+                  height: double.infinity,
+                ),
+                BackdropFilter(
+                  filter: ImageFilter.blur(sigmaX: 6.0, sigmaY: 6.0),
+                  child: SizedBox(),
+                ),
+                BlocConsumer<RegisterCubit, RegisterState>(
+                  listener: (context, state) {
+                    if (state is SuccessRegisterState) {
+                      Navigator.pop(context);
+                      showDialog(
+                        context: context,
+                        builder: (context) => AlertDialog(
+                          content: Text('Success'),
+                          actions: [
+                            TextButton(
+                                onPressed: () => Navigator.pop(context),
+                                child: Text('ok'))
                           ],
                         ),
-                      ),
-                    ],
-                  ),
-                ],
-              ),
+                      );
+                    }
+                    if (state is LoadingRegisterState) {
+                      showDialog(
+                        barrierDismissible: true,
+                        context: context,
+                        builder: (context) => AlertDialog(
+                          content: CircularProgressIndicator(),
+                        ),
+                      );
+                    }
+                    if (state is ErrorRegisterState) {}
+                  },
+                  builder: (context, state) {
+                    return Column(
+                      spacing: 16,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.only(top: 25, bottom: 16),
+                          child: Align(
+                            alignment: Alignment.center,
+                            child: Stack(
+                              children: [
+                                viewModel.currentIndicator == 0 ||
+                                        viewModel.currentIndicator == 1
+                                    ? Container()
+                                    : GestureDetector(
+                                        onTap: () {
+                                          viewModel.pageController.previousPage(
+                                              duration:
+                                                  Duration(milliseconds: 1000),
+                                              curve: Curves.easeIn);
+                                          viewModel.changeIndicator(
+                                              viewModel.currentIndicator - 1);
+                                        },
+                                        child: Padding(
+                                          padding: const EdgeInsets.all(8.0),
+                                          child: SvgPicture.asset(
+                                            AssetsManager.back,
+                                            fit: BoxFit.cover,
+                                            width: 24,
+                                            height: 24,
+                                          ),
+                                        ),
+                                      ),
+                                Align(
+                                  alignment: Alignment.center,
+                                  child: Image.asset(
+                                    AssetsManager.logo,
+                                    fit: BoxFit.cover,
+                                    width: 70,
+                                    height: 48,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                        SizedBox(
+                          height: 6,
+                        ),
+                        Visibility(
+                            visible: viewModel.currentIndicator != 0,
+                            child:
+                                CustomPercentIndicator(viewModel: viewModel)),
+                        CustomRegisterPagesView(viewModel: viewModel),
+                        // RegisterForm(viewModel: viewModel),
+                      ],
+                    );
+                  },
+                ),
+              ],
             ),
-          ],
+          ),
         ),
       ),
     );
   }
 }
-
-
-
