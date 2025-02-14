@@ -1,9 +1,8 @@
 import 'dart:developer';
 
-import 'package:carousel_slider/carousel_slider.dart';
+
 import 'package:flutter/material.dart';
 import 'package:super_fitness/core/resources/color_manager.dart';
-import 'package:super_fitness/core/resources/style_manager.dart';
 import '../../../../core/widgets/custom_text_form_field.dart';
 import '../view_model/register_cubit.dart';
 

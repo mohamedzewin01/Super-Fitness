@@ -1,7 +1,7 @@
 import 'dart:developer';
-
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
+import 'package:super_fitness/features/auth/presentation/widgets/register_form.dart';
 import '../view_model/register_cubit.dart';
 import 'custom_register_step.dart';
 import 'custom_step_Age.dart';
@@ -28,11 +28,12 @@ class CustomRegisterPagesView extends StatelessWidget {
         controller: viewModel.pageController,
         physics: NeverScrollableScrollPhysics(),
         onPageChanged: (value) {
-          if(value<viewModel.currentIndicator-1) {
-            viewModel.changeIndicator(viewModel.currentIndicator-1);
+          if (value < viewModel.currentIndicator - 1) {
+            viewModel.changeIndicator(viewModel.currentIndicator - 1);
           }
         },
         children: [
+          RegisterForm(viewModel: viewModel),
           CustomRegisterStep(
               title: 'TELL US ABOUT YOURSELF',
               subTitle: 'We Need To Know Your Gender',
@@ -42,7 +43,7 @@ class CustomRegisterPagesView extends StatelessWidget {
               ),
               onPressed: () {
                 viewModel.pageController.nextPage(
-                    duration: Duration(milliseconds: 500),
+                    duration: Duration(milliseconds: 1000),
                     curve: Curves.easeIn);
                 viewModel.changeIndicator(2);
                 log(viewModel.currentIndicator.toString());
@@ -57,7 +58,7 @@ class CustomRegisterPagesView extends StatelessWidget {
               ),
               onPressed: () {
                 viewModel.pageController.nextPage(
-                    duration: Duration(milliseconds: 500),
+                    duration: Duration(milliseconds: 1000),
                     curve: Curves.easeIn);
                 viewModel.changeIndicator(3);
 
@@ -73,7 +74,7 @@ class CustomRegisterPagesView extends StatelessWidget {
             ),
             onPressed: () {
               viewModel.pageController.nextPage(
-                  duration: Duration(milliseconds: 500),
+                  duration: Duration(milliseconds: 1000),
                   curve: Curves.easeIn);
               viewModel.changeIndicator(4);
               log(viewModel.currentIndicator.toString());
@@ -89,7 +90,7 @@ class CustomRegisterPagesView extends StatelessWidget {
             ),
             onPressed: () {
               viewModel.pageController.nextPage(
-                  duration: Duration(milliseconds: 500),
+                  duration: Duration(milliseconds: 1000),
                   curve: Curves.easeIn);
               viewModel.changeIndicator(5);
               log(viewModel.currentIndicator.toString());
@@ -105,7 +106,7 @@ class CustomRegisterPagesView extends StatelessWidget {
             ),
             onPressed: () {
               viewModel.pageController.nextPage(
-                  duration: Duration(milliseconds: 500),
+                  duration: Duration(milliseconds: 1000),
                   curve: Curves.easeIn);
               viewModel.changeIndicator(6);
               log(viewModel.currentIndicator.toString());
@@ -132,3 +133,4 @@ class CustomRegisterPagesView extends StatelessWidget {
     );
   }
 }
+

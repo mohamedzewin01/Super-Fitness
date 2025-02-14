@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../features/auth/presentation/pages/register_view.dart';
+
 import '../../onBoarding/presentation/screens/on_boarding.dart';
 
 class RoutesManager {

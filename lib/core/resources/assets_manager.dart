@@ -6,4 +6,8 @@ static String logo = 'assets/images/logo_icon.png';
 static String female = 'assets/images/female.svg';
 static String male = 'assets/images/male.svg';
 static String back = 'assets/images/Back.svg';
+static String lock = 'assets/images/lock.svg';
+static String mail = 'assets/images/mail.svg';
+static String user = 'assets/images/user.svg';
+static String eye = 'assets/images/eye.svg';
 }

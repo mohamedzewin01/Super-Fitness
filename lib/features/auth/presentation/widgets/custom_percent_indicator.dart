@@ -22,7 +22,7 @@ class CustomPercentIndicator extends StatelessWidget {
         begin: 0.0,
         end: viewModel.currentIndicator / totalSteps,
       ),
-      duration: const Duration(milliseconds: 500),
+      duration: const Duration(milliseconds: 1000),
       curve: Curves.easeInOut,
       builder: (context, value, child) {
         return CircularPercentIndicator(

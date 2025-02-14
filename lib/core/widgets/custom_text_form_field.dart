@@ -19,7 +19,7 @@ class CustomTextFormField extends StatelessWidget {
     this.enabled,
     this.prefixIcon,
     this.initialValue,
-    this.onChanged,
+    this.onChanged, this.inputAction,
   });
 
   final TextEditingController controller;
@@ -32,6 +32,7 @@ class CustomTextFormField extends StatelessWidget {
   final Widget? suffix;
   final Widget? prefixIcon;
   final TextInputType? keyboardType;
+  final TextInputAction? inputAction;
   final void Function(String)? onChanged;
 
   @override
@@ -39,6 +40,7 @@ class CustomTextFormField extends StatelessWidget {
     return SizedBox(
       height: AppSize.s45,
       child: TextFormField(
+        textInputAction:inputAction ,
         cursorColor: ColorManager.placeHolderColor,
         style: const TextStyle(color: ColorManager.placeHolderColor),
         initialValue: initialValue,
@@ -169,7 +171,7 @@ class CustomTextFormFieldRegister extends StatelessWidget {
             const BorderRadius.all(Radius.circular(AppSize.s20)),
           ),
           focusedBorder: outLintInputBorderMethod(
-            const BorderSide(color: ColorManager.orange, width: AppSize.w1_5),
+            const BorderSide(color: ColorManager.placeHolderColor, width: AppSize.w1_5),
             const BorderRadius.all(Radius.circular(AppSize.s20)),
           ),
           errorBorder: outLintInputBorderMethod(

@@ -4,7 +4,7 @@ import 'package:super_fitness/core/resources/theme_manager.dart';
 import 'core/resources/routes_manager.dart';
 import 'core/utils/cashed_data_shared_preferences.dart';
 import 'core/utils/my_bloc_observer.dart';
-import 'features/auth/presentation/widgets/register_pages_view.dart';
+import 'features/auth/presentation/pages/register_view.dart';
 import 'localization/locale_cubit.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -41,7 +41,7 @@ class SuperFitness extends StatelessWidget {
             debugShowCheckedModeBanner: false,
             onGenerateRoute: RouteGenerator.getRoute,
             initialRoute: RoutesManager.onBoarding,
-            home: RegisterPagesView(),
+            home: RegisterView(),
           );
         },
       ),

@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:super_fitness/core/resources/app_constants.dart';
 import '../view_model/register_cubit.dart';
 import 'custom_carouse_slider.dart';
-import 'custom_step_goal.dart';
+
 
 class CustomStepAge extends StatelessWidget {
   const CustomStepAge({super.key, required this.viewModel});
