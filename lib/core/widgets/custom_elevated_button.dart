@@ -3,6 +3,7 @@ import 'package:super_fitness/core/resources/style_manager.dart';
 import '../resources/color_manager.dart';
 import '../resources/font_manager.dart';
 
+import '../resources/values_manager.dart';
 
 class CustomElevatedButton extends StatelessWidget {
   const CustomElevatedButton({
@@ -10,11 +11,13 @@ class CustomElevatedButton extends StatelessWidget {
     required this.buttonColor,
     required this.title,
     required this.onPressed,
+    this.style,
   });
 
   final Color buttonColor;
   final String title;
   final void Function() onPressed;
+  final TextStyle? style;
 
   @override
   Widget build(BuildContext context) {
@@ -29,9 +32,9 @@ class CustomElevatedButton extends StatelessWidget {
     ),
         ),
       child: Text(
-        title,
-        style: getSemiBoldStyle(color: ColorManager.white,fontSize: 16)
-
+        title
+        style: style ??
+            getSemiBoldStyle(color: ColorManager.white,fontSize: 16)
       ),
     );
   }
