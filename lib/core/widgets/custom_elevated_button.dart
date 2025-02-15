@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:super_fitness/core/resources/style_manager.dart';
 import '../resources/color_manager.dart';
+
 import '../resources/font_manager.dart';
 import '../resources/values_manager.dart';
 import 'package:google_fonts/google_fonts.dart';
+
 
 
 class CustomElevatedButton extends StatelessWidget {
@@ -11,19 +14,21 @@ class CustomElevatedButton extends StatelessWidget {
     required this.buttonColor,
     required this.title,
     required this.onPressed,
+    this.style,
   });
 
   final Color buttonColor;
   final String title;
   final void Function() onPressed;
+  final TextStyle? style;
 
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
       onPressed: onPressed,
       style: ElevatedButton.styleFrom(
-        backgroundColor: buttonColor,
-        minimumSize: const Size(double.infinity, AppSize.s48),
+        backgroundColor: ColorManager.orange,
+        minimumSize: const Size(31, 38),
         shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.all(Radius.circular(AppSize.s24)),
         ),
@@ -36,6 +41,9 @@ class CustomElevatedButton extends StatelessWidget {
           fontWeight: FontWeightManager.bold,
         ),
       ),
+      child: Text(title,
+          style: style ??
+              getSemiBoldStyle(color: ColorManager.white, fontSize: 16)),
     );
   }
 }

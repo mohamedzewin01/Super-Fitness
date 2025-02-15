@@ -6,6 +6,195 @@ import '../resources/style_manager.dart';
 import '../resources/theme_manager.dart';
 import '../resources/values_manager.dart';
 
+// class CustomTextFormField extends StatelessWidget {
+//   const CustomTextFormField({
+//     super.key,
+//     required this.controller,
+//     this.labelText,
+//     this.hintText,
+//     this.obscureText,
+//     this.validator,
+//     this.suffix,
+//     this.keyboardType,
+//     this.enabled,
+//     this.prefixIcon,
+//     this.initialValue,
+//     this.onChanged, this.inputAction,
+//   });
+//
+//   final TextEditingController controller;
+//   final String? labelText;
+//   final String? hintText;
+//   final String? initialValue;
+//   final bool? obscureText;
+//   final bool? enabled;
+//   final String? Function(String?)? validator;
+//   final Widget? suffix;
+//   final Widget? prefixIcon;
+//   final TextInputType? keyboardType;
+//   final TextInputAction? inputAction;
+//   final void Function(String)? onChanged;
+//
+//   @override
+//   Widget build(BuildContext context) {
+//     return SizedBox(
+//       height: AppSize.s45,
+//       child: TextFormField(
+//         textInputAction:inputAction ,
+//         cursorColor: ColorManager.placeHolderColor,
+//         style: const TextStyle(color: ColorManager.placeHolderColor),
+//         initialValue: initialValue,
+//         readOnly: enabled ?? false,
+//         controller: controller,
+//         keyboardType: keyboardType,
+//         decoration: InputDecoration(
+//           prefixIcon: prefixIcon,
+//           prefixIconColor: ColorManager.placeHolderColor,
+//           suffixIcon: suffix != null
+//               ? Row(
+//                   mainAxisSize: MainAxisSize.min,
+//                   children: [
+//                     suffix!,
+//                   ],
+//                 )
+//               : null,
+//           suffixIconColor: ColorManager.placeHolderColor,
+//           labelText: labelText,
+//           labelStyle: getRegularStyle(
+//             color: ColorManager.placeHolderColor,
+//             fontSize: FontSize.s16,
+//           ),
+//           hintText: hintText,
+//           hintStyle: getRegularStyle(
+//             color: ColorManager.placeHolderColor,
+//             fontSize: FontSize.s14,
+//           ),
+//           floatingLabelBehavior: FloatingLabelBehavior.always,
+//           contentPadding: const EdgeInsets.all(AppPadding.p18),
+//           enabledBorder: outLintInputBorderMethod(
+//             const BorderSide(color: ColorManager.placeHolderColor, width: AppSize.w1_5),
+//             const BorderRadius.all(Radius.circular(AppSize.s20)),
+//           ),
+//           focusedBorder: outLintInputBorderMethod(
+//             const BorderSide(color: ColorManager.orange, width: AppSize.w1_5),
+//             const BorderRadius.all(Radius.circular(AppSize.s20)),
+//           ),
+//           errorBorder: outLintInputBorderMethod(
+//             const BorderSide(color: ColorManager.error, width: AppSize.w1_5),
+//             const BorderRadius.all(Radius.circular(AppSize.s20)),
+//           ),
+//           focusedErrorBorder: outLintInputBorderMethod(
+//             const BorderSide(color: ColorManager.error, width: AppSize.w1_5),
+//             const BorderRadius.all(Radius.circular(AppSize.s20)),
+//           ),
+//           disabledBorder: outLintInputBorderMethod(
+//             const BorderSide(color: ColorManager.placeHolderColor, width: AppSize.w1_5),
+//             const BorderRadius.all(Radius.circular(AppSize.s20)),
+//           ),
+//         ),
+//         obscureText: obscureText ?? false,
+//         validator: validator,
+//         onChanged: onChanged,
+//         autovalidateMode: AutovalidateMode.onUserInteraction,
+//       ),
+//     );
+//   }
+// }
+class CustomTextFormFieldRegister extends StatelessWidget {
+  const CustomTextFormFieldRegister({
+    super.key,
+    required this.controller,
+    this.labelText,
+    this.hintText,
+    this.obscureText,
+    this.validator,
+    this.suffix,
+    this.keyboardType,
+    this.enabled,
+    this.prefixIcon,
+    this.initialValue,
+    this.onChanged, this.onTap,
+  });
+
+  final TextEditingController controller;
+  final String? labelText;
+  final String? hintText;
+  final String? initialValue;
+  final bool? obscureText;
+  final bool? enabled;
+  final String? Function(String?)? validator;
+  final Widget? suffix;
+  final Widget? prefixIcon;
+  final TextInputType? keyboardType;
+  final void Function(String)? onChanged;
+  final void Function()? onTap;
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      height: AppSize.s45,
+      child: TextFormField(
+        cursorColor: ColorManager.placeHolderColor,
+        style: const TextStyle(color: ColorManager.placeHolderColor),
+        initialValue: initialValue,
+        readOnly: enabled ?? false,
+        onTap: onTap,
+        controller: controller,
+        keyboardType: keyboardType,
+        decoration: InputDecoration(
+          prefixIcon: prefixIcon,
+          fillColor: ColorManager.placeHolderColor.withAlpha(100),
+          filled: true,
+          prefixIconColor: ColorManager.white,
+          suffixIcon: suffix != null
+              ? Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              suffix!,
+            ],
+          )
+              : null,
+          suffixIconColor: ColorManager.placeHolderColor,
+          labelText: labelText,
+          labelStyle: getRegularStyle(
+            color: ColorManager.placeHolderColor,
+            fontSize: FontSize.s16,
+          ),
+          hintText: hintText,
+          hintStyle: getSemiBoldStyle(
+            color: ColorManager.white,
+            fontSize: FontSize.s14,
+          ),
+          floatingLabelBehavior: FloatingLabelBehavior.always,
+          contentPadding: const EdgeInsets.all(AppPadding.p18),
+          enabledBorder: outLintInputBorderMethod(
+            const BorderSide(color: ColorManager.placeHolderColor, width: AppSize.w1_5),
+            const BorderRadius.all(Radius.circular(AppSize.s20)),
+          ),
+          focusedBorder: outLintInputBorderMethod(
+            const BorderSide(color: ColorManager.placeHolderColor, width: AppSize.w1_5),
+            const BorderRadius.all(Radius.circular(AppSize.s20)),
+          ),
+          errorBorder: outLintInputBorderMethod(
+            const BorderSide(color: ColorManager.error, width: AppSize.w1_5),
+            const BorderRadius.all(Radius.circular(AppSize.s20)),
+          ),
+          focusedErrorBorder: outLintInputBorderMethod(
+            const BorderSide(color: ColorManager.error, width: AppSize.w1_5),
+            const BorderRadius.all(Radius.circular(AppSize.s20)),
+          ),
+          disabledBorder: outLintInputBorderMethod(
+            const BorderSide(color: ColorManager.placeHolderColor, width: AppSize.w1_5),
+            const BorderRadius.all(Radius.circular(AppSize.s20)),
+          ),
+        ),
+        obscureText: obscureText ?? false,
+        validator: validator,
+        onChanged: onChanged,
+      ),
+    );
+  }
+}
 class CustomTextFormField extends StatelessWidget {
   const CustomTextFormField({
     super.key,
@@ -20,6 +209,7 @@ class CustomTextFormField extends StatelessWidget {
     this.prefixIcon,
     this.initialValue,
     this.onChanged,
+    this.inputAction,
   });
 
   final TextEditingController controller;
@@ -32,69 +222,126 @@ class CustomTextFormField extends StatelessWidget {
   final Widget? suffix;
   final Widget? prefixIcon;
   final TextInputType? keyboardType;
+  final TextInputAction? inputAction;
   final void Function(String)? onChanged;
 
   @override
   Widget build(BuildContext context) {
-    return TextFormField(
-      cursorColor: ColorManager.placeHolderColor,
-      style: const TextStyle(color: ColorManager.placeHolderColor),
-      initialValue: initialValue,
-      readOnly: enabled ?? false,
-      controller: controller,
-      keyboardType: keyboardType,
-      decoration: InputDecoration(
-        errorStyle: TextStyle(
-          fontSize: 14
+//     return TextFormField(
+//       cursorColor: ColorManager.placeHolderColor,
+//       style: const TextStyle(color: ColorManager.placeHolderColor),
+//       initialValue: initialValue,
+//       readOnly: enabled ?? false,
+//       controller: controller,
+//       keyboardType: keyboardType,
+//       decoration: InputDecoration(
+//         errorStyle: TextStyle(
+//           fontSize: 14
+//         ),
+//         prefixIcon: prefixIcon,
+//         prefixIconColor: ColorManager.placeHolderColor,
+//         suffixIcon: suffix != null
+//             ? Row(
+//                 mainAxisSize: MainAxisSize.min,
+//                 children: [
+//                   suffix!,
+//                 ],
+//               )
+//             : null,
+//         suffixIconColor: ColorManager.placeHolderColor,
+//         labelText: labelText,
+//         labelStyle: getRegularStyle(
+//           color: ColorManager.placeHolderColor,
+//           fontSize: FontSize.s16,
+//         ),
+//         hintText: hintText,
+//         hintStyle: getRegularStyle(
+//           color: ColorManager.placeHolderColor,
+//           fontSize: FontSize.s14,
+//         ),
+//         floatingLabelBehavior: FloatingLabelBehavior.always,
+//         contentPadding: const EdgeInsets.all(AppPadding.p18),
+//         enabledBorder: outLintInputBorderMethod(
+//           const BorderSide(color: ColorManager.placeHolderColor, width: AppSize.w1_5),
+//           const BorderRadius.all(Radius.circular(AppSize.s20)),
+//         ),
+//         focusedBorder: outLintInputBorderMethod(
+//           const BorderSide(color: ColorManager.orange, width: AppSize.w1_5),
+//           const BorderRadius.all(Radius.circular(AppSize.s20)),
+//         ),
+//         errorBorder: outLintInputBorderMethod(
+//           const BorderSide(color: ColorManager.error, width: AppSize.w1_5),
+//           const BorderRadius.all(Radius.circular(AppSize.s20)),
+//         ),
+//         focusedErrorBorder: outLintInputBorderMethod(
+//           const BorderSide(color: ColorManager.error, width: AppSize.w1_5),
+//           const BorderRadius.all(Radius.circular(AppSize.s20)),
+//         ),
+//         disabledBorder: outLintInputBorderMethod(
+//           const BorderSide(color: ColorManager.placeHolderColor, width: AppSize.w1_5),
+//           const BorderRadius.all(Radius.circular(AppSize.s20)),
+    return SizedBox(
+      height: AppSize.s45, // ارتفاع ثابت
+      child: TextFormField(
+        textInputAction: inputAction,
+        cursorColor: ColorManager.placeHolderColor,
+        style: const TextStyle(color: ColorManager.placeHolderColor),
+        initialValue: initialValue,
+        readOnly: enabled ?? false,
+        controller: controller,
+        keyboardType: keyboardType,
+        decoration: InputDecoration(
+          prefixIcon: prefixIcon,
+          prefixIconColor: ColorManager.placeHolderColor,
+          suffixIcon: suffix != null
+              ? Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [suffix!],
+          )
+              : null,
+          suffixIconColor: ColorManager.placeHolderColor,
+          labelText: labelText,
+          labelStyle: getRegularStyle(
+            color: ColorManager.placeHolderColor,
+            fontSize: FontSize.s16,
+          ),
+          hintText: hintText,
+          hintStyle: getRegularStyle(
+            color: ColorManager.placeHolderColor,
+            fontSize: FontSize.s14,
+          ),
+          floatingLabelBehavior: FloatingLabelBehavior.always,
+          contentPadding: const EdgeInsets.symmetric(vertical: 10, horizontal: 16), // ضبط الحشو الداخلي
+          enabledBorder: outLintInputBorderMethod(
+            const BorderSide(color: ColorManager.placeHolderColor, width: AppSize.w1_5),
+            const BorderRadius.all(Radius.circular(AppSize.s20)),
+          ),
+          focusedBorder: outLintInputBorderMethod(
+            const BorderSide(color: ColorManager.placeHolderColor, width: AppSize.w1_5),
+            const BorderRadius.all(Radius.circular(AppSize.s20)),
+          ),
+          errorBorder: outLintInputBorderMethod(
+            const BorderSide(color: ColorManager.error, width: AppSize.w1_5),
+            const BorderRadius.all(Radius.circular(AppSize.s20)),
+          ),
+          focusedErrorBorder: outLintInputBorderMethod(
+            const BorderSide(color: ColorManager.error, width: AppSize.w1_5),
+            const BorderRadius.all(Radius.circular(AppSize.s20)),
+          ),
+          disabledBorder: outLintInputBorderMethod(
+            const BorderSide(color: ColorManager.placeHolderColor, width: AppSize.w1_5),
+            const BorderRadius.all(Radius.circular(AppSize.s20)),
+          ),
+          errorStyle: const TextStyle(fontSize: 0, height: 0), // إخفاء تأثير الخطأ على الارتفاع
         ),
-        prefixIcon: prefixIcon,
-        prefixIconColor: ColorManager.placeHolderColor,
-        suffixIcon: suffix != null
-            ? Row(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  suffix!,
-                ],
-              )
-            : null,
-        suffixIconColor: ColorManager.placeHolderColor,
-        labelText: labelText,
-        labelStyle: getRegularStyle(
-          color: ColorManager.placeHolderColor,
-          fontSize: FontSize.s16,
-        ),
-        hintText: hintText,
-        hintStyle: getRegularStyle(
-          color: ColorManager.placeHolderColor,
-          fontSize: FontSize.s14,
-        ),
-        floatingLabelBehavior: FloatingLabelBehavior.always,
-        contentPadding: const EdgeInsets.all(AppPadding.p18),
-        enabledBorder: outLintInputBorderMethod(
-          const BorderSide(color: ColorManager.placeHolderColor, width: AppSize.w1_5),
-          const BorderRadius.all(Radius.circular(AppSize.s20)),
-        ),
-        focusedBorder: outLintInputBorderMethod(
-          const BorderSide(color: ColorManager.orange, width: AppSize.w1_5),
-          const BorderRadius.all(Radius.circular(AppSize.s20)),
-        ),
-        errorBorder: outLintInputBorderMethod(
-          const BorderSide(color: ColorManager.error, width: AppSize.w1_5),
-          const BorderRadius.all(Radius.circular(AppSize.s20)),
-        ),
-        focusedErrorBorder: outLintInputBorderMethod(
-          const BorderSide(color: ColorManager.error, width: AppSize.w1_5),
-          const BorderRadius.all(Radius.circular(AppSize.s20)),
-        ),
-        disabledBorder: outLintInputBorderMethod(
-          const BorderSide(color: ColorManager.placeHolderColor, width: AppSize.w1_5),
-          const BorderRadius.all(Radius.circular(AppSize.s20)),
-        ),
+        obscureText: obscureText ?? false,
+        validator: validator,
+        onChanged: onChanged,
+        autovalidateMode: AutovalidateMode.onUserInteraction,
       ),
       obscureText: obscureText ?? false,
       validator: validator,
       onChanged: onChanged,
-
     );
   }
 }

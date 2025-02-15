@@ -43,7 +43,9 @@ dependencies:
   carousel_slider: ^5.0.0
   blur: ^4.0.0
   google_fonts: ^6.2.1
-
+  percent_indicator: ^4.2.4
+  google_fonts:
+  wheel_slider: ^1.2.2
 dev_dependencies:
   flutter_test:
     sdk: flutter

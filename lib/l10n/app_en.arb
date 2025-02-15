@@ -12,4 +12,22 @@
   "register": "Register",
   "enterValidEmail": "Enter Valid Email",
   "enterValidPassword": "Enter Valid Password"
+  "firstName": "First Name",
+  "lastName": "Last Name",
+  "female": "Female",
+  "male": "Male",
+  "email": "Email",
+  "enterYourEmail": "Enter your email",
+  "enterValidEmail": "Enter a valid email",
+  "password": "Password",
+  "passwordIsEmpty": "Password is empty",
+  "messageLength3": "Minimum 3 characters",
+  "passwordInvalidFormat": "Invalid password format",
+  "passwordCharactersLong": "Minimum 8 characters",
+  "alreadyHaveAccount": "Already have an account?",
+  "entervalidfirstName": "Enter a valid first name",
+  "entervalidLastName": "Enter a valid last name",
+  "invalidInput": "Invalid input",
+  "emailIsEmpty": "Email is empty",
+  "passwordNotMatch": "Passwords do not match"
 }
