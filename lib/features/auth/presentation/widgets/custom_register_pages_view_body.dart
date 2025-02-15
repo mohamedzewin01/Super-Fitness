@@ -1,8 +1,8 @@
 import 'dart:developer';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:super_fitness/core/widgets/custom_dialog.dart';
-import 'package:super_fitness/features/auth/presentation/widgets/register_form.dart';
+import '../../../../core/widgets/custom_dialog.dart';
+import 'register_form.dart';
 import '../view_model/view_model_register/register_cubit.dart';
 import 'custom_register_step.dart';
 import 'custom_step_Age.dart';
@@ -111,7 +111,7 @@ class CustomRegisterPagesView extends StatelessWidget {
             bodyScreen: CustomActivityLevel(
               viewModel: viewModel,
             ),
-            onPressed: () async{
+            onPressed: () async {
               if (viewModel.useHeight != 0 &&
                   viewModel.useAge != 0 &&
                   viewModel.useWeight != 0 &&
@@ -120,7 +120,8 @@ class CustomRegisterPagesView extends StatelessWidget {
                   viewModel.currentRadioGoal != 0) {
                 viewModel.register();
               } else if (viewModel.currentRadioActivityLevel == 0) {
-                CustomDialog.showIncompleteDataDialog(context, onPressed: () async{
+                CustomDialog.showIncompleteDataDialog(context,
+                    onPressed: () async {
                   if (viewModel.currentRadioActivityLevel == 0) {
                     await viewModel.pageController.animateToPage(
                       6,
@@ -134,16 +135,16 @@ class CustomRegisterPagesView extends StatelessWidget {
                   }
                 });
               } else if (viewModel.currentRadioGoal == 0) {
-                CustomDialog.showIncompleteDataDialog(context, onPressed: () async{
+                CustomDialog.showIncompleteDataDialog(context,
+                    onPressed: () async {
                   if (viewModel.currentRadioGoal == 0) {
-                   await viewModel.pageController.animateToPage(5,
+                    await viewModel.pageController.animateToPage(5,
                         curve: Curves.easeIn,
                         duration: Duration(milliseconds: 1000));
                     viewModel.changeIndicator(5);
                     log('jumpToPage      5');
-                   if (!context.mounted) return;
+                    if (!context.mounted) return;
                     Navigator.pop(context);
-
                   }
                 });
               } else {

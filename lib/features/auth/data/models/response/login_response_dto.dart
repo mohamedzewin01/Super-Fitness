@@ -1,10 +1,11 @@
-import 'package:super_fitness/features/auth/domain/entities/login_entity.dart';
+import '../../../domain/entities/login_entity.dart';
 
 class LoginResponseDto {
   LoginResponseDto({
-      this.message, 
-      this.user, 
-      this.token,});
+    this.message,
+    this.user,
+    this.token,
+  });
 
   LoginResponseDto.fromJson(dynamic json) {
     message = json['message'];
@@ -25,30 +26,27 @@ class LoginResponseDto {
     return map;
   }
 
-  LoginResponseEntity toLoginResponseEntity(){
+  LoginResponseEntity toLoginResponseEntity() {
     return LoginResponseEntity(
-      user: user?.toUserEntity(),
-      token: token ,
-      message: message
-    );
+        user: user?.toUserEntity(), token: token, message: message);
   }
-
 }
 
 class User {
   User({
-      this.id, 
-      this.firstName, 
-      this.lastName, 
-      this.email, 
-      this.gender, 
-      this.age, 
-      this.weight, 
-      this.height, 
-      this.activityLevel, 
-      this.goal, 
-      this.photo, 
-      this.createdAt,});
+    this.id,
+    this.firstName,
+    this.lastName,
+    this.email,
+    this.gender,
+    this.age,
+    this.weight,
+    this.height,
+    this.activityLevel,
+    this.goal,
+    this.photo,
+    this.createdAt,
+  });
 
   User.fromJson(dynamic json) {
     id = json['_id'];
@@ -94,21 +92,19 @@ class User {
     return map;
   }
 
-  UserEntity toUserEntity ()
-  {
+  UserEntity toUserEntity() {
     return UserEntity(
-      height: height,
-      id: id,
-      gender: gender,
-      email: email,
-      firstName: firstName,
-      lastName: lastName,
-      photo: photo,
-      createdAt: createdAt,
-      activityLevel: activityLevel,
-      age: age,
-      goal: goal,
-      weight: weight
-    );
+        height: height,
+        id: id,
+        gender: gender,
+        email: email,
+        firstName: firstName,
+        lastName: lastName,
+        photo: photo,
+        createdAt: createdAt,
+        activityLevel: activityLevel,
+        age: age,
+        goal: goal,
+        weight: weight);
   }
 }

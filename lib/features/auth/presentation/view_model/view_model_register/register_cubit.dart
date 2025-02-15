@@ -5,23 +5,22 @@ import 'package:carousel_slider/carousel_controller.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:injectable/injectable.dart';
 import 'package:meta/meta.dart';
-import 'package:super_fitness/features/auth/data/models/register_models/register_request.dart';
-import 'package:super_fitness/features/auth/domain/entities/register_entities.dart';
-import 'package:super_fitness/features/auth/domain/use_cases/register_usecase.dart';
+import '../../../data/models/register_models/register_request.dart';
+import '../../../domain/entities/register_entities.dart';
+import '../../../domain/use_cases/register_usecase.dart';
 
 import '../../../../../core/common/api_result.dart';
 part 'register_state.dart';
 
-
 @injectable
 class RegisterCubit extends Cubit<RegisterState> {
   RegisterCubit(this.registerUseCase) : super(ViewModelInitial());
-final RegisterUseCase registerUseCase;
+  final RegisterUseCase registerUseCase;
 
   int currentIndicator = 0;
   bool isMale = false;
   String userGender = '';
-  List<int>pageNotCompeted=[];
+  List<int> pageNotCompeted = [];
   int useAge = 25;
   int useWeight = 90;
   int useHeight = 167;
@@ -57,6 +56,7 @@ final RegisterUseCase registerUseCase;
     }
     emit(GenderChanged());
   }
+
   void changeAge(int age) {
     useAge = age;
     emit(AgeChange());
@@ -71,34 +71,39 @@ final RegisterUseCase registerUseCase;
     useHeight = height;
     emit(HeightChange());
   }
-  void changeGoal(int goal,String goalName) {
+
+  void changeGoal(int goal, String goalName) {
     currentRadioGoal = goal;
     currentGoal = goalName;
     log('currentGoal $currentRadioGoal');
     emit(GoalChange());
   }
-  void changeActivityLevel(int activityLevel,) {
+
+  void changeActivityLevel(
+    int activityLevel,
+  ) {
     currentRadioActivityLevel = activityLevel;
     // print(currentActivityLevel);
     // currentActivityLevel = activityLevelName;
     emit(ActivityLevelChange());
   }
+
   Future<void> register() async {
     print(currentRadioActivityLevel);
     emit(LoadingRegisterState());
-  RegisterModelRequest registerModelRequest = RegisterModelRequest(
-    firstName: firstNameController.text,
-    lastName:lastNameController.text ,
-    email: emailController.text,
-    password:passwordController.text ,
-    rePassword: rePasswordController.text,
-    gender:userGender,
-    age: useAge,
-    weight:useWeight ,
-    height: useHeight,
-    activityLevel: 'level$currentRadioActivityLevel',
-    goal:currentGoal ,
-  );
+    RegisterModelRequest registerModelRequest = RegisterModelRequest(
+      firstName: firstNameController.text,
+      lastName: lastNameController.text,
+      email: emailController.text,
+      password: passwordController.text,
+      rePassword: rePasswordController.text,
+      gender: userGender,
+      age: useAge,
+      weight: useWeight,
+      height: useHeight,
+      activityLevel: 'level$currentRadioActivityLevel',
+      goal: currentGoal,
+    );
     var result = await registerUseCase.register(registerModelRequest);
 
     print("API Result: $result");
@@ -110,7 +115,6 @@ final RegisterUseCase registerUseCase;
 
       case Fail<RegisterEntity?>():
         emit(ErrorRegisterState(result.exception));
-
     }
   }
 }

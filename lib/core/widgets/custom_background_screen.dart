@@ -2,14 +2,13 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 
-
 import '../resources/assets_manager.dart';
 import '../resources/color_manager.dart';
 import '../resources/style_manager.dart';
 
-
 class CustomBackgroundScreen extends StatelessWidget {
-  const CustomBackgroundScreen({super.key, this.child, this.title, this.subTitle});
+  const CustomBackgroundScreen(
+      {super.key, this.child, this.title, this.subTitle});
   final Widget? child;
   final String? title;
   final String? subTitle;
@@ -47,13 +46,13 @@ class CustomBackgroundScreen extends StatelessWidget {
                       children: [
                         Text(
                           // AppLocalizations.of(context)?.name ?? '',
-                          title??'',
-                          style: getMediumStyle(
-                              color: Colors.white, fontSize: 18),
+                          title ?? '',
+                          style:
+                              getMediumStyle(color: Colors.white, fontSize: 18),
                         ),
                         Text(
                           // AppLocalizations.of(context)?.name ?? '',
-                          subTitle??'',
+                          subTitle ?? '',
                           style: getSemiBoldStyle(
                               color: Colors.white, fontSize: 20),
                         ),
@@ -73,7 +72,7 @@ class CustomBackgroundScreen extends StatelessWidget {
                       ),
                       Padding(
                         padding: const EdgeInsets.all(24.0),
-                        child:child,
+                        child: child,
                       ),
                     ],
                   ),

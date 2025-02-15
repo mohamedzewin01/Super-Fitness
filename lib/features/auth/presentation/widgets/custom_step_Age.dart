@@ -1,9 +1,8 @@
 import 'dart:developer';
 import 'package:flutter/material.dart';
-import 'package:super_fitness/core/resources/app_constants.dart';
+import '../../../../core/resources/app_constants.dart';
 import '../view_model/view_model_register/register_cubit.dart';
 import 'custom_carouse_slider.dart';
-
 
 class CustomStepAge extends StatelessWidget {
   const CustomStepAge({super.key, required this.viewModel});
@@ -13,18 +12,15 @@ class CustomStepAge extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CustomCarouseSlider(
-      title: 'Year',
+        title: 'Year',
         carouselController: viewModel.controllerAge,
         initialPage: viewModel.useAge,
-        onPageChanged: (index,) {
+        onPageChanged: (
+          index,
+        ) {
           viewModel.changeAge(index);
-         log('Age is $index');
+          log('Age is $index');
         },
         items: AppConstants.ageList);
-
   }
 }
-
-
-
-

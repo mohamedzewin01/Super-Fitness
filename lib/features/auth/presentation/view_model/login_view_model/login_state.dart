@@ -1,5 +1,4 @@
-import 'package:super_fitness/features/auth/domain/entities/login_entity.dart';
-
+import '../../../domain/entities/login_entity.dart';
 
 sealed class LoginState {}
 

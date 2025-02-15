@@ -1,8 +1,6 @@
-import 'dart:developer';
-
-
 import 'package:flutter/material.dart';
-import 'package:super_fitness/core/resources/color_manager.dart';
+
+import '../../../../core/resources/color_manager.dart';
 import '../../../../core/widgets/custom_text_form_field.dart';
 import '../view_model/view_model_register/register_cubit.dart';
 
@@ -16,7 +14,7 @@ class CustomActivityLevel extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(top: 24, left: 32, right: 32),
       child: SizedBox(
-        height:300,
+        height: 300,
         child: SingleChildScrollView(
           child: Column(
             spacing: 16,
@@ -34,7 +32,6 @@ class CustomActivityLevel extends StatelessWidget {
                     fillColor: WidgetStateProperty.all(ColorManager.white),
                     onChanged: (value) {
                       viewModel.changeActivityLevel(value!);
-
                     }),
               ),
               CustomTextFormFieldRegister(
@@ -46,7 +43,7 @@ class CustomActivityLevel extends StatelessWidget {
                 hintText: 'Beginner',
                 suffix: Radio(
                     value: 2,
-                    groupValue:  viewModel.currentRadioActivityLevel,
+                    groupValue: viewModel.currentRadioActivityLevel,
                     fillColor: WidgetStateProperty.all(ColorManager.white),
                     onChanged: (value) {
                       viewModel.changeActivityLevel(value!);
@@ -61,7 +58,7 @@ class CustomActivityLevel extends StatelessWidget {
                 hintText: 'Intermediate',
                 suffix: Radio(
                     value: 3,
-                    groupValue:  viewModel.currentRadioActivityLevel,
+                    groupValue: viewModel.currentRadioActivityLevel,
                     fillColor: WidgetStateProperty.all(ColorManager.white),
                     onChanged: (value) {
                       viewModel.changeActivityLevel(value!);

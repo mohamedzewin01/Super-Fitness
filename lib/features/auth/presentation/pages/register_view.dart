@@ -2,11 +2,10 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:super_fitness/core/di/di.dart';
-import 'package:super_fitness/core/resources/color_manager.dart';
-import 'package:super_fitness/core/resources/style_manager.dart';
-import 'package:super_fitness/core/widgets/custom_dialog.dart';
-import 'package:super_fitness/features/auth/presentation/pages/login_view.dart';
+import '../../../../core/di/di.dart';
+import '../../../../core/resources/color_manager.dart';
+import '../../../../core/widgets/custom_dialog.dart';
+import 'login_view.dart';
 import '../../../../core/resources/assets_manager.dart';
 import '../view_model/view_model_register/register_cubit.dart';
 import '../widgets/custom_percent_indicator.dart';
@@ -81,7 +80,8 @@ class _RegisterViewState extends State<RegisterView> {
                   listener: (context, state) {
                     if (state is SuccessRegisterState) {
                       Navigator.pop(context);
-                      CustomDialog.showSuccessDialog(context, goto: LoginView());
+                      CustomDialog.showSuccessDialog(context,
+                          goto: LoginView());
                     }
                     if (state is LoadingRegisterState) {
                       showDialog(

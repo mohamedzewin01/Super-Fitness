@@ -1,10 +1,11 @@
-import 'package:super_fitness/features/auth/domain/entities/register_entities.dart';
+import '../../../domain/entities/register_entities.dart';
 
 class RegisterModelResponse {
   RegisterModelResponse({
-      this.message, 
-      this.user, 
-      this.token,});
+    this.message,
+    this.user,
+    this.token,
+  });
 
   RegisterModelResponse.fromJson(dynamic json) {
     message = json['message'];
@@ -24,27 +25,27 @@ class RegisterModelResponse {
     map['token'] = token;
     return map;
   }
-  RegisterEntity toRegisterEntities(){
-    return RegisterEntity(
-      message: message
-    );
+
+  RegisterEntity toRegisterEntities() {
+    return RegisterEntity(message: message);
   }
 }
 
 class User {
   User({
-      this.firstName, 
-      this.lastName, 
-      this.email, 
-      this.gender, 
-      this.age, 
-      this.weight, 
-      this.height, 
-      this.activityLevel, 
-      this.goal, 
-      this.photo, 
-      this.id, 
-      this.createdAt,});
+    this.firstName,
+    this.lastName,
+    this.email,
+    this.gender,
+    this.age,
+    this.weight,
+    this.height,
+    this.activityLevel,
+    this.goal,
+    this.photo,
+    this.id,
+    this.createdAt,
+  });
 
   User.fromJson(dynamic json) {
     firstName = json['firstName'];
@@ -89,5 +90,4 @@ class User {
     map['createdAt'] = createdAt;
     return map;
   }
-
 }

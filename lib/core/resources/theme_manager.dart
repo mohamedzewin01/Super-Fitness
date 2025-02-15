@@ -1,23 +1,19 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:super_fitness/core/resources/style_manager.dart';
+import 'style_manager.dart';
 import 'color_manager.dart';
 import 'font_manager.dart';
 import 'values_manager.dart';
 
-
 ThemeData getApplicationTheme() {
-
-    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
-      statusBarColor: Colors.transparent,
-      statusBarIconBrightness: Brightness.light,
-      systemNavigationBarColor: ColorManager.primary,
-      systemNavigationBarIconBrightness: Brightness.light,
-      systemNavigationBarDividerColor: Colors.transparent,
-    ));
+  SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+    statusBarColor: Colors.transparent,
+    statusBarIconBrightness: Brightness.light,
+    systemNavigationBarColor: ColorManager.primary,
+    systemNavigationBarIconBrightness: Brightness.light,
+    systemNavigationBarDividerColor: Colors.transparent,
+  ));
   return ThemeData(
-
     inputDecorationTheme: InputDecorationTheme(
       contentPadding: const EdgeInsets.all(AppPadding.p8),
       hintStyle: getRegularStyle(

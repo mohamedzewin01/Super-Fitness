@@ -1,21 +1,21 @@
 import 'dart:ui';
 
-import 'package:blur/blur.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:super_fitness/core/resources/color_manager.dart';
-import 'package:super_fitness/core/widgets/custom_text_form_field.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:google_fonts/google_fonts.dart';
+
 import '../../../../core/di/di.dart';
 import '../../../../core/functions/helper.dart';
+import '../../../../core/resources/color_manager.dart';
 import '../../../../core/resources/routes_manager.dart';
 import '../../../../core/utils/utilss.dart';
 import '../../../../core/widgets/custom_elevated_button.dart';
+import '../../../../core/widgets/custom_text_form_field.dart';
 import '../../../../core/widgets/show_error_dialog.dart';
 import '../../../../core/widgets/show_loading_dialog.dart';
 import '../view_model/login_view_model/login_cubit.dart';
 import '../view_model/login_view_model/login_state.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class LoginView extends StatefulWidget {
   const LoginView({super.key});
@@ -221,6 +221,10 @@ class _LoginViewState extends State<LoginView> {
                                       fontWeight: FontWeight.w400),
                                 ),
                                 InkWell(
+                                  onTap: () {
+                                    Navigator.pushNamed(
+                                        context, RoutesManager.registerView);
+                                  },
                                   child: Column(
                                     children: [
                                       Text(

@@ -1,5 +1,5 @@
-import 'package:super_fitness/core/common/api_result.dart';
-import 'package:super_fitness/features/auth/domain/entities/login_entity.dart';
+import '../../../../core/common/api_result.dart';
+import '../../domain/entities/login_entity.dart';
 
 import '../models/request/login_model_dto.dart';
 

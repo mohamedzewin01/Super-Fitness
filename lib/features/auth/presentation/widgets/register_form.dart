@@ -3,8 +3,8 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:super_fitness/core/resources/assets_manager.dart';
-import 'package:super_fitness/core/widgets/custom_text_form_field.dart';
+import '../../../../core/resources/assets_manager.dart';
+import '../../../../core/widgets/custom_text_form_field.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../../../../core/functions/helper.dart';
 import '../../../../core/resources/color_manager.dart';
@@ -19,7 +19,6 @@ class RegisterForm extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     return SingleChildScrollView(
       child: GestureDetector(
         onTap: () {
@@ -68,7 +67,7 @@ class RegisterForm extends StatelessWidget {
                         Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 16),
                           child: Form(
-                            key:viewModel.formKey,
+                            key: viewModel.formKey,
                             child: Column(
                               spacing: 16,
                               children: [
@@ -79,14 +78,15 @@ class RegisterForm extends StatelessWidget {
                                 ),
                                 CustomTextFormField(
                                   inputAction: TextInputAction.next,
-                                  controller:viewModel.firstNameController,
+                                  controller: viewModel.firstNameController,
                                   hintText: 'First Name',
                                   validator: (value) => validateString(
                                     value: value!,
                                     messageLength: AppLocalizations.of(context)!
                                         .messageLength3,
                                     messageInvalid:
-                                    AppLocalizations.of(context)!.invalidInput,
+                                        AppLocalizations.of(context)!
+                                            .invalidInput,
                                     message: AppLocalizations.of(context)!
                                         .entervalidLastName,
                                   ),
@@ -109,7 +109,8 @@ class RegisterForm extends StatelessWidget {
                                     messageLength: AppLocalizations.of(context)!
                                         .messageLength3,
                                     messageInvalid:
-                                    AppLocalizations.of(context)!.invalidInput,
+                                        AppLocalizations.of(context)!
+                                            .invalidInput,
                                     message: AppLocalizations.of(context)!
                                         .entervalidLastName,
                                   ),
@@ -130,8 +131,12 @@ class RegisterForm extends StatelessWidget {
                                   hintText: 'Email',
                                   validator: (value) => validateEmail(
                                     value: value!,
-                                    message: AppLocalizations.of(context)!.emailIsEmpty,
-                                    messageInvalid:AppLocalizations.of(context)!.enterValidEmail,                       ),
+                                    message: AppLocalizations.of(context)!
+                                        .emailIsEmpty,
+                                    messageInvalid:
+                                        AppLocalizations.of(context)!
+                                            .enterValidEmail,
+                                  ),
                                   prefixIcon: SizedBox(
                                     height: 20,
                                     width: 20,
@@ -147,11 +152,14 @@ class RegisterForm extends StatelessWidget {
                                   controller: viewModel.passwordController,
                                   hintText: 'Password',
                                   validator: (value) => validatePassword(
-                                      password:viewModel.passwordController.text,
-                                      messageInvalid: AppLocalizations.of(context)!
-                                          .passwordInvalidFormat,
-                                      messageLength: AppLocalizations.of(context)!
-                                          .passwordCharactersLong,
+                                      password:
+                                          viewModel.passwordController.text,
+                                      messageInvalid:
+                                          AppLocalizations.of(context)!
+                                              .passwordInvalidFormat,
+                                      messageLength:
+                                          AppLocalizations.of(context)!
+                                              .passwordCharactersLong,
                                       message: AppLocalizations.of(context)!
                                           .passwordNotMatch),
                                   prefixIcon: SizedBox(
@@ -179,10 +187,13 @@ class RegisterForm extends StatelessWidget {
                                   hintText: 'RePassword',
                                   obscureText: true,
                                   validator: (value) => validatePasswordMatch(
-                                      messageIsEmpty: AppLocalizations.of(context)!
-                                          .passwordIsEmpty,
-                                      password: viewModel.rePasswordController.text,
-                                      confirmPassword: viewModel.passwordController.text,
+                                      messageIsEmpty:
+                                          AppLocalizations.of(context)!
+                                              .passwordIsEmpty,
+                                      password:
+                                          viewModel.rePasswordController.text,
+                                      confirmPassword:
+                                          viewModel.passwordController.text,
                                       message: AppLocalizations.of(context)!
                                           .passwordNotMatch),
                                   prefixIcon: SizedBox(
@@ -204,8 +215,6 @@ class RegisterForm extends StatelessWidget {
                                     ),
                                   ),
                                 ),
-
-
                               ],
                             ),
                           ),
@@ -221,11 +230,14 @@ class RegisterForm extends StatelessWidget {
                                     title: 'NEXT',
                                     onPressed: () {
                                       FocusScope.of(context).unfocus();
-                                      if (viewModel.formKey.currentState!.validate()) {
+                                      if (viewModel.formKey.currentState!
+                                          .validate()) {
                                         viewModel.pageController.nextPage(
-                                            duration: Duration(milliseconds: 1000),
+                                            duration:
+                                                Duration(milliseconds: 1000),
                                             curve: Curves.easeIn);
-                                        log(  viewModel.pageController.initialPage.toString());
+                                        log(viewModel.pageController.initialPage
+                                            .toString());
                                       }
                                     }),
                               ),
@@ -240,25 +252,20 @@ class RegisterForm extends StatelessWidget {
                               style: getRegularStyle(
                                   color: ColorManager.white, fontSize: 14),
                             ),
-
                             GestureDetector(
                               onTap: () {
                                 /// TODO: navigate to login screen
                               },
                               child: Text(
-
                                 'Login',
-                                style:TextStyle(
-                                  decoration: TextDecoration.underline,
-                                  decorationColor: ColorManager.orange,
-                                  color: ColorManager.orange,
-                                  fontSize: 14,
-                                  fontFamily: 'BalooThambi800'
-
-
-                                ),
-                              //   getBoldStyle(
-                              //       color: ColorManager.orange, fontSize: 14,),
+                                style: TextStyle(
+                                    decoration: TextDecoration.underline,
+                                    decorationColor: ColorManager.orange,
+                                    color: ColorManager.orange,
+                                    fontSize: 14,
+                                    fontFamily: 'BalooThambi800'),
+                                //   getBoldStyle(
+                                //       color: ColorManager.orange, fontSize: 14,),
                               ),
                             ),
                           ],

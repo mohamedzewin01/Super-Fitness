@@ -1,8 +1,8 @@
 import 'package:injectable/injectable.dart';
-import 'package:super_fitness/core/common/api_result.dart';
-import 'package:super_fitness/features/auth/data/data_sources/auth_online_data_source.dart';
-import 'package:super_fitness/features/auth/data/models/request/login_model_dto.dart';
-import 'package:super_fitness/features/auth/domain/entities/login_entity.dart';
+import '../../../../core/common/api_result.dart';
+import '../data_sources/auth_online_data_source.dart';
+import '../models/request/login_model_dto.dart';
+import '../../domain/entities/login_entity.dart';
 
 import '../../domain/repositories/login_repo.dart';
 

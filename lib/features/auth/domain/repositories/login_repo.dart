@@ -1,4 +1,4 @@
-import 'package:super_fitness/core/common/api_result.dart';
+import '../../../../core/common/api_result.dart';
 
 import '../../domain/entities/login_entity.dart';
 

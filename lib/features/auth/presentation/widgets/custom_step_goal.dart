@@ -1,7 +1,7 @@
 import 'dart:developer';
 import 'package:flutter/material.dart';
-import 'package:super_fitness/core/resources/color_manager.dart';
-import 'package:super_fitness/core/widgets/custom_text_form_field.dart';
+import '../../../../core/resources/color_manager.dart';
+import '../../../../core/widgets/custom_text_form_field.dart';
 import '../view_model/view_model_register/register_cubit.dart';
 
 class CustomStepGoal extends StatelessWidget {
@@ -12,16 +12,18 @@ class CustomStepGoal extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-
       padding: const EdgeInsets.only(top: 24, left: 32, right: 32),
       child: SizedBox(
-        height:300,
+        height: 300,
         // MediaQuery.orientationOf(context) == Orientation.landscape
         //     ? MediaQuery.sizeOf(context).height * 0.6
         //     : MediaQuery.sizeOf(context).width * 0.8,
         child: GridView(
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 1, mainAxisExtent: 45,mainAxisSpacing: 16,crossAxisSpacing: 16),
+              crossAxisCount: 1,
+              mainAxisExtent: 45,
+              mainAxisSpacing: 16,
+              crossAxisSpacing: 16),
           children: [
             CustomTextFormFieldRegister(
               onTap: () {
