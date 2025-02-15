@@ -182,7 +182,7 @@ class RegisterForm extends StatelessWidget {
                                       messageIsEmpty: AppLocalizations.of(context)!
                                           .passwordIsEmpty,
                                       password: viewModel.rePasswordController.text,
-                                      confirmPassword: viewModel.rePasswordController.text,
+                                      confirmPassword: viewModel.passwordController.text,
                                       message: AppLocalizations.of(context)!
                                           .passwordNotMatch),
                                   prefixIcon: SizedBox(
@@ -240,10 +240,26 @@ class RegisterForm extends StatelessWidget {
                               style: getRegularStyle(
                                   color: ColorManager.white, fontSize: 14),
                             ),
-                            Text(
-                              'Login',
-                              style: getBoldStyle(
-                                  color: ColorManager.orange, fontSize: 14),
+
+                            GestureDetector(
+                              onTap: () {
+                                /// TODO: navigate to login screen
+                              },
+                              child: Text(
+
+                                'Login',
+                                style:TextStyle(
+                                  decoration: TextDecoration.underline,
+                                  decorationColor: ColorManager.orange,
+                                  color: ColorManager.orange,
+                                  fontSize: 14,
+                                  fontFamily: 'BalooThambi800'
+
+
+                                ),
+                              //   getBoldStyle(
+                              //       color: ColorManager.orange, fontSize: 14,),
+                              ),
                             ),
                           ],
                         )
