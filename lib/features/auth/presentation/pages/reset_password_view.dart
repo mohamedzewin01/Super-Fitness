@@ -26,13 +26,13 @@ class ResetPasswordView extends StatefulWidget {
   @override
   State<ResetPasswordView> createState() => _ResetPasswordViewState();
 }
-late ResetPasswordViewModel resetPasswordViewModel;
+late ResetPasswordViewModel _resetPasswordViewModel;
 
 class _ResetPasswordViewState extends State<ResetPasswordView> {
 
   @override
   void initState() {
-    resetPasswordViewModel = getIt.get<ResetPasswordViewModel>();
+    _resetPasswordViewModel = getIt.get<ResetPasswordViewModel>();
     super.initState();
   }
 
@@ -53,7 +53,7 @@ class _ResetPasswordViewState extends State<ResetPasswordView> {
     final String editEmail =
     ModalRoute.of(context)?.settings.arguments as String;
     return BlocProvider(
-        create: (context) => resetPasswordViewModel,
+        create: (context) => _resetPasswordViewModel,
         child: BlocListener<ResetPasswordViewModel, ResetPasswordState>(
           listenWhen: (previous, current) {
             if (current is LoadingResetPasswordState ||
@@ -243,7 +243,7 @@ class _ResetPasswordViewState extends State<ResetPasswordView> {
   void resetPassword(String email) {
     String password = _passwordController.text;
 
-    resetPasswordViewModel.doIntent(ResetPasswordIntent(email, password));
+    _resetPasswordViewModel.doIntent(ResetPasswordIntent(email, password));
   }
 }
 

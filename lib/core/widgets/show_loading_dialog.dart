@@ -1,16 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:super_fitness/core/resources/app_constants.dart';
+
+import '../resources/values_manager.dart';
 
 void showLoadingDialog(BuildContext context) {
   showDialog(
     context: context,
     barrierDismissible: false,
     builder: (context) {
-      return const AlertDialog(
+      return AlertDialog(
         content: Row(
           children: [
-            CircularProgressIndicator(),
-            SizedBox(width: 10),
-            Text("Loading..."),
+            const CircularProgressIndicator(),
+            SizedBox(width: AppSize.s10),
+            const Text(AppConstants.loading),
           ],
         ),
       );

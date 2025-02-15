@@ -11,5 +11,6 @@ class AppConstants {
   static const int millisecondsDelayed= 100;
   static const String iconLock="assets/images/locked.svg";
   static const String iconEye="assets/images/eye.svg";
+  static const String loading="Loading...";
 
 }

@@ -24,7 +24,7 @@ class OtpVerificationPage extends StatefulWidget {
 }
 
 class _OtpVerificationPageState extends State<OtpVerificationPage> {
-  late VerifyPasswordViewModel viewModel;
+  late VerifyPasswordViewModel _viewModel;
   late ForgetPasswordViewModel forgetPasswordViewModel;
   late String editEmail;
   final List<TextEditingController> _controllers =
@@ -38,7 +38,7 @@ class _OtpVerificationPageState extends State<OtpVerificationPage> {
 
   @override
   void initState() {
-    viewModel = getIt.get<VerifyPasswordViewModel>();
+    _viewModel = getIt.get<VerifyPasswordViewModel>();
     forgetPasswordViewModel = getIt.get<ForgetPasswordViewModel>();
     startTimer();
     super.initState();
@@ -67,7 +67,7 @@ class _OtpVerificationPageState extends State<OtpVerificationPage> {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-        create: (context) => viewModel,
+        create: (context) => _viewModel,
         child: SafeArea(
             child: Scaffold(
                 resizeToAvoidBottomInset: false,
@@ -155,7 +155,7 @@ class _OtpVerificationPageState extends State<OtpVerificationPage> {
                                                   (index) {
                                                     return CustomFieldForOtpVerification(
                                                       controllers: _controllers,
-                                                      viewModel: viewModel,
+                                                      viewModel: _viewModel,
                                                       isCodeInvalid:
                                                           _isCodeInvalid,
                                                       index: index,
@@ -191,7 +191,7 @@ class _OtpVerificationPageState extends State<OtpVerificationPage> {
                                                   String enteredOtp = _controllers.map((controller) => controller.text).join();
 
                                                   if (enteredOtp.length == AppConstants.listGenerate) {
-                                                    viewModel.doIntent(VerifyPasswordIntent(enteredOtp));
+                                                    _viewModel.doIntent(VerifyPasswordIntent(enteredOtp));
                                                   } else {
                                                     setState(() {
                                                       _isCodeInvalid = true;
