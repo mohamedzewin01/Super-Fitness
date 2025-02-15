@@ -212,7 +212,8 @@ class CustomDialog {
     );
   }
 
-  static void showIncompleteDataDialog(BuildContext context) {
+  static void showIncompleteDataDialog(BuildContext context,
+      {void Function()? onPressed}) {
     showDialog(
       context: context,
       barrierDismissible: false,
@@ -250,9 +251,7 @@ class CustomDialog {
                 ),
                 const SizedBox(height: 20),
                 ElevatedButton(
-                  onPressed: () {
-                    Navigator.of(context).pop();
-                  },
+                  onPressed:onPressed,
                   style: ElevatedButton.styleFrom(
                     backgroundColor: ColorManager.orange,
                     shape: RoundedRectangleBorder(

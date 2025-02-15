@@ -34,11 +34,7 @@ class CustomActivityLevel extends StatelessWidget {
                     fillColor: WidgetStateProperty.all(ColorManager.white),
                     onChanged: (value) {
                       viewModel.changeActivityLevel(value!);
-                      // setState(() {
-                      //   setState(() {});
-                      //   selectedIndex = value as int;
-                      //   log('Rookie $selectedIndex');
-                      // });
+
                     }),
               ),
               CustomTextFormFieldRegister(
@@ -101,8 +97,6 @@ class CustomActivityLevel extends StatelessWidget {
                       viewModel.changeActivityLevel(value!);
                     }),
               ),
-
-
             ],
           ),
         ),

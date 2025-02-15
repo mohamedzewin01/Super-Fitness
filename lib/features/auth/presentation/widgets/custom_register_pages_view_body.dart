@@ -111,7 +111,7 @@ class CustomRegisterPagesView extends StatelessWidget {
             bodyScreen: CustomActivityLevel(
               viewModel: viewModel,
             ),
-            onPressed: () {
+            onPressed: () async{
               if (viewModel.useHeight != 0 &&
                   viewModel.useAge != 0 &&
                   viewModel.useWeight != 0 &&
@@ -119,11 +119,36 @@ class CustomRegisterPagesView extends StatelessWidget {
                   viewModel.userGender != '' &&
                   viewModel.currentRadioGoal != 0) {
                 viewModel.register();
-              } else {
-                CustomDialog.showIncompleteDataDialog(context);
-              }
+              } else if (viewModel.currentRadioActivityLevel == 0) {
+                CustomDialog.showIncompleteDataDialog(context, onPressed: () async{
+                  if (viewModel.currentRadioActivityLevel == 0) {
+                    await viewModel.pageController.animateToPage(
+                      6,
+                      duration: Duration(milliseconds: 1000),
+                      curve: Curves.easeIn,
+                    );
+                    viewModel.changeIndicator(6);
+                    log('jumpToPage     6');
+                    Navigator.pop(context);
+                  }
+                });
+              } else if (viewModel.currentRadioGoal == 0) {
+                CustomDialog.showIncompleteDataDialog(context, onPressed: () async{
+                  if (viewModel.currentRadioGoal == 0) {
+                   await viewModel.pageController.animateToPage(5,
+                        curve: Curves.easeIn,
+                        duration: Duration(milliseconds: 1000));
+                    viewModel.changeIndicator(5);
+                    log('jumpToPage      5');
+                    Navigator.pop(context);
 
-              log(viewModel.currentIndicator.toString());
+                  }
+                });
+              } else {
+                CustomDialog.showIncompleteDataDialog(context, onPressed: () {
+                  Navigator.pop(context);
+                });
+              }
             },
           ),
         ],
