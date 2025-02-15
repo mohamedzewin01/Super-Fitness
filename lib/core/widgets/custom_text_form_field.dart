@@ -227,6 +227,59 @@ class CustomTextFormField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+//     return TextFormField(
+//       cursorColor: ColorManager.placeHolderColor,
+//       style: const TextStyle(color: ColorManager.placeHolderColor),
+//       initialValue: initialValue,
+//       readOnly: enabled ?? false,
+//       controller: controller,
+//       keyboardType: keyboardType,
+//       decoration: InputDecoration(
+//         errorStyle: TextStyle(
+//           fontSize: 14
+//         ),
+//         prefixIcon: prefixIcon,
+//         prefixIconColor: ColorManager.placeHolderColor,
+//         suffixIcon: suffix != null
+//             ? Row(
+//                 mainAxisSize: MainAxisSize.min,
+//                 children: [
+//                   suffix!,
+//                 ],
+//               )
+//             : null,
+//         suffixIconColor: ColorManager.placeHolderColor,
+//         labelText: labelText,
+//         labelStyle: getRegularStyle(
+//           color: ColorManager.placeHolderColor,
+//           fontSize: FontSize.s16,
+//         ),
+//         hintText: hintText,
+//         hintStyle: getRegularStyle(
+//           color: ColorManager.placeHolderColor,
+//           fontSize: FontSize.s14,
+//         ),
+//         floatingLabelBehavior: FloatingLabelBehavior.always,
+//         contentPadding: const EdgeInsets.all(AppPadding.p18),
+//         enabledBorder: outLintInputBorderMethod(
+//           const BorderSide(color: ColorManager.placeHolderColor, width: AppSize.w1_5),
+//           const BorderRadius.all(Radius.circular(AppSize.s20)),
+//         ),
+//         focusedBorder: outLintInputBorderMethod(
+//           const BorderSide(color: ColorManager.orange, width: AppSize.w1_5),
+//           const BorderRadius.all(Radius.circular(AppSize.s20)),
+//         ),
+//         errorBorder: outLintInputBorderMethod(
+//           const BorderSide(color: ColorManager.error, width: AppSize.w1_5),
+//           const BorderRadius.all(Radius.circular(AppSize.s20)),
+//         ),
+//         focusedErrorBorder: outLintInputBorderMethod(
+//           const BorderSide(color: ColorManager.error, width: AppSize.w1_5),
+//           const BorderRadius.all(Radius.circular(AppSize.s20)),
+//         ),
+//         disabledBorder: outLintInputBorderMethod(
+//           const BorderSide(color: ColorManager.placeHolderColor, width: AppSize.w1_5),
+//           const BorderRadius.all(Radius.circular(AppSize.s20)),
     return SizedBox(
       height: AppSize.s45, // ارتفاع ثابت
       child: TextFormField(
@@ -286,6 +339,9 @@ class CustomTextFormField extends StatelessWidget {
         onChanged: onChanged,
         autovalidateMode: AutovalidateMode.onUserInteraction,
       ),
+      obscureText: obscureText ?? false,
+      validator: validator,
+      onChanged: onChanged,
     );
   }
 }

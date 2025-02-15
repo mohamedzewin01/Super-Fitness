@@ -42,8 +42,9 @@ class SuperFitness extends StatelessWidget {
             theme: getApplicationTheme(),
             debugShowCheckedModeBanner: false,
             onGenerateRoute: RouteGenerator.getRoute,
+//             initialRoute: RoutesManager.loginView,
             initialRoute: RoutesManager.onBoarding,
-            home: RegisterView(),
+//             home: RegisterView(),
           );
         },
       ),

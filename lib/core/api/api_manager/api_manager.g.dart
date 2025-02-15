@@ -20,6 +20,7 @@ class _ApiService implements ApiService {
   final ParseErrorLogger? errorLogger;
 
   @override
+  Future<LoginResponseDto> login(LoginModelDto loginModelDto) async {
   Future<RegisterModelResponse> register(
     RegisterModelRequest registerModelDto,
   ) async {
@@ -27,6 +28,27 @@ class _ApiService implements ApiService {
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
+    _data.addAll(loginModelDto.toJson());
+    final _options = _setStreamType<LoginResponseDto>(Options(
+      method: 'POST',
+      headers: _headers,
+      extra: _extra,
+    )
+        .compose(
+          _dio.options,
+          'auth/signin',
+          queryParameters: queryParameters,
+          data: _data,
+        )
+        .copyWith(
+            baseUrl: _combineBaseUrls(
+          _dio.options.baseUrl,
+          baseUrl,
+        )));
+    final _result = await _dio.fetch<Map<String, dynamic>>(_options);
+    late LoginResponseDto _value;
+    try {
+      _value = LoginResponseDto.fromJson(_result.data!);
     _data.addAll(registerModelDto.toJson());
     final _options = _setStreamType<RegisterModelResponse>(
       Options(method: 'POST', headers: _headers, extra: _extra)
