@@ -46,32 +46,6 @@ class _RegisterViewState extends State<RegisterView> {
                   width: double.infinity,
                   height: double.infinity,
                 ),
-//               ),
-//             ),
-//             Scaffold(
-//               backgroundColor: Colors.transparent,
-//               body: Column(
-//                 crossAxisAlignment: CrossAxisAlignment.start,
-//                 mainAxisAlignment: MainAxisAlignment.center,
-
-//                 //spacing: 16,
-//                 children: [
-//                   Padding(
-//                     padding: const EdgeInsets.all(16.0),
-//                     child: Column(
-//                       crossAxisAlignment: CrossAxisAlignment.start,
-//                       children: [
-//                         Text(
-//                           // AppLocalizations.of(context)?.name ?? '',
-//                           'Hey There',
-//                           style: getMediumStyle(
-//                               color: Colors.white, fontSize: 18),
-//                         ),
-//                         Text(
-//                           // AppLocalizations.of(context)?.name ?? '',
-//                           'create an account',
-//                           style: getSemiBoldStyle(
-//                               color: Colors.white, fontSize: 20),
                 BackdropFilter(
                   filter: ImageFilter.blur(sigmaX: 6.0, sigmaY: 6.0),
                   child: SizedBox(),
@@ -146,39 +120,6 @@ class _RegisterViewState extends State<RegisterView> {
                             ),
                           ),
                         ),
-//                       ),
-//                       Padding(
-//                         padding: const EdgeInsets.all(16.0),
-//                         child: Column(
-//                          // spacing: 16,
-//                           children: [
-//                             Text(
-//                               // AppLocalizations.of(context)?.name ?? '',
-//                               'Register',
-//                               style: getSemiBoldStyle(
-//                                   color: Colors.white, fontSize: 20),
-//                             ),
-//                             CustomTextFormField(
-//                               controller: TextEditingController(),
-//                               hintText: 'Email',
-//                               prefixIcon: Icon(
-//                                 Icons.mail,
-//                                 color: ColorManager.placeHolderColor,
-//                               ),
-//                             ),
-//                             CustomTextFormField(
-//                               controller: TextEditingController(),
-//                               hintText: 'Email',
-//                               prefixIcon: Icon(
-//                                 Icons.lock,
-//                                 color: ColorManager.placeHolderColor,
-//                               ),
-//                               suffix: passwordHidden(
-//                                 isPasswordHidden: true,
-//                                 onPressed: () {},
-//                               ),
-//                             ),
-//                           ],
                         SizedBox(
                           height: 6,
                         ),

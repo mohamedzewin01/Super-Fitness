@@ -54,7 +54,7 @@ class CustomRegisterStep extends StatelessWidget {
                 width: double.infinity,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(30),
-                  color: ColorManager.primary.withAlpha(160),
+                  color: ColorManager.white.withValues(alpha: 0.11),
                 ),
                 child: Padding(
                   padding: const EdgeInsets.only(bottom: 16),

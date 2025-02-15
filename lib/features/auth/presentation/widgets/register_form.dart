@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:super_fitness/core/resources/routes_manager.dart';
 import '../../../../core/resources/assets_manager.dart';
 import '../../../../core/widgets/custom_text_form_field.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -56,7 +57,7 @@ class RegisterForm extends StatelessWidget {
                   width: double.infinity,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(30),
-                    color: ColorManager.primary.withAlpha(160),
+                    color: ColorManager.white.withValues(alpha: 0.12),
                   ),
                   child: Padding(
                     padding: const EdgeInsets.symmetric(
@@ -254,7 +255,8 @@ class RegisterForm extends StatelessWidget {
                             ),
                             GestureDetector(
                               onTap: () {
-                                /// TODO: navigate to login screen
+                                Navigator.pushNamed(
+                                    context, RoutesManager.loginView);
                               },
                               child: Text(
                                 'Login',

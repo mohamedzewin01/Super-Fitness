@@ -101,15 +101,15 @@ class _LoginViewState extends State<LoginView> {
                   height: 40,
                 ),
                 ClipRRect(
-                  borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(40),
-                    topRight: Radius.circular(40),
+                  borderRadius: BorderRadius.all(
+                    Radius.circular(40),
                   ),
                   child: BackdropFilter(
                     filter: ImageFilter.blur(sigmaX: 14, sigmaY: 14),
                     child: Form(
                       key: _formKey,
                       child: Container(
+                        color: Colors.white.withValues(alpha: .08),
                         padding:
                             EdgeInsets.symmetric(vertical: 20, horizontal: 16),
                         child: Column(
