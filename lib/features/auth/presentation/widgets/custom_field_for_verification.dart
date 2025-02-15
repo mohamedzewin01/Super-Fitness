@@ -1,4 +1,5 @@
 import '../../../../core/resources/color_manager.dart';
+import '../../../../core/resources/font_manager.dart';
 import '../../../../core/resources/values_manager.dart';
 import '../../../../core/functions/extenstions.dart';
 import 'package:flutter/material.dart';
@@ -55,20 +56,20 @@ class _CustomFieldForOtpVerificationState extends State<CustomFieldForOtpVerific
               color: widget._controllers[widget.index].text.isNotEmpty
                   ? ColorManager.basicColor
                   : ColorManager.white,
-              width: 2,
+              width: AppSize.w2,
             ),
           ),
           focusedBorder:UnderlineInputBorder (
             borderSide: BorderSide(
               color:  ColorManager.basicColor,
-              width: 2,
+              width: AppSize.w2,
             ),
           ),
           contentPadding: const EdgeInsets.symmetric(
             vertical: AppPadding.p24,
           ),
         ),
-        style: const TextStyle(fontSize: 20,color: ColorManager.basicColor),
+        style: TextStyle(fontSize: FontSize.s20,color: ColorManager.basicColor),
       ),
     );
   }

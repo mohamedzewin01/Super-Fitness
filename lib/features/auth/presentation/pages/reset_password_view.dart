@@ -6,9 +6,12 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:super_fitness/core/functions/helper.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:super_fitness/core/resources/app_constants.dart';
 import '../../../../core/di/di.dart';
 import '../../../../core/resources/color_manager.dart';
+import '../../../../core/resources/font_manager.dart';
 import '../../../../core/resources/routes_manager.dart';
+import '../../../../core/resources/style_manager.dart';
 import '../../../../core/resources/values_manager.dart';
 import '../../../../core/utils/utilss.dart';
 import '../../../../core/widgets/fitness_text_form_field.dart';
@@ -82,78 +85,76 @@ class _ResetPasswordViewState extends State<ResetPasswordView> {
                 children: [
                   Positioned.fill(
                       child: Image.asset(
-                          "assets/images/background_forget_password.png",
+                          AppConstants.forgetPasswordBGImage,
                           fit: BoxFit.cover)),
                   Positioned.fill(
                       child: BackdropFilter(
-                        filter: ImageFilter.blur(sigmaX: 12.5, sigmaY: 12.5),
+                        filter: ImageFilter.blur(sigmaX:AppConstants.blurConst12, sigmaY: AppConstants.blurConst12),
                         child: Container(
-                          color: Colors.black.withAlpha(50),
+                          color: Colors.black.withAlpha(AppConstants.blurConst50),
                         ),
                       )),
                   Padding(
                     padding: const EdgeInsets.only(
-                        top: 60, bottom: 24, left: 0, right: 0),
+                        top: AppPadding.p60, bottom: AppPadding.p24),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.start,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         Image.asset(
-                          'assets/images/logo_icon.png',
-                          height: 80,
+                          AppConstants.appLogo,
+                          height: AppSize.s80,
                         ),
                         SizedBox(
-                          height: 120,
+                          height: AppSize.s120,
                         ),
                         Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Padding(
-                              padding: const EdgeInsets.all(16),
+                              padding: const EdgeInsets.all(AppPadding.p16),
                               child: Column(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  const SizedBox(height: 16),
+                                  const SizedBox(height: AppSize.s16),
                                   Text(
                                     AppLocalizations.of(context)!.makeSureItsOrMore,
-                                    style: const TextStyle(
-                                        fontSize: 20,
-                                        color: Colors.white,
-                                        fontWeight: FontWeight.w500,
-                                        fontFamily: "BalooThambi400"),
+                                    style: getMediumStyle(
+                                      color: Colors.white,
+                                      fontSize: FontSize.s20,
+                                    ),
                                   ),
-                                  const SizedBox(height: 8),
+                                  const SizedBox(height: AppSize.s8),
                                   Text(
                                     AppLocalizations.of(context)!.createNewPassword,
-                                    style: const TextStyle(
-                                        fontSize: 26,
-                                        color: Colors.white,
-                                        fontWeight: FontWeight.bold,
-                                        fontFamily: "BalooThambi800"),
-                                  ),
-                                  const SizedBox(height: 16),
+                                    style: getBoldStyle(
+                                      color: Colors.white,
+                                      fontSize: FontSize.s26,
+                                    ),),
+                                  const SizedBox(height: AppSize.s16),
                                 ],
                               ),
                             ),
                             ClipRRect(
-                              borderRadius: BorderRadius.circular(60),
+                              borderRadius: BorderRadius.circular(AppSize.s60),
                               child: BackdropFilter(
                                 filter: ImageFilter.blur(
-                                    sigmaY: 34.5, sigmaX: 34.5),
+                                    sigmaY: AppConstants.blurConst34, sigmaX: AppConstants.blurConst34),
                                 child: Container(
-                                  padding: const EdgeInsets.all(24),
+                                  padding: const EdgeInsets.all( AppPadding.p24),
                                   decoration: BoxDecoration(
-                                    color: Colors.white.withAlpha(20),
-                                    borderRadius: BorderRadius.circular(20),
+                                    color: Colors.white.withAlpha(AppConstants.blurConst20),
+                                    borderRadius: BorderRadius.circular(AppSize.s20),
                                   ),
                                   child: Column(
                                     children: [
                                       FitnessTextFormField(
                                         obscureText: true,
-                                       prefixIcon:  SvgPicture.asset("assets/images/locked.svg",width: 20,height: 20,fit: BoxFit.scaleDown),
-                                        suffix: SvgPicture.asset("assets/images/eye.svg",width: 20,height: 20,fit: BoxFit.scaleDown),
+                                       prefixIcon:  SvgPicture.asset(AppConstants.iconLock,width:AppSize.s20,height: AppSize.s20,fit: BoxFit.scaleDown),
+                                        suffix: SvgPicture.asset(AppConstants.iconEye,width: AppSize.s20,height: AppSize.s20,fit: BoxFit.scaleDown),
+
                                         controller: _passwordController,
                                         hintText:
                                         AppLocalizations.of(context)!.password,
@@ -170,8 +171,8 @@ class _ResetPasswordViewState extends State<ResetPasswordView> {
                                       SizedBox(height: AppSize.s24),
                                       FitnessTextFormField(
                                         obscureText: true,
-                                        prefixIcon:  SvgPicture.asset("assets/images/locked.svg",width: 20,height: 20,fit: BoxFit.scaleDown,),
-                                        suffix: SvgPicture.asset("assets/images/eye.svg",width: 20,height: 20,fit: BoxFit.scaleDown),
+                                        prefixIcon:  SvgPicture.asset(AppConstants.iconLock,width: AppSize.s20,height:AppSize.s20,fit: BoxFit.scaleDown,),
+                                        suffix: SvgPicture.asset(AppConstants.iconEye,width: AppSize.s20,height: AppSize.s20,fit: BoxFit.scaleDown),
                                         controller: _rePasswordController,
                                         hintText:
                                         AppLocalizations.of(context)!.password,
@@ -184,7 +185,7 @@ class _ResetPasswordViewState extends State<ResetPasswordView> {
                                             message: AppLocalizations.of(context)!
                                                 .passwordNotMatch),
                                       ),
-                                      const SizedBox(height: 24),
+                                      const SizedBox(height: AppSize.s24),
                                       BlocBuilder<ResetPasswordViewModel, ResetPasswordState>(
                                         builder: (context, state) {
                                           if (state is LoadingResetPasswordState) {
@@ -204,19 +205,18 @@ class _ResetPasswordViewState extends State<ResetPasswordView> {
                                                   ColorManager.basicColor,
                                                   shape: RoundedRectangleBorder(
                                                     borderRadius:
-                                                    BorderRadius.circular(30),
+                                                    BorderRadius.circular(AppSize.s30),
                                                   ),
                                                   padding: const EdgeInsets.symmetric(
-                                                      vertical: 16),
+                                                      vertical: AppPadding.p16),
                                                 ),
                                                 child:Text(
                                                   AppLocalizations.of(context)!
                                                       .done,
-                                                  style: TextStyle(
-                                                      fontSize: 14,
-                                                      color: ColorManager.white,
-                                                      fontWeight: FontWeight.bold,
-                                                      fontFamily: "BalooThambi800"),
+                                                  style: getBoldStyle(
+                                                    color: Colors.white,
+                                                    fontSize: FontSize.s14,
+                                                  ),
                                                 ),
                                               ),
                                             );

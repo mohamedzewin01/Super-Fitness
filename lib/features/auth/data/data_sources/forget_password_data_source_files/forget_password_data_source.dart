@@ -7,7 +7,7 @@ import '../../../domain/entities/forget_password_entities/reset_password_entity.
 import '../../models/forget_password_models/request/reset_password_request.dart';
 
 
-abstract class ForgetPasswordDataSource {
+abstract interface class ForgetPasswordDataSource {
 
   Future<Result<ForgetPasswordEntity?>> forgetPassword(String email);
   Future<Result<VerifyOtpEntity?>> verifyPassword(String otp);

@@ -1,3 +1,4 @@
+import '../../../../core/resources/app_constants.dart';
 import '../../../../core/widgets/show_error_dialog.dart';
 import '../../../../core/widgets/show_loading_dialog.dart';
 import '../pages/reset_password_view.dart';
@@ -29,7 +30,7 @@ class BlocConsumerForOtpVerificationPage extends StatelessWidget {
             showErrorDialog(context, message);
           } else if (state is SuccessVerifyPasswordState) {
             Navigator.of(context).pop();
-            Future.delayed(const Duration(milliseconds: 100), () {
+            Future.delayed(Duration(milliseconds: AppConstants.millisecondsDelayed), () {
               Navigator.of(context).pushReplacement(MaterialPageRoute(
                 builder: (context) => const ResetPasswordView(),
                 settings: RouteSettings(arguments: email),
