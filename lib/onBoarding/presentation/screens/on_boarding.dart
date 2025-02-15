@@ -1,6 +1,7 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import '../../../core/resources/assets_manager.dart';
 import '../../../core/resources/color_manager.dart';
 import '../../../core/resources/routes_manager.dart';
@@ -39,21 +40,15 @@ class _OnBoardingState extends State<OnBoarding> {
   ];
 
   Widget dotPageView() {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: List.generate(
-        onboardingData.length,
-        (i) => Container(
-          margin: const EdgeInsets.symmetric(horizontal: 4),
-          width: currentPage == i ? 25 : 8,
-          height: 8,
-          decoration: BoxDecoration(
-            color: i == currentPage
-                ? ColorManager.mainColor
-                : ColorManager.offwhite,
-            borderRadius: BorderRadius.circular(50),
-          ),
-        ),
+    return SmoothPageIndicator(
+      controller: nextPage,
+      count: onboardingData.length,
+      effect: WormEffect(
+        dotHeight: 8,
+        dotWidth: 8,
+        activeDotColor: ColorManager.mainColor,
+        dotColor: ColorManager.offwhite,
+        spacing: 8,
       ),
     );
   }
