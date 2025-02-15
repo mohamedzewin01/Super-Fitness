@@ -13,9 +13,9 @@ class CustomStepWeight extends StatelessWidget {
   Widget build(BuildContext context) {
     return CustomCarouseSlider(carouselController:viewModel.controllerWeight ,
         initialPage: viewModel.useWeight,
-        onPageChanged: (index, p1) {
-          viewModel.changeWeight(AppConstants.weightList[index]);
-          log("weight is ${AppConstants.weightList[index]}");
+        onPageChanged: (index) {
+          viewModel.changeWeight(index);
+          log("weight is $index");
         },
         items: AppConstants.weightList,
         title: 'Kg');

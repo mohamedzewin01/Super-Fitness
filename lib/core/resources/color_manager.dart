@@ -12,4 +12,5 @@ class ColorManager {
   static const Color primary = Color(0xff242424);
   static const Color offwhite = Color(0xffD9D9D9);
   static const Color mainColor = Color(0XFFFF4100);
+
 }

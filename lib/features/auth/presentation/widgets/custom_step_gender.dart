@@ -37,7 +37,6 @@ class CustomStepGender extends StatelessWidget {
         ),
         GestureDetector(
           onTap:
-
               () {
             viewModel.changeGender(false);
             viewModel.changeIndicator(1);

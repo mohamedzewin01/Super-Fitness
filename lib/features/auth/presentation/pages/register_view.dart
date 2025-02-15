@@ -3,6 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:super_fitness/core/di/di.dart';
+import 'package:super_fitness/core/resources/color_manager.dart';
+import 'package:super_fitness/core/resources/style_manager.dart';
+import 'package:super_fitness/core/widgets/custom_dialog.dart';
+import 'package:super_fitness/features/auth/presentation/pages/login_view.dart';
 import '../../../../core/resources/assets_manager.dart';
 import '../view_model/view_model_register/register_cubit.dart';
 import '../widgets/custom_percent_indicator.dart';
@@ -51,28 +55,26 @@ class _RegisterViewState extends State<RegisterView> {
                   listener: (context, state) {
                     if (state is SuccessRegisterState) {
                       Navigator.pop(context);
-                      showDialog(
-                        context: context,
-                        builder: (context) => AlertDialog(
-                          content: Text('Success'),
-                          actions: [
-                            TextButton(
-                                onPressed: () => Navigator.pop(context),
-                                child: Text('ok'))
-                          ],
-                        ),
-                      );
+                      CustomDialog.showSuccessDialog(context, goto: LoginView());
                     }
                     if (state is LoadingRegisterState) {
                       showDialog(
                         barrierDismissible: true,
                         context: context,
                         builder: (context) => AlertDialog(
-                          content: CircularProgressIndicator(),
+                          backgroundColor: Colors.transparent,
+                          content: Center(
+                              child: CircularProgressIndicator(
+                            color: ColorManager.orange,
+                          )),
                         ),
                       );
                     }
-                    if (state is ErrorRegisterState) {}
+                    if (state is ErrorRegisterState) {
+                      Navigator.pop(context);
+                      CustomDialog.showErrorDialog(context,
+                          message: state.exception.toString());
+                    }
                   },
                   builder: (context, state) {
                     return Column(
@@ -84,8 +86,7 @@ class _RegisterViewState extends State<RegisterView> {
                             alignment: Alignment.center,
                             child: Stack(
                               children: [
-                                viewModel.currentIndicator == 0 ||
-                                        viewModel.currentIndicator == 1
+                                viewModel.currentIndicator == 0
                                     ? Container()
                                     : GestureDetector(
                                         onTap: () {

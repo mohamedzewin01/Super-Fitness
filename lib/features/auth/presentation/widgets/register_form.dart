@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/svg.dart';
@@ -216,13 +218,14 @@ class RegisterForm extends StatelessWidget {
                                     const EdgeInsets.symmetric(horizontal: 16),
                                 child: CustomElevatedButton(
                                     buttonColor: ColorManager.orange,
-                                    title: 'Register',
+                                    title: 'NEXT',
                                     onPressed: () {
                                       FocusScope.of(context).unfocus();
                                       if (viewModel.formKey.currentState!.validate()) {
                                         viewModel.pageController.nextPage(
                                             duration: Duration(milliseconds: 1000),
                                             curve: Curves.easeIn);
+                                        log(  viewModel.pageController.initialPage.toString());
                                       }
                                     }),
                               ),

@@ -14,7 +14,7 @@ class CustomActivityLevel extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 16.0, horizontal: 8.0),
+      padding: const EdgeInsets.only(top: 24, left: 32, right: 32),
       child: SizedBox(
         height: MediaQuery.sizeOf(context).width*0.84,
         child: SingleChildScrollView(

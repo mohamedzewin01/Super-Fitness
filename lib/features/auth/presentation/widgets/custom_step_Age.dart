@@ -16,9 +16,9 @@ class CustomStepAge extends StatelessWidget {
       title: 'Year',
         carouselController: viewModel.controllerAge,
         initialPage: viewModel.useAge,
-        onPageChanged: (index, p1) {
-          viewModel.changeAge(AppConstants.ageList[index]);
-         log('Age is ${AppConstants.ageList[index]}');
+        onPageChanged: (index,) {
+          viewModel.changeAge(index);
+         log('Age is $index');
         },
         items: AppConstants.ageList);
 
