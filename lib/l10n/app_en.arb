@@ -1,7 +1,15 @@
 {
   "@@locale": "en",
-  "helloWorld": "Hello World!",
+  "helloWorld": "Hey There",
   "name": "Ahmed",
-  "appName": "Super Fitness"
-
+  "appName": "Super Fitness",
+  "welcomeBack": "WELCOME BACK",
+  "login": "Login",
+  "email": "Email",
+  "password": "Password",
+  "forgetPassword": "Forget Password?",
+  "donHaveAccount": "Dont have an account yet ? ",
+  "register": "Register",
+  "enterValidEmail": "Enter Valid Email",
+  "enterValidPassword": "Enter Valid Password"
 }

@@ -44,6 +44,9 @@ class CustomTextFormField extends StatelessWidget {
       controller: controller,
       keyboardType: keyboardType,
       decoration: InputDecoration(
+        errorStyle: TextStyle(
+          fontSize: 14
+        ),
         prefixIcon: prefixIcon,
         prefixIconColor: ColorManager.placeHolderColor,
         suffixIcon: suffix != null
@@ -91,6 +94,7 @@ class CustomTextFormField extends StatelessWidget {
       obscureText: obscureText ?? false,
       validator: validator,
       onChanged: onChanged,
+
     );
   }
 }

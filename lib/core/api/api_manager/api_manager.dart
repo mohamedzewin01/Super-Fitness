@@ -3,6 +3,8 @@ import 'package:injectable/injectable.dart';
 import 'package:retrofit/error_logger.dart';
 import 'package:retrofit/http.dart';
 
+import '../../../features/auth/data/models/request/login_model_dto.dart';
+import '../../../features/auth/data/models/response/login_response_dto.dart';
 import '../api_constants.dart';
 part 'api_manager.g.dart';
 
@@ -14,7 +16,11 @@ abstract class ApiService {
   @FactoryMethod()
   factory ApiService(Dio dio) =_ApiService;
 
-  // @POST(ApiConstants.signupRoute)
+  @POST(ApiConstants.loginRoute)
+  Future<LoginResponseDto> login(@Body() LoginModelDto loginModelDto);
+
+
+// @POST(ApiConstants.signupRoute)
   // Future<RegisterResponseDto> signUp(@Body() RegisterModelDto registerModelDto);
 
 

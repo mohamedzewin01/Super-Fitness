@@ -2,6 +2,14 @@
   "@@locale": "ar",
   "helloWorld": "مرحبا بالعالم!",
   "name": "أحمد",
-  "appName": "لياقة بدنية ممتازة"
-
+  "appName": "لياقة بدنية ممتازة",
+  "welcomeBack": "مرحبا بعودتك",
+  "login": "تسجيل الدخول",
+  "email": "البريد الالكتروني",
+  "password": "كلمه السر",
+  "forgetPassword": "هل نسيت كلمه السر؟",
+  "donHaveAccount": "ليس لديك حساب ؟ ",
+  "register": "انشاء حساب",
+  "enterValidEmail": "ادخل ايميل صحيح",
+  "enterValidPassword": "ادخل كلمه سر صحيحه"
 }

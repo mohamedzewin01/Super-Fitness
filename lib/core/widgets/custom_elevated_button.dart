@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import '../resources/color_manager.dart';
 import '../resources/font_manager.dart';
 import '../resources/values_manager.dart';
+import 'package:google_fonts/google_fonts.dart';
+
 
 class CustomElevatedButton extends StatelessWidget {
   const CustomElevatedButton({
@@ -28,7 +30,7 @@ class CustomElevatedButton extends StatelessWidget {
       ),
       child: Text(
         title,
-        style: TextStyle(
+        style: GoogleFonts.balooThambi2(
           color: ColorManager.white,
           fontSize: FontSize.s16,
           fontWeight: FontWeightManager.bold,
