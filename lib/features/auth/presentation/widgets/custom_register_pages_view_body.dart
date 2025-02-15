@@ -129,6 +129,7 @@ class CustomRegisterPagesView extends StatelessWidget {
                     );
                     viewModel.changeIndicator(6);
                     log('jumpToPage     6');
+                    if (!context.mounted) return;
                     Navigator.pop(context);
                   }
                 });
@@ -140,6 +141,7 @@ class CustomRegisterPagesView extends StatelessWidget {
                         duration: Duration(milliseconds: 1000));
                     viewModel.changeIndicator(5);
                     log('jumpToPage      5');
+                   if (!context.mounted) return;
                     Navigator.pop(context);
 
                   }
