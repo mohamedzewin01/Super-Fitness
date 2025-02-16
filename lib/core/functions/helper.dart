@@ -11,7 +11,7 @@ String? validateNotEmpty(String? value, String messageEmpty,
   } else if (value.length < 6) {
     return length;
   } else if (!RegExp(
-      r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$')
+          r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$')
       .hasMatch(value)) {
     return format;
   }
@@ -84,7 +84,6 @@ Widget passwordHidden({
   );
 }
 
-
 Widget buildIcon(String assetPath, int index, int currentIndex) {
   bool isSelected = index == currentIndex;
 
@@ -113,7 +112,7 @@ String? validatePassword({
   required String messageInvalid,
 }) {
   final RegExp passwordRegExp =
-  RegExp(r'^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[\W_]).{8,}$');
+      RegExp(r'^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[\W_]).{8,}$');
   if (password.trim().isEmpty) {
     return message;
   } else if (password.length < 8) {
@@ -136,22 +135,6 @@ String? validateString({
   } else if (value.length < 3) {
     return messageLength;
   } else if (!valueRegExp.hasMatch(value)) {
-    return messageInvalid;
-  }
-  return null;
-}
-
-String? validateEmail({
-  required String value,
-  required String message,
-  required String messageInvalid,
-}) {
-  final RegExp emailRegExp = RegExp(
-      r"^[a-zA-Z0-9.a-zA-Z0-9!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+");
-
-  if (value.trim().isEmpty) {
-    return message;
-  } else if (!emailRegExp.hasMatch(value)) {
     return messageInvalid;
   }
   return null;

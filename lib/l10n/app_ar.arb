@@ -24,5 +24,19 @@
   "passwordNotMatch": "كلمةالمرور غير متطابقة",
   "passwordIsEmpty": "حقل كللمة المرور فارغ",
   "done": "أنتهي",
-  "confirm": "تأكيد"
+  "confirm": "تأكيد",
+  "welcomeBack": "مرحبا بعودتك",
+  "login": "تسجيل الدخول",
+  "donHaveAccount": "ليس لديك حساب بعد؟",
+  "register": "تسجيل",
+  "enterValidPassword": "ادخل كلمة مرور صحيحة",
+  "firstName": "الاسم الأول",
+  "lastName" : "الاسم الاخير",
+  "female": "انثى", 
+  "male": "ذكر",
+  "messageLength3": "الحد الأدنى 3 أحرف",
+  "alreadyHaveAccount": "هل لديك حساب بالفعل؟",
+  "entervalidfirstName": "أدخل اسم أول صالح",
+  "entervalidLastName": "ادخل اسم اخير صالح",
+  "invalidInput": "بيانات غير صحيحة"
 }

@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
-<<<<<<< HEAD
-
-=======
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
->>>>>>> origin/forget_password
+
 void showErrorDialog(BuildContext context, String message) {
   showDialog(
     context: context,
@@ -21,18 +18,10 @@ void showErrorDialog(BuildContext context, String message) {
             onPressed: () {
               Navigator.of(context).pop();
             },
-<<<<<<< HEAD
-            child: const Text('OK'),
-=======
-            child: Text( AppLocalizations.of(context)!.ok),
->>>>>>> origin/forget_password
+            child: Text(AppLocalizations.of(context)!.ok),
           ),
         ],
       );
     },
   );
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> origin/forget_password

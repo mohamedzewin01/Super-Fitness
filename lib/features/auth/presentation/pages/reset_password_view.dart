@@ -1,4 +1,3 @@
-
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
@@ -26,10 +25,10 @@ class ResetPasswordView extends StatefulWidget {
   @override
   State<ResetPasswordView> createState() => _ResetPasswordViewState();
 }
+
 late ResetPasswordViewModel _resetPasswordViewModel;
 
 class _ResetPasswordViewState extends State<ResetPasswordView> {
-
   @override
   void initState() {
     _resetPasswordViewModel = getIt.get<ResetPasswordViewModel>();
@@ -47,11 +46,10 @@ class _ResetPasswordViewState extends State<ResetPasswordView> {
     isButtonEnabled = _formKey.currentState?.validate() ?? false;
   }
 
-
   @override
   Widget build(BuildContext context) {
     final String editEmail =
-    ModalRoute.of(context)?.settings.arguments as String;
+        ModalRoute.of(context)?.settings.arguments as String;
     return BlocProvider(
         create: (context) => _resetPasswordViewModel,
         child: BlocListener<ResetPasswordViewModel, ResetPasswordState>(
@@ -72,8 +70,8 @@ class _ResetPasswordViewState extends State<ResetPasswordView> {
               showErrorDialog(context, message);
             } else if (state is SuccessResetPasswordState) {
               Navigator.of(context).popUntil((route) =>
-              route.isFirst); // Close dialogs before showing success
-              Navigator.pushNamed(context, RoutesManager.forgetPasswordView);
+                  route.isFirst); // Close dialogs before showing success
+              Navigator.pushNamed(context, RoutesManager.loginView);
             }
           },
           child: Scaffold(
@@ -84,16 +82,17 @@ class _ResetPasswordViewState extends State<ResetPasswordView> {
               child: Stack(
                 children: [
                   Positioned.fill(
-                      child: Image.asset(
-                          AppConstants.forgetPasswordBGImage,
+                      child: Image.asset(AppConstants.forgetPasswordBGImage,
                           fit: BoxFit.cover)),
                   Positioned.fill(
                       child: BackdropFilter(
-                        filter: ImageFilter.blur(sigmaX:AppConstants.blurConst12, sigmaY: AppConstants.blurConst12),
-                        child: Container(
-                          color: Colors.black.withAlpha(AppConstants.blurConst50),
-                        ),
-                      )),
+                    filter: ImageFilter.blur(
+                        sigmaX: AppConstants.blurConst12,
+                        sigmaY: AppConstants.blurConst12),
+                    child: Container(
+                      color: Colors.black.withAlpha(AppConstants.blurConst50),
+                    ),
+                  )),
                   Padding(
                     padding: const EdgeInsets.only(
                         top: AppPadding.p60, bottom: AppPadding.p24),
@@ -120,7 +119,8 @@ class _ResetPasswordViewState extends State<ResetPasswordView> {
                                 children: [
                                   const SizedBox(height: AppSize.s16),
                                   Text(
-                                    AppLocalizations.of(context)!.makeSureItsOrMore,
+                                    AppLocalizations.of(context)!
+                                        .makeSureItsOrMore,
                                     style: getMediumStyle(
                                       color: Colors.white,
                                       fontSize: FontSize.s20,
@@ -128,11 +128,13 @@ class _ResetPasswordViewState extends State<ResetPasswordView> {
                                   ),
                                   const SizedBox(height: AppSize.s8),
                                   Text(
-                                    AppLocalizations.of(context)!.createNewPassword,
+                                    AppLocalizations.of(context)!
+                                        .createNewPassword,
                                     style: getBoldStyle(
                                       color: Colors.white,
                                       fontSize: FontSize.s26,
-                                    ),),
+                                    ),
+                                  ),
                                   const SizedBox(height: AppSize.s16),
                                 ],
                               ),
@@ -141,56 +143,85 @@ class _ResetPasswordViewState extends State<ResetPasswordView> {
                               borderRadius: BorderRadius.circular(AppSize.s60),
                               child: BackdropFilter(
                                 filter: ImageFilter.blur(
-                                    sigmaY: AppConstants.blurConst34, sigmaX: AppConstants.blurConst34),
+                                    sigmaY: AppConstants.blurConst34,
+                                    sigmaX: AppConstants.blurConst34),
                                 child: Container(
-                                  padding: const EdgeInsets.all( AppPadding.p24),
+                                  padding: const EdgeInsets.all(AppPadding.p24),
                                   decoration: BoxDecoration(
-                                    color: Colors.white.withAlpha(AppConstants.blurConst20),
-                                    borderRadius: BorderRadius.circular(AppSize.s20),
+                                    color: Colors.white
+                                        .withAlpha(AppConstants.blurConst20),
+                                    borderRadius:
+                                        BorderRadius.circular(AppSize.s20),
                                   ),
                                   child: Column(
                                     children: [
                                       FitnessTextFormField(
                                         obscureText: true,
-                                       prefixIcon:  SvgPicture.asset(AppConstants.iconLock,width:AppSize.s20,height: AppSize.s20,fit: BoxFit.scaleDown),
-                                        suffix: SvgPicture.asset(AppConstants.iconEye,width: AppSize.s20,height: AppSize.s20,fit: BoxFit.scaleDown),
-
+                                        prefixIcon: SvgPicture.asset(
+                                            AppConstants.iconLock,
+                                            width: AppSize.s20,
+                                            height: AppSize.s20,
+                                            fit: BoxFit.scaleDown),
+                                        suffix: SvgPicture.asset(
+                                            AppConstants.iconEye,
+                                            width: AppSize.s20,
+                                            height: AppSize.s20,
+                                            fit: BoxFit.scaleDown),
                                         controller: _passwordController,
-                                        hintText:
-                                        AppLocalizations.of(context)!.password,
-                                        validator:(value) => validatePassword(
+                                        hintText: AppLocalizations.of(context)!
+                                            .password,
+                                        validator: (value) => validatePassword(
                                             password: _passwordController.text,
                                             messageInvalid:
-                                            AppLocalizations.of(context)!
-                                                .passwordInvalidFormat,
-                                            messageLength: AppLocalizations.of(context)!
-                                                .passwordCharactersLong,
-                                            message: AppLocalizations.of(context)!
-                                                .passwordNotMatch),
+                                                AppLocalizations.of(context)!
+                                                    .passwordInvalidFormat,
+                                            messageLength:
+                                                AppLocalizations.of(context)!
+                                                    .passwordCharactersLong,
+                                            message:
+                                                AppLocalizations.of(context)!
+                                                    .passwordNotMatch),
                                       ),
                                       SizedBox(height: AppSize.s24),
                                       FitnessTextFormField(
                                         obscureText: true,
-                                        prefixIcon:  SvgPicture.asset(AppConstants.iconLock,width: AppSize.s20,height:AppSize.s20,fit: BoxFit.scaleDown,),
-                                        suffix: SvgPicture.asset(AppConstants.iconEye,width: AppSize.s20,height: AppSize.s20,fit: BoxFit.scaleDown),
+                                        prefixIcon: SvgPicture.asset(
+                                          AppConstants.iconLock,
+                                          width: AppSize.s20,
+                                          height: AppSize.s20,
+                                          fit: BoxFit.scaleDown,
+                                        ),
+                                        suffix: SvgPicture.asset(
+                                            AppConstants.iconEye,
+                                            width: AppSize.s20,
+                                            height: AppSize.s20,
+                                            fit: BoxFit.scaleDown),
                                         controller: _rePasswordController,
-                                        hintText:
-                                        AppLocalizations.of(context)!.password,
-                                        validator:(value) => validatePasswordMatch(
-                                            messageIsEmpty:
-                                            AppLocalizations.of(context)!
-                                                .passwordIsEmpty,
-                                            password: _passwordController.text,
-                                            confirmPassword: _rePasswordController.text,
-                                            message: AppLocalizations.of(context)!
-                                                .passwordNotMatch),
+                                        hintText: AppLocalizations.of(context)!
+                                            .password,
+                                        validator: (value) =>
+                                            validatePasswordMatch(
+                                                messageIsEmpty:
+                                                    AppLocalizations.of(
+                                                            context)!
+                                                        .passwordIsEmpty,
+                                                password:
+                                                    _passwordController.text,
+                                                confirmPassword:
+                                                    _rePasswordController.text,
+                                                message: AppLocalizations.of(
+                                                        context)!
+                                                    .passwordNotMatch),
                                       ),
                                       const SizedBox(height: AppSize.s24),
-                                      BlocBuilder<ResetPasswordViewModel, ResetPasswordState>(
+                                      BlocBuilder<ResetPasswordViewModel,
+                                          ResetPasswordState>(
                                         builder: (context, state) {
-                                          if (state is LoadingResetPasswordState) {
+                                          if (state
+                                              is LoadingResetPasswordState) {
                                             return const Center(
-                                                child: CircularProgressIndicator());
+                                                child:
+                                                    CircularProgressIndicator());
                                           } else {
                                             return SizedBox(
                                               width: double.infinity,
@@ -202,15 +233,17 @@ class _ResetPasswordViewState extends State<ResetPasswordView> {
                                                 },
                                                 style: ElevatedButton.styleFrom(
                                                   backgroundColor:
-                                                  ColorManager.basicColor,
+                                                      ColorManager.basicColor,
                                                   shape: RoundedRectangleBorder(
                                                     borderRadius:
-                                                    BorderRadius.circular(AppSize.s30),
+                                                        BorderRadius.circular(
+                                                            AppSize.s30),
                                                   ),
-                                                  padding: const EdgeInsets.symmetric(
+                                                  padding: const EdgeInsets
+                                                      .symmetric(
                                                       vertical: AppPadding.p16),
                                                 ),
-                                                child:Text(
+                                                child: Text(
                                                   AppLocalizations.of(context)!
                                                       .done,
                                                   style: getBoldStyle(
@@ -246,5 +279,3 @@ class _ResetPasswordViewState extends State<ResetPasswordView> {
     _resetPasswordViewModel.doIntent(ResetPasswordIntent(email, password));
   }
 }
-
-

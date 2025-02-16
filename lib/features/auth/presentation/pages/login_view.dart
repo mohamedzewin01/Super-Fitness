@@ -29,8 +29,6 @@ class _LoginViewState extends State<LoginView> {
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
 
-
-
   late LoginViewModel viewModel;
 
   bool isSecure = false;
@@ -169,14 +167,17 @@ class _LoginViewState extends State<LoginView> {
                             Padding(
                               padding: const EdgeInsets.only(left: 230),
                               child: InkWell(
+                                onTap: () {
+                                  Navigator.pushNamed(context,
+                                      RoutesManager.forgetPasswordView);
+                                },
                                 child: Text(
-                                  AppLocalizations.of(context)!
-                                      .forgetPassword,
+                                  AppLocalizations.of(context)!.forgetPassword,
                                   style: GoogleFonts.balooThambi2(
                                       color: ColorManager.orange,
                                       fontSize: 12,
                                       decoration: TextDecoration.underline,
-                                      decorationColor:ColorManager.orange,
+                                      decorationColor: ColorManager.orange,
                                       fontWeight: FontWeight.w400),
                                 ),
                               ),
@@ -209,7 +210,8 @@ class _LoginViewState extends State<LoginView> {
                               children: [
                                 Text(
                                   AppLocalizations.of(context)!.donHaveAccount,
-                                  style: getRegularStyle(color: ColorManager.white, fontSize: 14),
+                                  style: getRegularStyle(
+                                      color: ColorManager.white, fontSize: 14),
                                 ),
                                 InkWell(
                                   onTap: () {
@@ -222,7 +224,7 @@ class _LoginViewState extends State<LoginView> {
                                         color: ColorManager.orange,
                                         fontSize: 16,
                                         decoration: TextDecoration.underline,
-                                        decorationColor:ColorManager.orange,
+                                        decorationColor: ColorManager.orange,
                                         fontWeight: FontWeight.w800),
                                   ),
                                 ),
