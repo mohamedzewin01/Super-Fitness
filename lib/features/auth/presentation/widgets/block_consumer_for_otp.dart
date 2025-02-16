@@ -49,8 +49,6 @@ class BlocConsumerForOtpVerificationPage extends StatelessWidget {
           }
           return false;
         },
-        child: const SizedBox.shrink() // Placeholder when no loading state
-
-        );
+        child: const SizedBox.shrink());
   }
 }
