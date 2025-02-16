@@ -57,7 +57,7 @@ class RegisterForm extends StatelessWidget {
                   width: double.infinity,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(30),
-                    color: ColorManager.white.withValues(alpha: 0.12),
+                    color: ColorManager.primary.withValues(alpha: 0.6),
                   ),
                   child: Padding(
                     padding: const EdgeInsets.symmetric(

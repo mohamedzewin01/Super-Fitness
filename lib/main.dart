@@ -39,11 +39,10 @@ class SuperFitness extends StatelessWidget {
               Locale('ar'),
             ],
             theme: getApplicationTheme(),
+            themeMode: ThemeMode.dark,
             debugShowCheckedModeBanner: false,
             onGenerateRoute: RouteGenerator.getRoute,
-//             initialRoute: RoutesManager.loginView,
             initialRoute: RoutesManager.onBoarding,
-//             home: RegisterView(),
           );
         },
       ),

@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:super_fitness/core/resources/style_manager.dart';
 
 import '../../../../core/di/di.dart';
 import '../../../../core/functions/helper.dart';
@@ -28,7 +29,7 @@ class _LoginViewState extends State<LoginView> {
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
 
-  //final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+
 
   late LoginViewModel viewModel;
 
@@ -67,8 +68,7 @@ class _LoginViewState extends State<LoginView> {
                 showErrorDialog(context, message);
               }
             },
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+            child: ListView(
               children: [
                 SizedBox(
                   height: 60,
@@ -169,43 +169,37 @@ class _LoginViewState extends State<LoginView> {
                             Padding(
                               padding: const EdgeInsets.only(left: 230),
                               child: InkWell(
-                                child: Column(
-                                  children: [
-                                    Text(
-                                      AppLocalizations.of(context)!
-                                          .forgetPassword,
-                                      style: GoogleFonts.balooThambi2(
-                                          color: ColorManager.orange,
-                                          fontSize: 12,
-                                          fontWeight: FontWeight.w400),
-                                    ),
-                                    Container(
-                                      height: 1,
-                                      width: 100,
+                                child: Text(
+                                  AppLocalizations.of(context)!
+                                      .forgetPassword,
+                                  style: GoogleFonts.balooThambi2(
                                       color: ColorManager.orange,
-                                    )
-                                  ],
+                                      fontSize: 12,
+                                      decoration: TextDecoration.underline,
+                                      decorationColor:ColorManager.orange,
+                                      fontWeight: FontWeight.w400),
                                 ),
                               ),
                             ),
                             SizedBox(
-                              height: 15,
+                              height: 32,
                             ),
-                            CustomElevatedButton(
-                              title: AppLocalizations.of(context)!.login,
-                              onPressed: () {
-                                if (_formKey.currentState?.validate() ??
-                                    false) {
-                                  viewModel.login(emailController.text,
-                                      passwordController.text);
-                                }
-
-                                // if (isButtonEnabled == true) {
-                                //   viewModel.login(emailController.text,
-                                //       passwordController.text);
-                                // }
-                              },
-                              buttonColor: ColorManager.orange,
+                            Row(
+                              children: [
+                                Expanded(
+                                  child: CustomElevatedButton(
+                                    title: AppLocalizations.of(context)!.login,
+                                    onPressed: () {
+                                      if (_formKey.currentState?.validate() ??
+                                          false) {
+                                        viewModel.login(emailController.text,
+                                            passwordController.text);
+                                      }
+                                    },
+                                    buttonColor: ColorManager.orange,
+                                  ),
+                                ),
+                              ],
                             ),
                             SizedBox(
                               height: 10,
@@ -215,31 +209,21 @@ class _LoginViewState extends State<LoginView> {
                               children: [
                                 Text(
                                   AppLocalizations.of(context)!.donHaveAccount,
-                                  style: GoogleFonts.balooThambi2(
-                                      color: ColorManager.white,
-                                      fontSize: 14,
-                                      fontWeight: FontWeight.w400),
+                                  style: getRegularStyle(color: ColorManager.white, fontSize: 14),
                                 ),
                                 InkWell(
                                   onTap: () {
                                     Navigator.pushNamed(
                                         context, RoutesManager.registerView);
                                   },
-                                  child: Column(
-                                    children: [
-                                      Text(
-                                        AppLocalizations.of(context)!.register,
-                                        style: GoogleFonts.balooThambi2(
-                                            color: ColorManager.orange,
-                                            fontSize: 14,
-                                            fontWeight: FontWeight.w400),
-                                      ),
-                                      Container(
-                                        height: 1,
-                                        width: 55,
+                                  child: Text(
+                                    AppLocalizations.of(context)!.register,
+                                    style: GoogleFonts.balooThambi2(
                                         color: ColorManager.orange,
-                                      )
-                                    ],
+                                        fontSize: 16,
+                                        decoration: TextDecoration.underline,
+                                        decorationColor:ColorManager.orange,
+                                        fontWeight: FontWeight.w800),
                                   ),
                                 ),
                               ],

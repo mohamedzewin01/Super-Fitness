@@ -47,7 +47,7 @@ class _RegisterViewState extends State<RegisterView> {
                   height: double.infinity,
                 ),
                 BackdropFilter(
-                  filter: ImageFilter.blur(sigmaX: 6.0, sigmaY: 6.0),
+                  filter: ImageFilter.blur(sigmaX: 16.0, sigmaY: 16.0),
                   child: SizedBox(),
                 ),
                 BlocConsumer<RegisterCubit, RegisterState>(
@@ -128,7 +128,7 @@ class _RegisterViewState extends State<RegisterView> {
                             child:
                                 CustomPercentIndicator(viewModel: viewModel)),
                         CustomRegisterPagesView(viewModel: viewModel),
-                        // RegisterForm(viewModel: viewModel),
+
                       ],
                     );
                   },

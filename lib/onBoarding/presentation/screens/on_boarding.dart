@@ -41,6 +41,13 @@ class _OnBoardingState extends State<OnBoarding> {
 
   Widget dotPageView() {
     return SmoothPageIndicator(
+      onDotClicked: (index) {
+        nextPage.animateToPage(
+          index,
+          duration: const Duration(milliseconds: 1000),
+          curve: Curves.easeInOut,
+        );
+      },
       controller: nextPage,
       count: onboardingData.length,
       effect: WormEffect(
@@ -229,9 +236,9 @@ class _OnBoardingState extends State<OnBoarding> {
                       ],
                     ),
                   ),
-                ),
               ),
             ),
+            )
           ],
         ),
       ),
