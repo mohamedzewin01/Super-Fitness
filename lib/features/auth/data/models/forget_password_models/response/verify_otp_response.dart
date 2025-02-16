@@ -1,16 +1,11 @@
-
-
-import 'package:super_fitness/features/auth/domain/entities/forget_password_entities/verify_otp_entity.dart';
+import '../../../../domain/entities/forget_password_entities/verify_otp_entity.dart';
 
 class VerifyOtpResponse {
-  VerifyOtpResponse({
-      this.status,
-    this.error
-  });
+  VerifyOtpResponse({this.status, this.error});
 
   VerifyOtpResponse.fromJson(dynamic json) {
     status = json['status'];
-    error=json['error'];
+    error = json['error'];
   }
   String? status;
   String? error;

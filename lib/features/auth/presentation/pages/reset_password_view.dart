@@ -3,9 +3,9 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:super_fitness/core/functions/helper.dart';
+import '../../../../core/functions/helper.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:super_fitness/core/resources/app_constants.dart';
+import '../../../../core/resources/app_constants.dart';
 import '../../../../core/di/di.dart';
 import '../../../../core/resources/color_manager.dart';
 import '../../../../core/resources/font_manager.dart';
@@ -15,8 +15,6 @@ import '../../../../core/resources/values_manager.dart';
 import '../../../../core/utils/utilss.dart';
 import '../../../../core/widgets/custom_dialog.dart';
 import '../../../../core/widgets/fitness_text_form_field.dart';
-import '../../../../core/widgets/show_error_dialog.dart';
-import '../../../../core/widgets/show_loading_dialog.dart';
 import '../view_model/reset_password_view_model/reset_password_cubit.dart';
 import '../view_model/reset_password_view_model/reset_password_state.dart';
 
@@ -64,13 +62,13 @@ class _ResetPasswordViewState extends State<ResetPasswordView> {
           },
           listener: (context, state) {
             if (state is LoadingResetPasswordState) {
-             // showLoadingDialog(context);
+              // showLoadingDialog(context);
               CustomDialog.showLoadingDialog(context);
             } else if (state is ErrorResetPasswordState) {
               var message = extractErrorMessage(state.exception);
               Navigator.of(context).pop(); // Close loading dialog
               //showErrorDialog(context, message);
-              CustomDialog.showErrorDialog(context,message: message);
+              CustomDialog.showErrorDialog(context, message: message);
             } else if (state is SuccessResetPasswordState) {
               Navigator.of(context).popUntil((route) =>
                   route.isFirst); // Close dialogs before showing success

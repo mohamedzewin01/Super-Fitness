@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:super_fitness/core/resources/app_constants.dart';
+import '../resources/app_constants.dart';
 
 import '../resources/values_manager.dart';
 

@@ -1,7 +1,6 @@
-
 import 'package:injectable/injectable.dart';
-import 'package:super_fitness/features/auth/data/models/forget_password_models/request/verify_otp_request.dart';
-import 'package:super_fitness/features/auth/domain/entities/forget_password_entities/verify_otp_entity.dart';
+import '../../models/forget_password_models/request/verify_otp_request.dart';
+import '../../../domain/entities/forget_password_entities/verify_otp_entity.dart';
 
 import '../../../../../core/api/api_extentions.dart';
 import '../../../../../core/api/api_manager/api_manager.dart';
@@ -18,7 +17,6 @@ class ForgetPasswordDataSourceImpl implements ForgetPasswordDataSource {
   final ApiService _authRetrofit;
 
   ForgetPasswordDataSourceImpl(this._authRetrofit);
-
 
   @override
   Future<Result<ForgetPasswordEntity?>> forgetPassword(String email) {
@@ -38,7 +36,6 @@ class ForgetPasswordDataSourceImpl implements ForgetPasswordDataSource {
     });
   }
 
-
   @override
   Future<Result<ResetPasswordEntity?>> resetPassword(
       ResetPasswordRequest resetPasswordRequest) {
@@ -47,5 +44,4 @@ class ForgetPasswordDataSourceImpl implements ForgetPasswordDataSource {
       return response.toResetPasswordEntity();
     });
   }
-
 }

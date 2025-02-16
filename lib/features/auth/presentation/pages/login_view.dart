@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:super_fitness/core/resources/style_manager.dart';
+import '../../../../core/resources/style_manager.dart';
 
 import '../../../../core/di/di.dart';
 import '../../../../core/functions/helper.dart';

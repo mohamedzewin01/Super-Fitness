@@ -1,14 +1,10 @@
-import 'package:super_fitness/features/auth/domain/entities/forget_password_entities/forget_password_entity.dart';
+import '../../../../domain/entities/forget_password_entities/forget_password_entity.dart';
 
 /// message : "success"
 /// info : "OTP sent to your email"
 
 class ForgetPasswordResponse {
-  ForgetPasswordResponse({
-      this.message, 
-      this.info,
-      this.error
-  });
+  ForgetPasswordResponse({this.message, this.info, this.error});
 
   ForgetPasswordResponse.fromJson(dynamic json) {
     message = json['message'];

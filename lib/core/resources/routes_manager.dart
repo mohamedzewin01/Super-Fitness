@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:super_fitness/features/auth/presentation/pages/email_verification_view.dart';
-import 'package:super_fitness/features/auth/presentation/pages/forget_password.dart';
-import 'package:super_fitness/features/auth/presentation/pages/reset_password_view.dart';
+import '../../features/auth/presentation/pages/email_verification_view.dart';
+import '../../features/auth/presentation/pages/forget_password.dart';
+import '../../features/auth/presentation/pages/reset_password_view.dart';
 
 import '../../features/auth/presentation/pages/login_view.dart';
 import '../../features/auth/presentation/pages/register_view.dart';
