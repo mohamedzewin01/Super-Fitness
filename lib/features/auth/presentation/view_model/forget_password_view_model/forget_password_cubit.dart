@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 
@@ -12,6 +13,7 @@ class ForgetPasswordViewModel extends Cubit<ForgetPasswordState> {
   ForgetPasswordUseCase forgetPasswordUseCase;
   ForgetPasswordViewModel(this.forgetPasswordUseCase) : super(InitialState());
 
+  final formKey = GlobalKey<FormState>();
   void doIntent(ForgetPasswordScreenIntent intent) {
     switch (intent) {
       case ForgetPasswordIntent():

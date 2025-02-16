@@ -34,14 +34,14 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordView> {
     super.initState();
   }
 
-  final _formKey = GlobalKey<FormState>();
+
 
   final TextEditingController _emailController = TextEditingController();
 
   bool isButtonEnabled = false;
 
   void validateInputs() {
-    isButtonEnabled = _formKey.currentState?.validate() ?? false;
+    isButtonEnabled = _forgetPasswordViewModel.formKey.currentState?.validate() ?? false;
   }
 
 
@@ -79,7 +79,7 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordView> {
           child: Scaffold(
             resizeToAvoidBottomInset: false,
             body: Form(
-              key: _formKey,
+              key: _forgetPasswordViewModel.formKey,
               onChanged: validateInputs,
               child: Stack(
                 children: [
