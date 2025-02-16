@@ -13,6 +13,7 @@ import '../../../../core/resources/routes_manager.dart';
 import '../../../../core/resources/style_manager.dart';
 import '../../../../core/resources/values_manager.dart';
 import '../../../../core/utils/utilss.dart';
+import '../../../../core/widgets/custom_dialog.dart';
 import '../../../../core/widgets/fitness_text_form_field.dart';
 import '../../../../core/widgets/show_error_dialog.dart';
 import '../../../../core/widgets/show_loading_dialog.dart';
@@ -63,11 +64,13 @@ class _ResetPasswordViewState extends State<ResetPasswordView> {
           },
           listener: (context, state) {
             if (state is LoadingResetPasswordState) {
-              showLoadingDialog(context);
+             // showLoadingDialog(context);
+              CustomDialog.showLoadingDialog(context);
             } else if (state is ErrorResetPasswordState) {
               var message = extractErrorMessage(state.exception);
               Navigator.of(context).pop(); // Close loading dialog
-              showErrorDialog(context, message);
+              //showErrorDialog(context, message);
+              CustomDialog.showErrorDialog(context,message: message);
             } else if (state is SuccessResetPasswordState) {
               Navigator.of(context).popUntil((route) =>
                   route.isFirst); // Close dialogs before showing success
