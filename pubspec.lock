@@ -106,9 +106,11 @@ packages:
     dependency: transitive
     description:
       name: build_daemon
+      sha256: "8e928697a82be082206edb0b9c99c5a4ad6bc31c9e9b8b2f291ae65cd4a25daa"
       sha256: "79b2aef6ac2ed00046867ed354c88778c9c0f029df8a20fe10b5436826721ef9"
       url: "https://pub.dev"
     source: hosted
+    version: "4.0.4"
     version: "4.0.2"
   build_resolvers:
     dependency: transitive
