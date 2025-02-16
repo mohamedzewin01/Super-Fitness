@@ -5,6 +5,7 @@ import 'package:super_fitness/core/resources/app_constants.dart';
 import 'package:super_fitness/core/resources/color_manager.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:super_fitness/core/resources/values_manager.dart';
+import 'package:super_fitness/core/widgets/custom_dialog.dart';
 import '../../../../core/di/di.dart';
 import '../../../../core/functions/helper.dart';
 import '../../../../core/resources/font_manager.dart';
@@ -60,11 +61,13 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordView> {
           },
           listener: (context, state) {
             if (state is LoadingForgetPasswordState) {
-              showLoadingDialog(context);
+              CustomDialog.showLoadingDialog(context);
+              //showLoadingDialog(context);
             } else if (state is ErrorForgetPasswordState) {
               var message = extractErrorMessage(state.exception);
               Navigator.of(context).pop(); // Close loading dialog
-              showErrorDialog(context, message);
+              CustomDialog.showErrorDialog(context,message: message);
+             // showErrorDialog(context, message);
             } else if (state is SuccessForgetPasswordState) {
               final email = _emailController.text;
               Navigator.of(context).popUntil((route) =>

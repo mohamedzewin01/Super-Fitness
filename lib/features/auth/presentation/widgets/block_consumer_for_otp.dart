@@ -1,4 +1,5 @@
 import '../../../../core/resources/app_constants.dart';
+import '../../../../core/widgets/custom_dialog.dart';
 import '../../../../core/widgets/show_error_dialog.dart';
 import '../../../../core/widgets/show_loading_dialog.dart';
 import '../pages/reset_password_view.dart';
@@ -23,11 +24,13 @@ class BlocConsumerForOtpVerificationPage extends StatelessWidget {
     return BlocListener<VerifyPasswordViewModel, VerifyPasswordState>(
         listener: (context, state) {
           if (state is LoadingVerifyPasswordState) {
-            showLoadingDialog(context);
+           // showLoadingDialog(context);
+            CustomDialog.showLoadingDialog(context);
           } else if (state is ErrorVerifyPasswordState) {
             var message = extractErrorMessage(state.exception);
             Navigator.of(context).pop(); // Close loading dialog
-            showErrorDialog(context, message);
+            //showErrorDialog(context, message);
+            CustomDialog.showErrorDialog(context,message: message);
           } else if (state is SuccessVerifyPasswordState) {
             Navigator.of(context).pop();
             Future.delayed(Duration(milliseconds: AppConstants.millisecondsDelayed), () {
