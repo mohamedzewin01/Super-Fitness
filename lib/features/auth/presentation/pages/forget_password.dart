@@ -172,13 +172,7 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordView> {
                                       BlocBuilder<ForgetPasswordViewModel,
                                           ForgetPasswordState>(
                                         builder: (context, state) {
-                                          if (state
-                                              is LoadingForgetPasswordState) {
-                                            return const Center(
-                                                child:
-                                                    CircularProgressIndicator());
-                                          } else {
-                                            return SizedBox(
+                                            return  SizedBox(
                                               width: double.infinity,
                                               child: ElevatedButton(
                                                 onPressed: () {
@@ -188,11 +182,11 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordView> {
                                                 },
                                                 style: ElevatedButton.styleFrom(
                                                   backgroundColor:
-                                                      ColorManager.basicColor,
+                                                  ColorManager.basicColor,
                                                   shape: RoundedRectangleBorder(
                                                     borderRadius:
-                                                        BorderRadius.circular(
-                                                            AppSize.s30),
+                                                    BorderRadius.circular(
+                                                        AppSize.s30),
                                                   ),
                                                   padding: const EdgeInsets
                                                       .symmetric(
@@ -207,8 +201,7 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordView> {
                                                   ),
                                                 ),
                                               ),
-                                            );
-                                          }
+                                            ) ;
                                         },
                                       ),
                                     ],
