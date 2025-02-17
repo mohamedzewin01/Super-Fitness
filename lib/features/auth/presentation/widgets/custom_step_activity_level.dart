@@ -21,7 +21,7 @@ class CustomActivityLevel extends StatelessWidget {
             children: [
               CustomTextFormFieldRegister(
                 onTap: () {
-                  viewModel.changeActivityLevel(1);
+                  viewModel.doAction(ChangeActivityLevelIntent(1));
                 },
                 controller: TextEditingController(),
                 enabled: true,
@@ -31,12 +31,12 @@ class CustomActivityLevel extends StatelessWidget {
                     groupValue: viewModel.currentRadioActivityLevel,
                     fillColor: WidgetStateProperty.all(ColorManager.white),
                     onChanged: (value) {
-                      viewModel.changeActivityLevel(value!);
+                      viewModel.doAction(ChangeActivityLevelIntent(value!));
                     }),
               ),
               CustomTextFormFieldRegister(
                 onTap: () {
-                  viewModel.changeActivityLevel(2);
+                  viewModel.doAction(ChangeActivityLevelIntent(2));
                 },
                 controller: TextEditingController(),
                 enabled: true,
@@ -46,12 +46,13 @@ class CustomActivityLevel extends StatelessWidget {
                     groupValue: viewModel.currentRadioActivityLevel,
                     fillColor: WidgetStateProperty.all(ColorManager.white),
                     onChanged: (value) {
-                      viewModel.changeActivityLevel(value!);
+                      viewModel.doAction(ChangeActivityLevelIntent(value!));
                     }),
               ),
               CustomTextFormFieldRegister(
                 onTap: () {
-                  viewModel.changeActivityLevel(3);
+                  viewModel.doAction(ChangeActivityLevelIntent(3));
+
                 },
                 controller: TextEditingController(),
                 enabled: true,
@@ -61,12 +62,13 @@ class CustomActivityLevel extends StatelessWidget {
                     groupValue: viewModel.currentRadioActivityLevel,
                     fillColor: WidgetStateProperty.all(ColorManager.white),
                     onChanged: (value) {
-                      viewModel.changeActivityLevel(value!);
+
+                      viewModel.doAction(ChangeActivityLevelIntent(value!));
                     }),
               ),
               CustomTextFormFieldRegister(
                 onTap: () {
-                  viewModel.changeActivityLevel(4);
+                  viewModel.doAction(ChangeActivityLevelIntent(4));
                 },
                 controller: TextEditingController(),
                 enabled: true,
@@ -76,12 +78,13 @@ class CustomActivityLevel extends StatelessWidget {
                     groupValue: viewModel.currentRadioActivityLevel,
                     fillColor: WidgetStateProperty.all(ColorManager.white),
                     onChanged: (value) {
-                      viewModel.changeActivityLevel(value!);
+
+                      viewModel.doAction(ChangeActivityLevelIntent(value!));
                     }),
               ),
               CustomTextFormFieldRegister(
                 onTap: () {
-                  viewModel.changeActivityLevel(5);
+                  viewModel.doAction(ChangeActivityLevelIntent(5));
                 },
                 controller: TextEditingController(),
                 enabled: true,
@@ -91,7 +94,8 @@ class CustomActivityLevel extends StatelessWidget {
                     groupValue: viewModel.currentRadioActivityLevel,
                     fillColor: WidgetStateProperty.all(ColorManager.white),
                     onChanged: (value) {
-                      viewModel.changeActivityLevel(value!);
+
+                      viewModel.doAction(ChangeActivityLevelIntent(value!));
                     }),
               ),
             ],

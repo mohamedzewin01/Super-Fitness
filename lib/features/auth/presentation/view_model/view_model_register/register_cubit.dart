@@ -10,6 +10,7 @@ import '../../../domain/entities/register_entities.dart';
 import '../../../domain/use_cases/register_usecase.dart';
 
 import '../../../../../core/common/api_result.dart';
+
 part 'register_state.dart';
 
 @injectable
@@ -24,11 +25,14 @@ class RegisterCubit extends Cubit<RegisterState> {
   int useAge = 25;
   int useWeight = 90;
   int useHeight = 167;
-  int initialPage = 0;
+  // int initialPage = 0;
+  bool isShow = true;
   int currentRadioGoal = 0;
   int totalSteps = 6;
   String currentGoal = '';
   int currentRadioActivityLevel = 0;
+  bool isPassword = false;
+  bool isRePassword = false;
   // String currentActivityLevel = '';
   final formKey = GlobalKey<FormState>();
   final PageController pageController = PageController(initialPage: 0);
@@ -42,12 +46,58 @@ class RegisterCubit extends Cubit<RegisterState> {
   TextEditingController passwordController = TextEditingController();
   TextEditingController rePasswordController = TextEditingController();
 
-  void changeIndicator(int index) {
+
+  void doAction(RegisterScreenIntent intent) {
+    switch (intent) {
+
+      case RegisterIntentRegister():
+        _register();
+      case ShowBackIntent():
+        _showBack(isShowBack: intent.isShowBack);
+      case IsPasswordChangedIntent():
+        _isPasswordChanged();
+      case IsRePasswordChangedIntent():
+        _isRePasswordChanged();
+      case ChangeIndicatorIntent():
+        _changeIndicator(intent.index);
+      case ChangeGenderIntent():
+        _changeGender(intent.gender);
+      case ChangeAgeIntent():
+        _changeAge(intent.age);
+      case ChangeWeightIntent():
+        _changeWeight(intent.weight);
+      case ChangeHeightIntent():
+        _changeHeight(intent.height);
+      case ChangeGoalIntent():
+        _changeGoal(intent.goal, intent.goalName);
+      case ChangeActivityLevelIntent():
+        _changeActivityLevel(intent.activityLevel);
+    }
+  }
+
+
+
+
+
+
+
+void _showBack({required bool isShowBack}) {
+  isShow = isShowBack;
+  emit(ShowBack());
+}
+void _isPasswordChanged() {
+    isPassword =! isPassword;
+    emit(IsPasswordChanged());
+}
+void _isRePasswordChanged() {
+    isRePassword = !isRePassword;
+    emit(IsRePasswordChanged());
+}
+void _changeIndicator(int index) {
     currentIndicator = index;
     emit(IndicatorChanged());
   }
-
-  void changeGender(bool gender) {
+void _changeGender(bool gender) {
     isMale = gender;
     if (gender) {
       userGender = 'male';
@@ -56,47 +106,36 @@ class RegisterCubit extends Cubit<RegisterState> {
     }
     emit(GenderChanged());
   }
-
-  void changeAge(int age) {
+void _changeAge(int age) {
     useAge = age;
     emit(AgeChange());
   }
-
-  void changeWeight(int weight) {
+void _changeWeight(int weight) {
     useWeight = weight;
     emit(WeightChange());
   }
-
-  void changeHeight(int height) {
+void _changeHeight(int height) {
     useHeight = height;
     emit(HeightChange());
   }
-
-  void changeGoal(int goal, String goalName) {
+void _changeGoal(int goal, String goalName) {
     currentRadioGoal = goal;
     currentGoal = goalName;
     log('currentGoal $currentRadioGoal');
     emit(GoalChange());
   }
-
-  void changeActivityLevel(
-    int activityLevel,
-  ) {
+void _changeActivityLevel(int activityLevel) {
     currentRadioActivityLevel = activityLevel;
-    // print(currentActivityLevel);
-    // currentActivityLevel = activityLevelName;
     emit(ActivityLevelChange());
   }
-
-  Future<void> register() async {
-    print(currentRadioActivityLevel);
+Future<void> _register() async {
     emit(LoadingRegisterState());
     RegisterModelRequest registerModelRequest = RegisterModelRequest(
-      firstName: firstNameController.text,
-      lastName: lastNameController.text,
-      email: emailController.text,
-      password: passwordController.text,
-      rePassword: rePasswordController.text,
+      firstName: firstNameController.text.trim(),
+      lastName: lastNameController.text.trim(),
+      email: emailController.text.trim(),
+      password: passwordController.text.trim(),
+      rePassword: rePasswordController.text.trim(),
       gender: userGender,
       age: useAge,
       weight: useWeight,
@@ -117,4 +156,45 @@ class RegisterCubit extends Cubit<RegisterState> {
         emit(ErrorRegisterState(result.exception));
     }
   }
+
+
 }
+
+sealed class RegisterScreenIntent {}
+class RegisterIntentRegister extends RegisterScreenIntent {}
+class ShowBackIntent extends RegisterScreenIntent {
+  final bool isShowBack;
+  ShowBackIntent(this.isShowBack);
+}
+class IsPasswordChangedIntent extends RegisterScreenIntent {}
+class IsRePasswordChangedIntent extends RegisterScreenIntent {}
+class ChangeIndicatorIntent extends RegisterScreenIntent {
+  final int index;
+  ChangeIndicatorIntent(this.index);
+}
+class ChangeGenderIntent extends RegisterScreenIntent {
+  final bool gender;
+  ChangeGenderIntent(this.gender);
+}
+class ChangeAgeIntent extends RegisterScreenIntent {
+  final int age;
+  ChangeAgeIntent(this.age);
+}
+class ChangeWeightIntent extends RegisterScreenIntent {
+  final int weight;
+  ChangeWeightIntent(this.weight);
+}
+class ChangeHeightIntent extends RegisterScreenIntent {
+  final int height;
+  ChangeHeightIntent(this.height);
+}
+class ChangeGoalIntent extends RegisterScreenIntent {
+  final int goal;
+  final String goalName;
+  ChangeGoalIntent(this.goal, this.goalName);
+}
+class ChangeActivityLevelIntent extends RegisterScreenIntent {
+  final int activityLevel;
+  ChangeActivityLevelIntent(this.activityLevel);
+}
+

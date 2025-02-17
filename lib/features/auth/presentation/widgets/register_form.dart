@@ -152,6 +152,7 @@ class RegisterForm extends StatelessWidget {
                                   inputAction: TextInputAction.go,
                                   controller: viewModel.passwordController,
                                   hintText: 'Password',
+                                  obscureText: viewModel.isPassword,
                                   validator: (value) => validatePassword(
                                       password:
                                           viewModel.passwordController.text,
@@ -172,12 +173,20 @@ class RegisterForm extends StatelessWidget {
                                       ),
                                     ),
                                   ),
-                                  suffix: SizedBox(
-                                    height: 20,
-                                    width: 20,
-                                    child: Center(
-                                      child: SvgPicture.asset(
-                                        AssetsManager.eye,
+                                  suffix: GestureDetector(
+                                    onTap: () => viewModel.doAction(IsPasswordChangedIntent()),
+                                    child: SizedBox(
+                                      height: 20,
+                                      width: 20,
+                                      child: Center(
+                                        child: !viewModel.isPassword
+                                            ? SvgPicture.asset(
+                                                AssetsManager.eye)
+                                            : Icon(
+                                                Icons.visibility_off_outlined,
+                                                size: 20,
+                                                color: ColorManager
+                                                    .grey,),
                                       ),
                                     ),
                                   ),
@@ -186,7 +195,7 @@ class RegisterForm extends StatelessWidget {
                                   inputAction: TextInputAction.go,
                                   controller: viewModel.rePasswordController,
                                   hintText: 'RePassword',
-                                  obscureText: true,
+                                  obscureText: viewModel.isRePassword,
                                   validator: (value) => validatePasswordMatch(
                                       messageIsEmpty:
                                           AppLocalizations.of(context)!
@@ -206,13 +215,17 @@ class RegisterForm extends StatelessWidget {
                                       ),
                                     ),
                                   ),
-                                  suffix: SizedBox(
-                                    height: 20,
-                                    width: 20,
+                                  suffix: GestureDetector(
+                                    onTap: () =>viewModel.doAction(IsRePasswordChangedIntent()),
                                     child: Center(
-                                      child: SvgPicture.asset(
-                                        AssetsManager.eye,
-                                      ),
+                                      child: !viewModel.isRePassword
+                                          ? SvgPicture.asset(
+                                          AssetsManager.eye)
+                                          : Icon(
+                                        Icons.visibility_off_outlined,
+                                        size: 20,
+                                        color: ColorManager
+                                            .grey,),
                                     ),
                                   ),
                                 ),
@@ -237,8 +250,12 @@ class RegisterForm extends StatelessWidget {
                                             duration:
                                                 Duration(milliseconds: 1000),
                                             curve: Curves.easeIn);
+                                        log('/////////////////////////////');
+                                        viewModel.doAction(ShowBackIntent(false));
+                                        log(viewModel.pageController.page.toString());
                                         log(viewModel.pageController.initialPage
                                             .toString());
+                                        log('/////////////////////////////');
                                       }
                                     }),
                               ),
@@ -284,3 +301,4 @@ class RegisterForm extends StatelessWidget {
     );
   }
 }
+
