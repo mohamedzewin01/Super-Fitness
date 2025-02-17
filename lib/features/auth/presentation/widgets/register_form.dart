@@ -174,7 +174,8 @@ class RegisterForm extends StatelessWidget {
                                     ),
                                   ),
                                   suffix: GestureDetector(
-                                    onTap: () => viewModel.doAction(IsPasswordChangedIntent()),
+                                    onTap: () => viewModel
+                                        .doAction(IsPasswordChangedIntent()),
                                     child: SizedBox(
                                       height: 20,
                                       width: 20,
@@ -185,8 +186,8 @@ class RegisterForm extends StatelessWidget {
                                             : Icon(
                                                 Icons.visibility_off_outlined,
                                                 size: 20,
-                                                color: ColorManager
-                                                    .grey,),
+                                                color: ColorManager.grey,
+                                              ),
                                       ),
                                     ),
                                   ),
@@ -216,16 +217,16 @@ class RegisterForm extends StatelessWidget {
                                     ),
                                   ),
                                   suffix: GestureDetector(
-                                    onTap: () =>viewModel.doAction(IsRePasswordChangedIntent()),
+                                    onTap: () => viewModel
+                                        .doAction(IsRePasswordChangedIntent()),
                                     child: Center(
                                       child: !viewModel.isRePassword
-                                          ? SvgPicture.asset(
-                                          AssetsManager.eye)
+                                          ? SvgPicture.asset(AssetsManager.eye)
                                           : Icon(
-                                        Icons.visibility_off_outlined,
-                                        size: 20,
-                                        color: ColorManager
-                                            .grey,),
+                                              Icons.visibility_off_outlined,
+                                              size: 20,
+                                              color: ColorManager.grey,
+                                            ),
                                     ),
                                   ),
                                 ),
@@ -251,8 +252,10 @@ class RegisterForm extends StatelessWidget {
                                                 Duration(milliseconds: 1000),
                                             curve: Curves.easeIn);
                                         log('/////////////////////////////');
-                                        viewModel.doAction(ShowBackIntent(false));
-                                        log(viewModel.pageController.page.toString());
+                                        viewModel
+                                            .doAction(ShowBackIntent(false));
+                                        log(viewModel.pageController.page
+                                            .toString());
                                         log(viewModel.pageController.initialPage
                                             .toString());
                                         log('/////////////////////////////');
@@ -301,4 +304,3 @@ class RegisterForm extends StatelessWidget {
     );
   }
 }
-
