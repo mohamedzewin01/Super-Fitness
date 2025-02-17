@@ -303,36 +303,3 @@ class RegisterForm extends StatelessWidget {
   }
 }
 
-class SuffixIconPassword extends StatefulWidget {
-  const SuffixIconPassword({
-    super.key,
-  });
-
-  @override
-  State<SuffixIconPassword> createState() => _SuffixIconPasswordState();
-}
-
-class _SuffixIconPasswordState extends State<SuffixIconPassword> {
-  bool isPassword = true;
-
-  @override
-  Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () {
-        setState(() {
-          isPassword = !isPassword;
-          log('$isPassword');
-        });
-      },
-      child: SizedBox(
-        height: 20,
-        width: 20,
-        child: Center(
-          child: SvgPicture.asset(
-            AssetsManager.eye,
-          ),
-        ),
-      ),
-    );
-  }
-}

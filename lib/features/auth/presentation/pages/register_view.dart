@@ -1,3 +1,4 @@
+import 'dart:developer';
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -74,7 +75,7 @@ class _RegisterViewState extends State<RegisterView> {
                     if (state is ErrorRegisterState) {
                       var message = extractErrorMessage(state.exception);
                       Navigator.pop(context);
-                      CustomDialog.showErrorDialog(context,message: message);
+                      CustomDialog.showErrorDialog(context, message: message);
                     }
                   },
                   builder: (context, state) {
@@ -87,16 +88,27 @@ class _RegisterViewState extends State<RegisterView> {
                             alignment: Alignment.center,
                             child: Stack(
                               children: [
-                                    viewModel.isShow
+                                viewModel.isShow ||
+                                        viewModel.currentIndicator == -1
                                     ? Container()
                                     : GestureDetector(
                                         onTap: () {
+                                          log('5555555555555555555555555555555');
+                                          log(viewModel.currentIndicator.toString());
+                                          log('5555555555555555555555555555555');
                                           viewModel.pageController.previousPage(
                                               duration:
                                                   Duration(milliseconds: 1000),
                                               curve: Curves.easeIn);
-                                          viewModel.changeIndicator(
-                                              viewModel.currentIndicator - 1);
+                                          if (viewModel.currentIndicator > 0) {
+                                            viewModel.changeIndicator(
+                                                viewModel.currentIndicator - 1);
+
+                                          }
+                                          if(viewModel.currentIndicator==0){
+                                            viewModel.showBack(
+                                                isShowBack: true);
+                                          }
                                         },
                                         child: Padding(
                                           padding: const EdgeInsets.all(8.0),
@@ -125,11 +137,12 @@ class _RegisterViewState extends State<RegisterView> {
                           height: 4,
                         ),
                         Visibility(
-                            visible: viewModel.currentIndicator != 0,
+                            visible: viewModel.currentIndicator != 0 ,
+                                // viewModel.currentIndicator == -1 ||
+                                // viewModel.isShow,
                             child:
                                 CustomPercentIndicator(viewModel: viewModel)),
                         CustomRegisterPagesView(viewModel: viewModel),
-
                       ],
                     );
                   },
