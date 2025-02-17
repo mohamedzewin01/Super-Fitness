@@ -44,6 +44,7 @@ class CustomRegisterPagesView extends StatelessWidget {
                 viewModel.pageController.nextPage(
                     duration: Duration(milliseconds: 1000),
                     curve: Curves.easeIn);
+
                 viewModel.changeIndicator(2);
                 log(viewModel.currentIndicator.toString());
               }),

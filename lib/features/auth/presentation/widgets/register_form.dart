@@ -152,6 +152,7 @@ class RegisterForm extends StatelessWidget {
                                   inputAction: TextInputAction.go,
                                   controller: viewModel.passwordController,
                                   hintText: 'Password',
+                                  obscureText: viewModel.isPassword,
                                   validator: (value) => validatePassword(
                                       password:
                                           viewModel.passwordController.text,
@@ -172,12 +173,20 @@ class RegisterForm extends StatelessWidget {
                                       ),
                                     ),
                                   ),
-                                  suffix: SizedBox(
-                                    height: 20,
-                                    width: 20,
-                                    child: Center(
-                                      child: SvgPicture.asset(
-                                        AssetsManager.eye,
+                                  suffix: GestureDetector(
+                                    onTap: () => viewModel.isPasswordChanged(),
+                                    child: SizedBox(
+                                      height: 20,
+                                      width: 20,
+                                      child: Center(
+                                        child: !viewModel.isPassword
+                                            ? SvgPicture.asset(
+                                                AssetsManager.eye)
+                                            : Icon(
+                                                Icons.visibility_off_outlined,
+                                                size: 20,
+                                                color: ColorManager
+                                                    .grey,),
                                       ),
                                     ),
                                   ),
@@ -186,7 +195,7 @@ class RegisterForm extends StatelessWidget {
                                   inputAction: TextInputAction.go,
                                   controller: viewModel.rePasswordController,
                                   hintText: 'RePassword',
-                                  obscureText: true,
+                                  obscureText: viewModel.isRePassword,
                                   validator: (value) => validatePasswordMatch(
                                       messageIsEmpty:
                                           AppLocalizations.of(context)!
@@ -206,13 +215,18 @@ class RegisterForm extends StatelessWidget {
                                       ),
                                     ),
                                   ),
-                                  suffix: SizedBox(
-                                    height: 20,
-                                    width: 20,
+                                  suffix: GestureDetector(
+                                    onTap: () =>
+                                        viewModel.isRePasswordChanged(),
                                     child: Center(
-                                      child: SvgPicture.asset(
-                                        AssetsManager.eye,
-                                      ),
+                                      child: !viewModel.isRePassword
+                                          ? SvgPicture.asset(
+                                          AssetsManager.eye)
+                                          : Icon(
+                                        Icons.visibility_off_outlined,
+                                        size: 20,
+                                        color: ColorManager
+                                            .grey,),
                                     ),
                                   ),
                                 ),
@@ -237,8 +251,12 @@ class RegisterForm extends StatelessWidget {
                                             duration:
                                                 Duration(milliseconds: 1000),
                                             curve: Curves.easeIn);
+                                        log('/////////////////////////////');
+                                        viewModel.showBack(isShowBack: false);
+                                        log(viewModel.pageController.page.toString());
                                         log(viewModel.pageController.initialPage
                                             .toString());
+                                        log('/////////////////////////////');
                                       }
                                     }),
                               ),
@@ -279,6 +297,40 @@ class RegisterForm extends StatelessWidget {
               ],
             ),
           ],
+        ),
+      ),
+    );
+  }
+}
+
+class SuffixIconPassword extends StatefulWidget {
+  const SuffixIconPassword({
+    super.key,
+  });
+
+  @override
+  State<SuffixIconPassword> createState() => _SuffixIconPasswordState();
+}
+
+class _SuffixIconPasswordState extends State<SuffixIconPassword> {
+  bool isPassword = true;
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: () {
+        setState(() {
+          isPassword = !isPassword;
+          log('$isPassword');
+        });
+      },
+      child: SizedBox(
+        height: 20,
+        width: 20,
+        child: Center(
+          child: SvgPicture.asset(
+            AssetsManager.eye,
+          ),
         ),
       ),
     );

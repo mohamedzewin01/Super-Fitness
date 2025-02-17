@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import '../../../../core/di/di.dart';
 import '../../../../core/resources/color_manager.dart';
+import '../../../../core/utils/utilss.dart';
 import '../../../../core/widgets/custom_dialog.dart';
 import 'login_view.dart';
 import '../../../../core/resources/assets_manager.dart';
@@ -71,9 +72,9 @@ class _RegisterViewState extends State<RegisterView> {
                       );
                     }
                     if (state is ErrorRegisterState) {
+                      var message = extractErrorMessage(state.exception);
                       Navigator.pop(context);
-                      CustomDialog.showErrorDialog(context,
-                          message: state.exception.toString());
+                      CustomDialog.showErrorDialog(context,message: message);
                     }
                   },
                   builder: (context, state) {
@@ -86,7 +87,7 @@ class _RegisterViewState extends State<RegisterView> {
                             alignment: Alignment.center,
                             child: Stack(
                               children: [
-                                viewModel.currentIndicator == 0
+                                    viewModel.isShow
                                     ? Container()
                                     : GestureDetector(
                                         onTap: () {
@@ -121,7 +122,7 @@ class _RegisterViewState extends State<RegisterView> {
                           ),
                         ),
                         SizedBox(
-                          height: 6,
+                          height: 4,
                         ),
                         Visibility(
                             visible: viewModel.currentIndicator != 0,

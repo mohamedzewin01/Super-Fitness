@@ -10,6 +10,7 @@ import '../../../domain/entities/register_entities.dart';
 import '../../../domain/use_cases/register_usecase.dart';
 
 import '../../../../../core/common/api_result.dart';
+
 part 'register_state.dart';
 
 @injectable
@@ -24,11 +25,14 @@ class RegisterCubit extends Cubit<RegisterState> {
   int useAge = 25;
   int useWeight = 90;
   int useHeight = 167;
-  int initialPage = 0;
+  // int initialPage = 0;
+  bool isShow = true;
   int currentRadioGoal = 0;
   int totalSteps = 6;
   String currentGoal = '';
   int currentRadioActivityLevel = 0;
+  bool isPassword = false;
+  bool isRePassword = false;
   // String currentActivityLevel = '';
   final formKey = GlobalKey<FormState>();
   final PageController pageController = PageController(initialPage: 0);
@@ -42,6 +46,19 @@ class RegisterCubit extends Cubit<RegisterState> {
   TextEditingController passwordController = TextEditingController();
   TextEditingController rePasswordController = TextEditingController();
 
+
+void showBack({required bool isShowBack}) {
+  isShow = isShowBack;
+  emit(ShowBack());
+}
+void isPasswordChanged() {
+    isPassword =! isPassword;
+    emit(IsPasswordChanged());
+}
+void isRePasswordChanged() {
+    isRePassword = !isRePassword;
+    emit(IsRePasswordChanged());
+}
   void changeIndicator(int index) {
     currentIndicator = index;
     emit(IndicatorChanged());
@@ -79,24 +96,19 @@ class RegisterCubit extends Cubit<RegisterState> {
     emit(GoalChange());
   }
 
-  void changeActivityLevel(
-    int activityLevel,
-  ) {
+  void changeActivityLevel(int activityLevel) {
     currentRadioActivityLevel = activityLevel;
-    // print(currentActivityLevel);
-    // currentActivityLevel = activityLevelName;
     emit(ActivityLevelChange());
   }
 
   Future<void> register() async {
-    print(currentRadioActivityLevel);
     emit(LoadingRegisterState());
     RegisterModelRequest registerModelRequest = RegisterModelRequest(
-      firstName: firstNameController.text,
-      lastName: lastNameController.text,
-      email: emailController.text,
-      password: passwordController.text,
-      rePassword: rePasswordController.text,
+      firstName: firstNameController.text.trim(),
+      lastName: lastNameController.text.trim(),
+      email: emailController.text.trim(),
+      password: passwordController.text.trim(),
+      rePassword: rePasswordController.text.trim(),
       gender: userGender,
       age: useAge,
       weight: useWeight,

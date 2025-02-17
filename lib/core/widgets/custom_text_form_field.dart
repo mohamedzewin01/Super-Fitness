@@ -21,7 +21,7 @@ import '../resources/values_manager.dart';
 //     this.initialValue,
 //     this.onChanged, this.inputAction,
 //   });
-
+//
 //   final TextEditingController controller;
 //   final String? labelText;
 //   final String? hintText;
@@ -34,7 +34,7 @@ import '../resources/values_manager.dart';
 //   final TextInputType? keyboardType;
 //   final TextInputAction? inputAction;
 //   final void Function(String)? onChanged;
-
+//
 //   @override
 //   Widget build(BuildContext context) {
 //     return SizedBox(
@@ -264,7 +264,7 @@ class CustomTextFormField extends StatelessWidget {
           fontSize: FontSize.s14,
         ),
         floatingLabelBehavior: FloatingLabelBehavior.always,
-        contentPadding: const EdgeInsets.all(AppPadding.p18),
+        contentPadding: const EdgeInsets.all(AppPadding.p8),
         enabledBorder: outLintInputBorderMethod(
           const BorderSide(
               color: ColorManager.placeHolderColor, width: AppSize.w1_5),

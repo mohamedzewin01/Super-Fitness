@@ -16,9 +16,11 @@ class SuccessRegisterState extends RegisterState {
   SuccessRegisterState(this.registerEntity);
 }
 class LoadingRegisterState extends RegisterState {}
-
 class ErrorRegisterState extends RegisterState {
   final Exception? exception;
 
   ErrorRegisterState(this.exception);
 }
+class IsPasswordChanged extends RegisterState {}
+class IsRePasswordChanged extends RegisterState {}
+class ShowBack extends RegisterState {}
