@@ -18,8 +18,8 @@ class CustomStepGender extends StatelessWidget {
         GestureDetector(
            onTap:
               () {
-             viewModel.changeGender(true);
-             viewModel.changeIndicator(1);
+             viewModel.doAction(ChangeGenderIntent(true));
+             viewModel.doAction(ChangeIndicatorIntent(1));
           },
           child: Container(
             decoration: BoxDecoration(
@@ -38,8 +38,8 @@ class CustomStepGender extends StatelessWidget {
         GestureDetector(
           onTap:
               () {
-            viewModel.changeGender(false);
-            viewModel.changeIndicator(1);
+            viewModel.doAction(ChangeGenderIntent(false));
+            viewModel.doAction(ChangeIndicatorIntent(1));
           },
           child: Container(
             decoration: BoxDecoration(

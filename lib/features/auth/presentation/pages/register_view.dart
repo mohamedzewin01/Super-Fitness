@@ -94,20 +94,26 @@ class _RegisterViewState extends State<RegisterView> {
                                     : GestureDetector(
                                         onTap: () {
                                           log('5555555555555555555555555555555');
-                                          log(viewModel.currentIndicator.toString());
+                                          log(viewModel.currentIndicator
+                                              .toString());
                                           log('5555555555555555555555555555555');
                                           viewModel.pageController.previousPage(
                                               duration:
                                                   Duration(milliseconds: 1000),
                                               curve: Curves.easeIn);
                                           if (viewModel.currentIndicator > 0) {
-                                            viewModel.changeIndicator(
-                                                viewModel.currentIndicator - 1);
-
+                                            viewModel.doAction(
+                                                ChangeIndicatorIntent(
+                                                    viewModel.currentIndicator -
+                                                        1));
+                                            // changeIndicator(
+                                            //     viewModel.currentIndicator - 1);
                                           }
-                                          if(viewModel.currentIndicator==0){
-                                            viewModel.showBack(
-                                                isShowBack: true);
+                                          if (viewModel.currentIndicator == 0) {
+                                            viewModel
+                                                .doAction(ShowBackIntent(true));
+                                            // showBack(
+                                            //     isShowBack: true);
                                           }
                                         },
                                         child: Padding(
@@ -137,9 +143,9 @@ class _RegisterViewState extends State<RegisterView> {
                           height: 4,
                         ),
                         Visibility(
-                            visible: viewModel.currentIndicator != 0 ,
-                                // viewModel.currentIndicator == -1 ||
-                                // viewModel.isShow,
+                            visible: viewModel.currentIndicator != 0,
+                            // viewModel.currentIndicator == -1 ||
+                            // viewModel.isShow,
                             child:
                                 CustomPercentIndicator(viewModel: viewModel)),
                         CustomRegisterPagesView(viewModel: viewModel),

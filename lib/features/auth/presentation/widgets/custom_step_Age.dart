@@ -18,7 +18,7 @@ class CustomStepAge extends StatelessWidget {
         onPageChanged: (
           index,
         ) {
-          viewModel.changeAge(index);
+          viewModel.doAction(ChangeAgeIntent(index));
           log('Age is $index');
         },
         items: AppConstants.ageList);

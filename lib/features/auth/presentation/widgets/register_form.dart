@@ -174,7 +174,7 @@ class RegisterForm extends StatelessWidget {
                                     ),
                                   ),
                                   suffix: GestureDetector(
-                                    onTap: () => viewModel.isPasswordChanged(),
+                                    onTap: () => viewModel.doAction(IsPasswordChangedIntent()),
                                     child: SizedBox(
                                       height: 20,
                                       width: 20,
@@ -216,8 +216,7 @@ class RegisterForm extends StatelessWidget {
                                     ),
                                   ),
                                   suffix: GestureDetector(
-                                    onTap: () =>
-                                        viewModel.isRePasswordChanged(),
+                                    onTap: () =>viewModel.doAction(IsRePasswordChangedIntent()),
                                     child: Center(
                                       child: !viewModel.isRePassword
                                           ? SvgPicture.asset(
@@ -252,7 +251,7 @@ class RegisterForm extends StatelessWidget {
                                                 Duration(milliseconds: 1000),
                                             curve: Curves.easeIn);
                                         log('/////////////////////////////');
-                                        viewModel.showBack(isShowBack: false);
+                                        viewModel.doAction(ShowBackIntent(false));
                                         log(viewModel.pageController.page.toString());
                                         log(viewModel.pageController.initialPage
                                             .toString());

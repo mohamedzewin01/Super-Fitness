@@ -16,7 +16,7 @@ class CustomStepHeight extends StatelessWidget {
     return CustomCarouseSlider(carouselController:viewModel.controllerHeight ,
         initialPage: viewModel.useHeight,
         onPageChanged: (index, ) {
-          viewModel.changeHeight(AppConstants.heightList[index]);
+          viewModel.doAction(ChangeHeightIntent(AppConstants.heightList[index]));
           log("height is ${AppConstants.heightList[index]}");
         },
         items: AppConstants.heightList,

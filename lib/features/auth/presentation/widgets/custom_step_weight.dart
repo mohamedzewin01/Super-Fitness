@@ -15,7 +15,7 @@ class CustomStepWeight extends StatelessWidget {
         carouselController: viewModel.controllerWeight,
         initialPage: viewModel.useWeight,
         onPageChanged: (index) {
-          viewModel.changeWeight(index);
+          viewModel.doAction(ChangeWeightIntent(index));
           log("weight is $index");
         },
         items: AppConstants.weightList,

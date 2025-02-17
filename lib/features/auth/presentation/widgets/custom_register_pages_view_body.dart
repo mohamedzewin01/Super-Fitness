@@ -28,7 +28,7 @@ class CustomRegisterPagesView extends StatelessWidget {
         physics: NeverScrollableScrollPhysics(),
         onPageChanged: (value) {
           if (value < viewModel.currentIndicator - 1) {
-            viewModel.changeIndicator(viewModel.currentIndicator - 1);
+            viewModel.doAction(ChangeIndicatorIntent(viewModel.currentIndicator - 1));
           }
         },
         children: [
@@ -45,7 +45,7 @@ class CustomRegisterPagesView extends StatelessWidget {
                     duration: Duration(milliseconds: 1000),
                     curve: Curves.easeIn);
 
-                viewModel.changeIndicator(2);
+                viewModel.doAction(ChangeIndicatorIntent(2));
                 log(viewModel.currentIndicator.toString());
               }),
           CustomRegisterStep(
@@ -59,7 +59,7 @@ class CustomRegisterPagesView extends StatelessWidget {
                 viewModel.pageController.nextPage(
                     duration: Duration(milliseconds: 1000),
                     curve: Curves.easeIn);
-                viewModel.changeIndicator(3);
+                viewModel.doAction(ChangeIndicatorIntent(3));
 
                 log(viewModel.currentIndicator.toString());
               }),
@@ -73,7 +73,7 @@ class CustomRegisterPagesView extends StatelessWidget {
             onPressed: () {
               viewModel.pageController.nextPage(
                   duration: Duration(milliseconds: 1000), curve: Curves.easeIn);
-              viewModel.changeIndicator(4);
+              viewModel.doAction(ChangeIndicatorIntent(4));
               log(viewModel.currentIndicator.toString());
             },
           ),
@@ -87,7 +87,7 @@ class CustomRegisterPagesView extends StatelessWidget {
             onPressed: () {
               viewModel.pageController.nextPage(
                   duration: Duration(milliseconds: 1000), curve: Curves.easeIn);
-              viewModel.changeIndicator(5);
+              viewModel.doAction(ChangeIndicatorIntent(5));
               log(viewModel.currentIndicator.toString());
             },
           ),
@@ -101,7 +101,8 @@ class CustomRegisterPagesView extends StatelessWidget {
             onPressed: () {
               viewModel.pageController.nextPage(
                   duration: Duration(milliseconds: 1000), curve: Curves.easeIn);
-              viewModel.changeIndicator(6);
+
+              viewModel.doAction(ChangeIndicatorIntent(6));
               log(viewModel.currentIndicator.toString());
             },
           ),
@@ -119,7 +120,7 @@ class CustomRegisterPagesView extends StatelessWidget {
                   viewModel.currentRadioActivityLevel != 0 &&
                   viewModel.userGender != '' &&
                   viewModel.currentRadioGoal != 0) {
-                viewModel.register();
+                viewModel.doAction(RegisterIntentRegister());
               } else if (viewModel.currentRadioActivityLevel == 0) {
                 CustomDialog.showIncompleteDataDialog(context,
                     onPressed: () async {
@@ -129,7 +130,7 @@ class CustomRegisterPagesView extends StatelessWidget {
                       duration: Duration(milliseconds: 1000),
                       curve: Curves.easeIn,
                     );
-                    viewModel.changeIndicator(6);
+                    viewModel.doAction(ChangeIndicatorIntent(6));
                     log('jumpToPage     6');
                     if (!context.mounted) return;
                     Navigator.pop(context);
@@ -142,7 +143,8 @@ class CustomRegisterPagesView extends StatelessWidget {
                     await viewModel.pageController.animateToPage(5,
                         curve: Curves.easeIn,
                         duration: Duration(milliseconds: 1000));
-                    viewModel.changeIndicator(5);
+
+                    viewModel.doAction(ChangeIndicatorIntent(5));
                     log('jumpToPage      5');
                     if (!context.mounted) return;
                     Navigator.pop(context);

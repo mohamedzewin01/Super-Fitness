@@ -47,24 +47,57 @@ class RegisterCubit extends Cubit<RegisterState> {
   TextEditingController rePasswordController = TextEditingController();
 
 
-void showBack({required bool isShowBack}) {
+  void doAction(RegisterScreenIntent intent) {
+    switch (intent) {
+
+      case RegisterIntentRegister():
+        _register();
+      case ShowBackIntent():
+        _showBack(isShowBack: intent.isShowBack);
+      case IsPasswordChangedIntent():
+        _isPasswordChanged();
+      case IsRePasswordChangedIntent():
+        _isRePasswordChanged();
+      case ChangeIndicatorIntent():
+        _changeIndicator(intent.index);
+      case ChangeGenderIntent():
+        _changeGender(intent.gender);
+      case ChangeAgeIntent():
+        _changeAge(intent.age);
+      case ChangeWeightIntent():
+        _changeWeight(intent.weight);
+      case ChangeHeightIntent():
+        _changeHeight(intent.height);
+      case ChangeGoalIntent():
+        _changeGoal(intent.goal, intent.goalName);
+      case ChangeActivityLevelIntent():
+        _changeActivityLevel(intent.activityLevel);
+    }
+  }
+
+
+
+
+
+
+
+void _showBack({required bool isShowBack}) {
   isShow = isShowBack;
   emit(ShowBack());
 }
-void isPasswordChanged() {
+void _isPasswordChanged() {
     isPassword =! isPassword;
     emit(IsPasswordChanged());
 }
-void isRePasswordChanged() {
+void _isRePasswordChanged() {
     isRePassword = !isRePassword;
     emit(IsRePasswordChanged());
 }
-  void changeIndicator(int index) {
+void _changeIndicator(int index) {
     currentIndicator = index;
     emit(IndicatorChanged());
   }
-
-  void changeGender(bool gender) {
+void _changeGender(bool gender) {
     isMale = gender;
     if (gender) {
       userGender = 'male';
@@ -73,35 +106,29 @@ void isRePasswordChanged() {
     }
     emit(GenderChanged());
   }
-
-  void changeAge(int age) {
+void _changeAge(int age) {
     useAge = age;
     emit(AgeChange());
   }
-
-  void changeWeight(int weight) {
+void _changeWeight(int weight) {
     useWeight = weight;
     emit(WeightChange());
   }
-
-  void changeHeight(int height) {
+void _changeHeight(int height) {
     useHeight = height;
     emit(HeightChange());
   }
-
-  void changeGoal(int goal, String goalName) {
+void _changeGoal(int goal, String goalName) {
     currentRadioGoal = goal;
     currentGoal = goalName;
     log('currentGoal $currentRadioGoal');
     emit(GoalChange());
   }
-
-  void changeActivityLevel(int activityLevel) {
+void _changeActivityLevel(int activityLevel) {
     currentRadioActivityLevel = activityLevel;
     emit(ActivityLevelChange());
   }
-
-  Future<void> register() async {
+Future<void> _register() async {
     emit(LoadingRegisterState());
     RegisterModelRequest registerModelRequest = RegisterModelRequest(
       firstName: firstNameController.text.trim(),
@@ -129,4 +156,45 @@ void isRePasswordChanged() {
         emit(ErrorRegisterState(result.exception));
     }
   }
+
+
 }
+
+sealed class RegisterScreenIntent {}
+class RegisterIntentRegister extends RegisterScreenIntent {}
+class ShowBackIntent extends RegisterScreenIntent {
+  final bool isShowBack;
+  ShowBackIntent(this.isShowBack);
+}
+class IsPasswordChangedIntent extends RegisterScreenIntent {}
+class IsRePasswordChangedIntent extends RegisterScreenIntent {}
+class ChangeIndicatorIntent extends RegisterScreenIntent {
+  final int index;
+  ChangeIndicatorIntent(this.index);
+}
+class ChangeGenderIntent extends RegisterScreenIntent {
+  final bool gender;
+  ChangeGenderIntent(this.gender);
+}
+class ChangeAgeIntent extends RegisterScreenIntent {
+  final int age;
+  ChangeAgeIntent(this.age);
+}
+class ChangeWeightIntent extends RegisterScreenIntent {
+  final int weight;
+  ChangeWeightIntent(this.weight);
+}
+class ChangeHeightIntent extends RegisterScreenIntent {
+  final int height;
+  ChangeHeightIntent(this.height);
+}
+class ChangeGoalIntent extends RegisterScreenIntent {
+  final int goal;
+  final String goalName;
+  ChangeGoalIntent(this.goal, this.goalName);
+}
+class ChangeActivityLevelIntent extends RegisterScreenIntent {
+  final int activityLevel;
+  ChangeActivityLevelIntent(this.activityLevel);
+}
+

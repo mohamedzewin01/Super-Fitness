@@ -109,15 +109,18 @@ class CustomDialog {
       context: context,
       barrierDismissible: false,
       builder: (context) {
-        Future.delayed(const Duration(seconds: 3), () {
-          Navigator.of(context).pop();
-          if (goto != null) {
-            Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => goto,
-                ));
+        Future.delayed(const Duration(seconds: 2), () {
+          if(context.mounted){
+            Navigator.of(context).pop();
+            if (goto != null) {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => goto,
+                  ));
+            }
           }
+
         });
 
         return Dialog(
