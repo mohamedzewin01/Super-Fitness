@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:super_fitness/core/widgets/custom_dialog.dart';
 import '../../../../core/resources/style_manager.dart';
 
 import '../../../../core/di/di.dart';
@@ -57,7 +58,7 @@ class _LoginViewState extends State<LoginView> {
           body: BlocListener<LoginViewModel, LoginState>(
             listener: (context, state) {
               if (state is LoadingLoginState) {
-                showLoadingDialog(context);
+                CustomDialog.showLoadingDialog(context);
               } else if (state is SuccessLoginState) {
                 Navigator.pushNamed(context, RoutesManager.layOutView);
               } else if (state is ErrorLoginState) {

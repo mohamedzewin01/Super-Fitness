@@ -172,36 +172,37 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordView> {
                                       BlocBuilder<ForgetPasswordViewModel,
                                           ForgetPasswordState>(
                                         builder: (context, state) {
-                                            return  SizedBox(
-                                              width: double.infinity,
-                                              child: ElevatedButton(
-                                                onPressed: () {
-                                                  if (isButtonEnabled == true) {
-                                                    forgetPassword();
-                                                  }
-                                                },
-                                                style: ElevatedButton.styleFrom(
-                                                  backgroundColor:
-                                                  ColorManager.basicColor,
-                                                  shape: RoundedRectangleBorder(
-                                                    borderRadius:
-                                                    BorderRadius.circular(
-                                                        AppSize.s30),
-                                                  ),
-                                                  padding: const EdgeInsets
-                                                      .symmetric(
-                                                      vertical: AppPadding.p16),
+                                          return SizedBox(
+                                            width: double.infinity,
+                                            child: ElevatedButton(
+                                              onPressed: () {
+                                                if (isButtonEnabled == true) {
+                                                  forgetPassword();
+                                                }
+                                              },
+                                              style: ElevatedButton.styleFrom(
+                                                backgroundColor:
+                                                    ColorManager.basicColor,
+                                                shape: RoundedRectangleBorder(
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          AppSize.s30),
                                                 ),
-                                                child: Text(
-                                                  AppLocalizations.of(context)!
-                                                      .sendOTP,
-                                                  style: getBoldStyle(
-                                                    color: Colors.white,
-                                                    fontSize: FontSize.s14,
-                                                  ),
+                                                padding:
+                                                    const EdgeInsets.symmetric(
+                                                        vertical:
+                                                            AppPadding.p16),
+                                              ),
+                                              child: Text(
+                                                AppLocalizations.of(context)!
+                                                    .sendOTP,
+                                                style: getBoldStyle(
+                                                  color: Colors.white,
+                                                  fontSize: FontSize.s14,
                                                 ),
                                               ),
-                                            ) ;
+                                            ),
+                                          );
                                         },
                                       ),
                                     ],

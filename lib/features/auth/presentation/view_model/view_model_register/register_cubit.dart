@@ -46,10 +46,8 @@ class RegisterCubit extends Cubit<RegisterState> {
   TextEditingController passwordController = TextEditingController();
   TextEditingController rePasswordController = TextEditingController();
 
-
   void doAction(RegisterScreenIntent intent) {
     switch (intent) {
-
       case RegisterIntentRegister():
         _register();
       case ShowBackIntent():
@@ -75,29 +73,27 @@ class RegisterCubit extends Cubit<RegisterState> {
     }
   }
 
+  void _showBack({required bool isShowBack}) {
+    isShow = isShowBack;
+    emit(ShowBack());
+  }
 
-
-
-
-
-
-void _showBack({required bool isShowBack}) {
-  isShow = isShowBack;
-  emit(ShowBack());
-}
-void _isPasswordChanged() {
-    isPassword =! isPassword;
+  void _isPasswordChanged() {
+    isPassword = !isPassword;
     emit(IsPasswordChanged());
-}
-void _isRePasswordChanged() {
+  }
+
+  void _isRePasswordChanged() {
     isRePassword = !isRePassword;
     emit(IsRePasswordChanged());
-}
-void _changeIndicator(int index) {
+  }
+
+  void _changeIndicator(int index) {
     currentIndicator = index;
     emit(IndicatorChanged());
   }
-void _changeGender(bool gender) {
+
+  void _changeGender(bool gender) {
     isMale = gender;
     if (gender) {
       userGender = 'male';
@@ -106,29 +102,35 @@ void _changeGender(bool gender) {
     }
     emit(GenderChanged());
   }
-void _changeAge(int age) {
+
+  void _changeAge(int age) {
     useAge = age;
     emit(AgeChange());
   }
-void _changeWeight(int weight) {
+
+  void _changeWeight(int weight) {
     useWeight = weight;
     emit(WeightChange());
   }
-void _changeHeight(int height) {
+
+  void _changeHeight(int height) {
     useHeight = height;
     emit(HeightChange());
   }
-void _changeGoal(int goal, String goalName) {
+
+  void _changeGoal(int goal, String goalName) {
     currentRadioGoal = goal;
     currentGoal = goalName;
     log('currentGoal $currentRadioGoal');
     emit(GoalChange());
   }
-void _changeActivityLevel(int activityLevel) {
+
+  void _changeActivityLevel(int activityLevel) {
     currentRadioActivityLevel = activityLevel;
     emit(ActivityLevelChange());
   }
-Future<void> _register() async {
+
+  Future<void> _register() async {
     emit(LoadingRegisterState());
     RegisterModelRequest registerModelRequest = RegisterModelRequest(
       firstName: firstNameController.text.trim(),
@@ -156,45 +158,53 @@ Future<void> _register() async {
         emit(ErrorRegisterState(result.exception));
     }
   }
-
-
 }
 
 sealed class RegisterScreenIntent {}
+
 class RegisterIntentRegister extends RegisterScreenIntent {}
+
 class ShowBackIntent extends RegisterScreenIntent {
   final bool isShowBack;
   ShowBackIntent(this.isShowBack);
 }
+
 class IsPasswordChangedIntent extends RegisterScreenIntent {}
+
 class IsRePasswordChangedIntent extends RegisterScreenIntent {}
+
 class ChangeIndicatorIntent extends RegisterScreenIntent {
   final int index;
   ChangeIndicatorIntent(this.index);
 }
+
 class ChangeGenderIntent extends RegisterScreenIntent {
   final bool gender;
   ChangeGenderIntent(this.gender);
 }
+
 class ChangeAgeIntent extends RegisterScreenIntent {
   final int age;
   ChangeAgeIntent(this.age);
 }
+
 class ChangeWeightIntent extends RegisterScreenIntent {
   final int weight;
   ChangeWeightIntent(this.weight);
 }
+
 class ChangeHeightIntent extends RegisterScreenIntent {
   final int height;
   ChangeHeightIntent(this.height);
 }
+
 class ChangeGoalIntent extends RegisterScreenIntent {
   final int goal;
   final String goalName;
   ChangeGoalIntent(this.goal, this.goalName);
 }
+
 class ChangeActivityLevelIntent extends RegisterScreenIntent {
   final int activityLevel;
   ChangeActivityLevelIntent(this.activityLevel);
 }
-
