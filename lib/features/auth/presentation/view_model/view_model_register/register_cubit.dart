@@ -21,7 +21,7 @@ class RegisterCubit extends Cubit<RegisterState> {
   int currentIndicator = 0;
   bool isMale = false;
   String userGender = '';
-  List<int> pageNotCompeted = [];
+  // List<int> pageNotCompeted = [];
   int useAge = 25;
   int useWeight = 90;
   int useHeight = 167;

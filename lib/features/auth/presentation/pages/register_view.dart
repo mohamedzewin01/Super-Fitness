@@ -10,7 +10,7 @@ import '../../../../core/widgets/custom_dialog.dart';
 import 'login_view.dart';
 import '../../../../core/resources/assets_manager.dart';
 import '../view_model/view_model_register/register_cubit.dart';
-import '../widgets/custom_percent_indicator.dart';
+import '../../../../core/widgets/custom_percent_indicator.dart';
 import '../widgets/custom_register_pages_view_body.dart';
 
 class RegisterView extends StatefulWidget {
@@ -93,10 +93,8 @@ class _RegisterViewState extends State<RegisterView> {
                                     ? Container()
                                     : GestureDetector(
                                         onTap: () {
-                                          log('5555555555555555555555555555555');
                                           log(viewModel.currentIndicator
                                               .toString());
-                                          log('5555555555555555555555555555555');
                                           viewModel.pageController.previousPage(
                                               duration:
                                                   Duration(milliseconds: 1000),
@@ -106,14 +104,12 @@ class _RegisterViewState extends State<RegisterView> {
                                                 ChangeIndicatorIntent(
                                                     viewModel.currentIndicator -
                                                         1));
-                                            // changeIndicator(
-                                            //     viewModel.currentIndicator - 1);
+
                                           }
                                           if (viewModel.currentIndicator == 0) {
                                             viewModel
                                                 .doAction(ShowBackIntent(true));
-                                            // showBack(
-                                            //     isShowBack: true);
+
                                           }
                                         },
                                         child: Padding(
@@ -147,7 +143,7 @@ class _RegisterViewState extends State<RegisterView> {
                             // viewModel.currentIndicator == -1 ||
                             // viewModel.isShow,
                             child:
-                                CustomPercentIndicator(viewModel: viewModel)),
+                                CustomPercentIndicator(currentIndicator: viewModel.currentIndicator)),
                         CustomRegisterPagesView(viewModel: viewModel),
                       ],
                     );

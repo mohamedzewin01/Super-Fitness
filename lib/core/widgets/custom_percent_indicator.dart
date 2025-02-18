@@ -1,17 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 
-import '../../../../core/resources/color_manager.dart';
-import '../../../../core/resources/style_manager.dart';
-import '../view_model/view_model_register/register_cubit.dart';
+import '../resources/color_manager.dart';
+import '../resources/style_manager.dart';
+import '../../features/auth/presentation/view_model/view_model_register/register_cubit.dart';
 
 class CustomPercentIndicator extends StatelessWidget {
   const CustomPercentIndicator({
-    super.key,
-    required this.viewModel,
+    super.key, required this.currentIndicator,
+
   });
 
-  final RegisterCubit viewModel;
+
+  final int currentIndicator;
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +21,7 @@ class CustomPercentIndicator extends StatelessWidget {
     return TweenAnimationBuilder<double>(
       tween: Tween<double>(
         begin: 0.0,
-        end: viewModel.currentIndicator / totalSteps,
+        end: currentIndicator / totalSteps,
       ),
       duration: const Duration(milliseconds: 1000),
       curve: Curves.easeInOut,
@@ -32,7 +33,7 @@ class CustomPercentIndicator extends StatelessWidget {
           startAngle: 250,
           animation: false,
           center: Text(
-            "${viewModel.currentIndicator}/$totalSteps",
+            "$currentIndicator/$totalSteps",
             style: getBoldStyle(color: Colors.white, fontSize: 16),
           ),
           progressColor: ColorManager.orange,

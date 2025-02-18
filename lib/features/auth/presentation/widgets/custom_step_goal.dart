@@ -1,6 +1,5 @@
 import 'dart:developer';
 import 'package:flutter/material.dart';
-import '../../../../core/resources/color_manager.dart';
 import '../../../../core/widgets/custom_text_form_field.dart';
 import '../view_model/view_model_register/register_cubit.dart';
 
@@ -29,14 +28,12 @@ class CustomStepGoal extends StatelessWidget {
               controller: TextEditingController(),
               enabled: true,
               hintText: 'Gain Weight',
-              suffix: Radio<int>(
-                  value: 1,
-                  groupValue: viewModel.currentRadioGoal,
-                  fillColor: WidgetStateProperty.all(ColorManager.white),
-                  onChanged: (value) {
-                    viewModel.doAction(ChangeGoalIntent(value!, 'Gain Weight'));
-                    log('$value Gain Weight');
-                  }),
+              value: 1,
+              onChangeRadio:(value) {
+                viewModel.doAction(ChangeGoalIntent(value!, 'Gain Weight'));
+                log('$value Gain Weight');
+              } ,
+              groupValue:viewModel.currentRadioGoal ,
             ),
             CustomTextFormFieldRegister(
               onTap: () {
@@ -45,14 +42,13 @@ class CustomStepGoal extends StatelessWidget {
               controller: TextEditingController(),
               enabled: true,
               hintText: 'Lose Weight',
-              suffix: Radio<int>(
-                  value: 2,
-                  groupValue: viewModel.currentRadioGoal,
-                  fillColor: WidgetStateProperty.all(ColorManager.white),
-                  onChanged: (value) {
-                    viewModel.doAction(ChangeGoalIntent(value!, 'Gain Weight'));
-                    log('$value Gain Weight');
-                  }),
+              onChangeRadio: (value) {
+                viewModel.doAction(ChangeGoalIntent(value!, 'Gain Weight'));
+                log('$value Gain Weight');
+              } ,
+              value:2 ,
+              groupValue:viewModel.currentRadioGoal ,
+
             ),
             CustomTextFormFieldRegister(
               onTap: () {
@@ -61,14 +57,12 @@ class CustomStepGoal extends StatelessWidget {
               controller: TextEditingController(),
               enabled: true,
               hintText: 'Get Fitter',
-              suffix: Radio(
-                  value: 3,
-                  groupValue: viewModel.currentRadioGoal,
-                  fillColor: WidgetStateProperty.all(ColorManager.white),
-                  onChanged: (value) {
-                    viewModel.doAction(ChangeGoalIntent(value!, 'Get Fitter'));
-                    log('$value Get Fitter');
-                  }),
+              groupValue:viewModel.currentRadioGoal ,
+              value: 3,
+              onChangeRadio: (value) {
+                viewModel.doAction(ChangeGoalIntent(value!, 'Get Fitter'));
+                log('$value Get Fitter');
+              },
             ),
             CustomTextFormFieldRegister(
               onTap: () {
@@ -77,14 +71,13 @@ class CustomStepGoal extends StatelessWidget {
               controller: TextEditingController(),
               enabled: true,
               hintText: 'Gain More Flexible',
-              suffix: Radio(
-                  value: 4,
-                  groupValue: viewModel.currentRadioGoal,
-                  fillColor: WidgetStateProperty.all(ColorManager.white),
-                  onChanged: (value) {
-                    viewModel.doAction(ChangeGoalIntent(value!, 'Gain More Flexible'));
-                    log('$value Gain More Flexible');
-                  }),
+              onChangeRadio: (value) {
+                viewModel.doAction(ChangeGoalIntent(value!, 'Gain More Flexible'));
+                log('$value Gain More Flexible');
+              },
+              value:4 ,
+              groupValue: viewModel.currentRadioGoal,
+
             ),
             CustomTextFormFieldRegister(
               onTap: () {
@@ -93,14 +86,12 @@ class CustomStepGoal extends StatelessWidget {
               controller: TextEditingController(),
               enabled: true,
               hintText: 'Learn The Basic',
-              suffix: Radio(
-                  value: 5,
-                  groupValue: viewModel.currentRadioGoal,
-                  fillColor: WidgetStateProperty.all(ColorManager.white),
-                  onChanged: (value) {
-                    viewModel.doAction(ChangeGoalIntent(value!, 'Learn The Basic'));
-                    log('$value Learn The Basic');
-                  }),
+              groupValue:  viewModel.currentRadioGoal,
+              value: 5,
+              onChangeRadio:(value) {
+                viewModel.doAction(ChangeGoalIntent(value!, 'Learn The Basic'));
+                log('$value Learn The Basic');
+              } ,
             ),
           ],
         ),

@@ -3,8 +3,8 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:wheel_slider/wheel_slider.dart';
 
-import '../../../../core/resources/color_manager.dart';
-import '../../../../core/resources/style_manager.dart';
+import '../resources/color_manager.dart';
+import '../resources/style_manager.dart';
 
 class CustomCarouseSlider extends StatelessWidget {
   const CustomCarouseSlider(
