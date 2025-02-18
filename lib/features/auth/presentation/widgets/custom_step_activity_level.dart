@@ -17,82 +17,99 @@ class CustomActivityLevel extends StatelessWidget {
         child: SingleChildScrollView(
           child: Column(
             spacing: 16,
-            children: [
-              CustomTextFormFieldRegister(
+            children: List.generate(
+              5,
+              (index) => CustomTextFormFieldRegister(
                 onTap: () {
-                  viewModel.doAction(ChangeActivityLevelIntent(1));
+                  viewModel.doAction(ChangeActivityLevelIntent(index + 1));
                   log(viewModel.currentRadioActivityLevel.toString());
                 },
                 enabled: true,
-                hintText: 'Rookie',
-                value: 1,
+                hintText: activityLevel[index],
+                value: index + 1,
                 onChangeRadio: (value) {
                   viewModel.doAction(ChangeActivityLevelIntent(value!));
-
+                  log('${activityLevel[index]} $value');
                 },
                 groupValue: viewModel.currentRadioActivityLevel,
               ),
-              CustomTextFormFieldRegister(
-                value: 2,
-                groupValue: viewModel.currentRadioActivityLevel,
-                onChangeRadio: (value) {
-                  viewModel.doAction(ChangeActivityLevelIntent(value!));
-                },
-                onTap: () {
-                  viewModel.doAction(ChangeActivityLevelIntent(2));
-                  log(viewModel.currentRadioActivityLevel.toString());
-                },
-                controller: TextEditingController(),
-                enabled: true,
-                hintText: 'Beginner',
-
-              ),
-              CustomTextFormFieldRegister(
-                onTap: () {
-                  viewModel.doAction(ChangeActivityLevelIntent(3));
-                  log(viewModel.currentRadioActivityLevel.toString());
-                },
-                enabled: true,
-                hintText: 'Intermediate',
-                groupValue: viewModel.currentRadioActivityLevel ,
-                onChangeRadio:(value) {
-                  viewModel.doAction(ChangeActivityLevelIntent(value!));
-
-                } ,
-                value:3 ,
-
-              ),
-              CustomTextFormFieldRegister(
-                onTap: () {
-                  viewModel.doAction(ChangeActivityLevelIntent(4));
-                  log(viewModel.currentRadioActivityLevel.toString());
-                },
-                controller: TextEditingController(),
-                enabled: true,
-                hintText: 'Advance',
-                value:4 ,
-                onChangeRadio:(value) {
-                  viewModel.doAction(ChangeActivityLevelIntent(value!));
-
-                } ,
-                groupValue: viewModel.currentRadioActivityLevel,
-
-              ),
-              CustomTextFormFieldRegister(
-                onTap: () {
-                  viewModel.doAction(ChangeActivityLevelIntent(5));
-                  log(viewModel.currentRadioActivityLevel.toString());
-                },
-                enabled: true,
-                hintText: 'True Beast',
-                groupValue:viewModel.currentRadioActivityLevel ,
-                onChangeRadio: (value) {
-                  viewModel.doAction(ChangeActivityLevelIntent(value!));
-                },
-                value: 5,
-
-              ),
-            ],
+            ),
+            // children: [
+            //   CustomTextFormFieldRegister(
+            //     onTap: () {
+            //       viewModel.doAction(ChangeActivityLevelIntent(1));
+            //       log(viewModel.currentRadioActivityLevel.toString());
+            //     },
+            //     enabled: true,
+            //     hintText: 'Rookie',
+            //     value: 1,
+            //     onChangeRadio: (value) {
+            //       viewModel.doAction(ChangeActivityLevelIntent(value!));
+            //
+            //     },
+            //     groupValue: viewModel.currentRadioActivityLevel,
+            //   ),
+            //   CustomTextFormFieldRegister(
+            //     value: 2,
+            //     groupValue: viewModel.currentRadioActivityLevel,
+            //     onChangeRadio: (value) {
+            //       viewModel.doAction(ChangeActivityLevelIntent(value!));
+            //     },
+            //     onTap: () {
+            //       viewModel.doAction(ChangeActivityLevelIntent(2));
+            //       log(viewModel.currentRadioActivityLevel.toString());
+            //     },
+            //     controller: TextEditingController(),
+            //     enabled: true,
+            //     hintText: 'Beginner',
+            //
+            //   ),
+            //   CustomTextFormFieldRegister(
+            //     onTap: () {
+            //       viewModel.doAction(ChangeActivityLevelIntent(3));
+            //       log(viewModel.currentRadioActivityLevel.toString());
+            //     },
+            //     enabled: true,
+            //     hintText: 'Intermediate',
+            //     groupValue: viewModel.currentRadioActivityLevel ,
+            //     onChangeRadio:(value) {
+            //       viewModel.doAction(ChangeActivityLevelIntent(value!));
+            //
+            //     } ,
+            //     value:3 ,
+            //
+            //   ),
+            //   CustomTextFormFieldRegister(
+            //     onTap: () {
+            //       viewModel.doAction(ChangeActivityLevelIntent(4));
+            //       log(viewModel.currentRadioActivityLevel.toString());
+            //     },
+            //     controller: TextEditingController(),
+            //     enabled: true,
+            //     hintText: 'Advance',
+            //     value:4 ,
+            //     onChangeRadio:(value) {
+            //       viewModel.doAction(ChangeActivityLevelIntent(value!));
+            //
+            //     } ,
+            //     groupValue: viewModel.currentRadioActivityLevel,
+            //
+            //   ),
+            //   CustomTextFormFieldRegister(
+            //     onTap: () {
+            //       viewModel.doAction(ChangeActivityLevelIntent(5));
+            //       log(viewModel.currentRadioActivityLevel.toString());
+            //     },
+            //     enabled: true,
+            //     hintText: 'True Beast',
+            //     groupValue:viewModel.currentRadioActivityLevel ,
+            //     onChangeRadio: (value) {
+            //       viewModel.doAction(ChangeActivityLevelIntent(value!));
+            //     },
+            //     value: 5,
+            //
+            //   ),
+            // ],
           ),
         ),
       ),
@@ -100,3 +117,10 @@ class CustomActivityLevel extends StatelessWidget {
   }
 }
 
+List<String> activityLevel = [
+  'Rookie',
+  'Beginner',
+  'Intermediate',
+  'Advance',
+  'True Beast'
+];

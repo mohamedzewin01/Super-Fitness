@@ -20,82 +20,98 @@ class CustomStepGoal extends StatelessWidget {
               mainAxisExtent: 45,
               mainAxisSpacing: 16,
               crossAxisSpacing: 16),
-          children: [
+          children: List.generate(5, (index) =>
             CustomTextFormFieldRegister(
-              onTap: () {
-                viewModel.doAction(ChangeGoalIntent(1, 'Gain Weight'));
-              },
-              controller: TextEditingController(),
-              enabled: true,
-              hintText: 'Gain Weight',
-              value: 1,
-              onChangeRadio:(value) {
-                viewModel.doAction(ChangeGoalIntent(value!, 'Gain Weight'));
-                log('$value Gain Weight');
-              } ,
-              groupValue:viewModel.currentRadioGoal ,
-            ),
-            CustomTextFormFieldRegister(
-              onTap: () {
-                viewModel.doAction(ChangeGoalIntent(2, 'Lose Weight'));
-              },
-              controller: TextEditingController(),
-              enabled: true,
-              hintText: 'Lose Weight',
-              onChangeRadio: (value) {
-                viewModel.doAction(ChangeGoalIntent(value!, 'Gain Weight'));
-                log('$value Gain Weight');
-              } ,
-              value:2 ,
-              groupValue:viewModel.currentRadioGoal ,
-
-            ),
-            CustomTextFormFieldRegister(
-              onTap: () {
-                viewModel.doAction(ChangeGoalIntent(3, 'Get Fitter'));
-              },
-              controller: TextEditingController(),
-              enabled: true,
-              hintText: 'Get Fitter',
-              groupValue:viewModel.currentRadioGoal ,
-              value: 3,
-              onChangeRadio: (value) {
-                viewModel.doAction(ChangeGoalIntent(value!, 'Get Fitter'));
-                log('$value Get Fitter');
-              },
-            ),
-            CustomTextFormFieldRegister(
-              onTap: () {
-                viewModel.doAction(ChangeGoalIntent(4, 'Gain More Flexible'));
-              },
-              controller: TextEditingController(),
-              enabled: true,
-              hintText: 'Gain More Flexible',
-              onChangeRadio: (value) {
-                viewModel.doAction(ChangeGoalIntent(value!, 'Gain More Flexible'));
-                log('$value Gain More Flexible');
-              },
-              value:4 ,
-              groupValue: viewModel.currentRadioGoal,
-
-            ),
-            CustomTextFormFieldRegister(
-              onTap: () {
-                viewModel.doAction(ChangeGoalIntent(5, 'Learn The Basic'));
-              },
-              controller: TextEditingController(),
-              enabled: true,
-              hintText: 'Learn The Basic',
-              groupValue:  viewModel.currentRadioGoal,
-              value: 5,
-              onChangeRadio:(value) {
-                viewModel.doAction(ChangeGoalIntent(value!, 'Learn The Basic'));
-                log('$value Learn The Basic');
-              } ,
-            ),
-          ],
+        onTap: () {
+          viewModel.doAction(ChangeGoalIntent(index+1,goal[index]));
+        },
+        controller: TextEditingController(),
+        enabled: true,
+        hintText:goal[index],
+        value: index+1,
+        onChangeRadio:(value) {
+          viewModel.doAction(ChangeGoalIntent(value!,goal[index]));
+          log('$value ${goal[index]}');
+        } ,
+        groupValue:viewModel.currentRadioGoal ,
+      ),),
+          // children: [
+          //   CustomTextFormFieldRegister(
+          //     onTap: () {
+          //       viewModel.doAction(ChangeGoalIntent(1, 'Gain Weight'));
+          //     },
+          //     controller: TextEditingController(),
+          //     enabled: true,
+          //     hintText: 'Gain Weight',
+          //     value: 1,
+          //     onChangeRadio:(value) {
+          //       viewModel.doAction(ChangeGoalIntent(value!, 'Gain Weight'));
+          //       log('$value Gain Weight');
+          //     } ,
+          //     groupValue:viewModel.currentRadioGoal ,
+          //   ),
+          //   CustomTextFormFieldRegister(
+          //     onTap: () {
+          //       viewModel.doAction(ChangeGoalIntent(2, 'Lose Weight'));
+          //     },
+          //     controller: TextEditingController(),
+          //     enabled: true,
+          //     hintText: 'Lose Weight',
+          //     onChangeRadio: (value) {
+          //       viewModel.doAction(ChangeGoalIntent(value!, 'Gain Weight'));
+          //       log('$value Gain Weight');
+          //     } ,
+          //     value:2 ,
+          //     groupValue:viewModel.currentRadioGoal ,
+          //
+          //   ),
+          //   CustomTextFormFieldRegister(
+          //     onTap: () {
+          //       viewModel.doAction(ChangeGoalIntent(3, 'Get Fitter'));
+          //     },
+          //     controller: TextEditingController(),
+          //     enabled: true,
+          //     hintText: 'Get Fitter',
+          //     groupValue:viewModel.currentRadioGoal ,
+          //     value: 3,
+          //     onChangeRadio: (value) {
+          //       viewModel.doAction(ChangeGoalIntent(value!, 'Get Fitter'));
+          //       log('$value Get Fitter');
+          //     },
+          //   ),
+          //   CustomTextFormFieldRegister(
+          //     onTap: () {
+          //       viewModel.doAction(ChangeGoalIntent(4, 'Gain More Flexible'));
+          //     },
+          //     controller: TextEditingController(),
+          //     enabled: true,
+          //     hintText: 'Gain More Flexible',
+          //     onChangeRadio: (value) {
+          //       viewModel.doAction(ChangeGoalIntent(value!, 'Gain More Flexible'));
+          //       log('$value Gain More Flexible');
+          //     },
+          //     value:4 ,
+          //     groupValue: viewModel.currentRadioGoal,
+          //
+          //   ),
+          //   CustomTextFormFieldRegister(
+          //     onTap: () {
+          //       viewModel.doAction(ChangeGoalIntent(5, 'Learn The Basic'));
+          //     },
+          //     controller: TextEditingController(),
+          //     enabled: true,
+          //     hintText: 'Learn The Basic',
+          //     groupValue:  viewModel.currentRadioGoal,
+          //     value: 5,
+          //     onChangeRadio:(value) {
+          //       viewModel.doAction(ChangeGoalIntent(value!, 'Learn The Basic'));
+          //       log('$value Learn The Basic');
+          //     } ,
+          //   ),
+          // ],
         ),
       ),
     );
   }
 }
+ List<String> goal = ['Gain Weight', 'Lose Weight', 'Get Fitter', 'Gain More Flexible', 'Learn The Basic'];

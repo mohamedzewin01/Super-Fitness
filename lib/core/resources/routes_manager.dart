@@ -2,12 +2,10 @@ import 'package:flutter/material.dart';
 import '../../features/auth/presentation/pages/email_verification_view.dart';
 import '../../features/auth/presentation/pages/forget_password.dart';
 import '../../features/auth/presentation/pages/reset_password_view.dart';
-
 import '../../features/auth/presentation/pages/login_view.dart';
 import '../../features/auth/presentation/pages/register_view.dart';
 import '../../features/edit_profile/presentation/pages/edite_profile_view.dart';
 import '../../features/layout/presentation/pages/layout_view.dart';
-
 import '../../onBoarding/presentation/screens/on_boarding.dart';
 
 class RoutesManager {
