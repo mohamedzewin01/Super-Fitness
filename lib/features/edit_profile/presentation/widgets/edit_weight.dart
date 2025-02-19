@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 
 import 'package:super_fitness/core/resources/app_constants.dart';
+import 'package:super_fitness/core/widgets/custom_app_bar.dart';
 import 'package:super_fitness/core/widgets/custom_carouse_slider.dart';
 import 'package:super_fitness/core/widgets/custom_register_step.dart';
 import 'package:super_fitness/features/edit_profile/presentation/widgets/custom_backgroung.dart';
@@ -10,15 +11,15 @@ import 'package:super_fitness/features/edit_profile/presentation/widgets/custom_
 import '../../../../core/resources/assets_manager.dart';
 import '../manager/edit_profile_cubit.dart';
 
-class EditeAgeView extends StatefulWidget {
-  const EditeAgeView({super.key, required this.viewModel});
+class EditeWeightView extends StatefulWidget {
+  const EditeWeightView({super.key, required this.viewModel});
   final EditProfileCubit viewModel;
 
   @override
-  State<EditeAgeView> createState() => _EditeAgeViewState();
+  State<EditeWeightView> createState() => _EditeWeightViewState();
 }
 
-class _EditeAgeViewState extends State<EditeAgeView> {
+class _EditeWeightViewState extends State<EditeWeightView> {
   @override
   Widget build(BuildContext context) {
     return CustomBackground(
@@ -26,15 +27,9 @@ class _EditeAgeViewState extends State<EditeAgeView> {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            Padding(
-              padding: const EdgeInsets.all(46.0),
-              child: Image.asset(
-                AssetsManager.logo,
-                fit: BoxFit.cover,
-                width: 70,
-                height: 48,
-              ),
-            ),
+
+
+            CustomAppBar(isLogo: true,onTap: () => Navigator.pop(context),),
             SizedBox(
               height: 102,
             ),

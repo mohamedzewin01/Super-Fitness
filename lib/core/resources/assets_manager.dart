@@ -17,4 +17,6 @@ class AssetsManager {
   static String onBoardingImage3 = "assets/images/iamgepage3.png";
   static String backgroundEditProfile = "assets/images/backgroundEditProfile.png";
   static String backgroundEditProfile1 = "assets/images/backgroundEditProfile1.png";
+  static String editImage = "assets/images/edit_image.svg";
+  static String userImageDefault = "assets/images/user_image_default.png";
 }

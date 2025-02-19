@@ -13,7 +13,8 @@ class AppConstants {
   static const String iconLock = "assets/images/locked.svg";
   static const String iconEye = "assets/images/eye.svg";
   static const String loading = "Loading...";
-
+  static const String imageNetwork =
+      "https://thumbs.dreamstime.com/b/letter-w-vm-logo-icon-design-template-element-like-lightning-vector-illustration-128839214.jpg";
   static final List<int> ageList = List.generate(90, (index) => index);
   static final List<int> weightList = List.generate(300, (index) => index);
   static final List<int> heightList = List.generate(300, (index) => index);

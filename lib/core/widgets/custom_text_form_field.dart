@@ -115,7 +115,7 @@ class CustomTextFormFieldRegister extends StatelessWidget {
     this.prefixIcon,
     this.initialValue,
     this.onChanged,
-    this.onTap, required this.onChangeRadio, required this.groupValue, required this.value,
+    this.onTap, this.onChangeRadio, this.groupValue, this.value, this.suffix,
   });
 
   final TextEditingController? controller;
@@ -130,9 +130,10 @@ class CustomTextFormFieldRegister extends StatelessWidget {
   final TextInputType? keyboardType;
   final void Function(String)? onChanged;
   final void Function()? onTap;
-  final void Function(int?) onChangeRadio;
-  final int groupValue;
-  final int value;
+  final void Function(int?)? onChangeRadio;
+  final int? groupValue;
+  final int? value;
+  final Widget? suffix;
 
   @override
   Widget build(BuildContext context) {
@@ -151,18 +152,18 @@ class CustomTextFormFieldRegister extends StatelessWidget {
           fillColor: ColorManager.placeHolderColor.withAlpha(100),
           filled: true,
           prefixIconColor: ColorManager.white,
-          suffixIcon:Row(
+          suffixIcon:suffix != null?Row(
             mainAxisSize: MainAxisSize.min,
             children: [
               Radio(
-                value: value,
+                value: value!,
                 groupValue: groupValue,
                 fillColor: WidgetStateProperty.all(ColorManager.white),
                 onChanged:onChangeRadio,
 
               ),
             ],
-          ),
+          ):null,
           suffixIconColor: ColorManager.placeHolderColor,
           labelText: labelText,
           labelStyle: getRegularStyle(

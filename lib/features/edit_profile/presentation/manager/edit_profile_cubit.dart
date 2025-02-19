@@ -1,7 +1,9 @@
 import 'dart:developer';
+import 'dart:io';
 
 import 'package:bloc/bloc.dart';
 import 'package:carousel_slider/carousel_controller.dart';
+import 'package:flutter/material.dart';
 import 'package:meta/meta.dart';
 
 part 'edite_profile_state.dart';
@@ -21,9 +23,14 @@ class EditProfileCubit extends Cubit<EditProfileState> {
   int totalSteps = 6;
   String currentGoal = '';
   int currentRadioActivityLevel = 0;
+  File? logeImageFile;
   final CarouselSliderController? controllerAge = CarouselSliderController();
   final CarouselSliderController? controllerWeight = CarouselSliderController();
   final CarouselSliderController? controllerHeight = CarouselSliderController();
+
+  TextEditingController firstNameController = TextEditingController(text: 'mohammed');
+  TextEditingController lastNameController = TextEditingController(text: 'zewin');
+  TextEditingController emailController = TextEditingController(text: 'V7Kt9@example.com');
 
   void doAction(EditProfileScreenIntent intent) {
     switch (intent) {
@@ -41,10 +48,15 @@ class EditProfileCubit extends Cubit<EditProfileState> {
         _changeGoal(intent.goal, intent.goalName);
       case ChangeActivityLevelIntent():
         changeActivityLevel(intent.activityLevel);
+      case ChangeUserImageIntent():
+        _changeImage(intent.imageFile);
     }
   }
 
-
+void _changeImage(File image) {
+  logeImageFile = image;
+  emit(ImageChange());
+}
   void _changeAge(int age) {
     useAge = age;
     emit(AgeChange());

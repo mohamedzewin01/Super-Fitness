@@ -2,7 +2,7 @@ import 'dart:developer';
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_svg/svg.dart';
+import 'package:super_fitness/core/widgets/custom_app_bar.dart';
 import '../../../../core/di/di.dart';
 import '../../../../core/resources/color_manager.dart';
 import '../../../../core/utils/utilss.dart';
@@ -31,8 +31,8 @@ class _RegisterViewState extends State<RegisterView> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => viewModel,
+    return BlocProvider.value(
+      value: viewModel,
       child: SafeArea(
         child: GestureDetector(
           onTap: () {
@@ -66,9 +66,10 @@ class _RegisterViewState extends State<RegisterView> {
                         builder: (context) => AlertDialog(
                           backgroundColor: Colors.transparent,
                           content: Center(
-                              child: CircularProgressIndicator(
-                            color: ColorManager.orange,
-                          )),
+                            child: CircularProgressIndicator(
+                              color: ColorManager.orange,
+                            ),
+                          ),
                         ),
                       );
                     }
@@ -82,68 +83,20 @@ class _RegisterViewState extends State<RegisterView> {
                     return Column(
                       spacing: 16,
                       children: [
-                        Padding(
-                          padding: const EdgeInsets.only(top: 25, bottom: 16),
-                          child: Align(
-                            alignment: Alignment.center,
-                            child: Stack(
-                              children: [
-                                viewModel.isShow ||
-                                        viewModel.currentIndicator == -1
-                                    ? Container()
-                                    : GestureDetector(
-                                        onTap: () {
-                                          log(viewModel.currentIndicator
-                                              .toString());
-                                          viewModel.pageController.previousPage(
-                                              duration:
-                                                  Duration(milliseconds: 1000),
-                                              curve: Curves.easeIn);
-                                          if (viewModel.currentIndicator > 0) {
-                                            viewModel.doAction(
-                                                ChangeIndicatorIntent(
-                                                    viewModel.currentIndicator -
-                                                        1));
-
-                                          }
-                                          if (viewModel.currentIndicator == 0) {
-                                            viewModel
-                                                .doAction(ShowBackIntent(true));
-
-                                          }
-                                        },
-                                        child: Padding(
-                                          padding: const EdgeInsets.all(8.0),
-                                          child: SvgPicture.asset(
-                                            AssetsManager.back,
-                                            fit: BoxFit.cover,
-                                            width: 24,
-                                            height: 24,
-                                          ),
-                                        ),
-                                      ),
-                                Align(
-                                  alignment: Alignment.center,
-                                  child: Image.asset(
-                                    AssetsManager.logo,
-                                    fit: BoxFit.cover,
-                                    width: 70,
-                                    height: 48,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
+                        viewModel.isShow ||
+                                viewModel.currentIndicator == -1
+                            ? SizedBox()
+                            : CustomAppBar(
+                                isLogo: true,
+                                onTap: _onTap,
+                              ),
                         SizedBox(
                           height: 4,
                         ),
                         Visibility(
                             visible: viewModel.currentIndicator != 0,
-                            // viewModel.currentIndicator == -1 ||
-                            // viewModel.isShow,
-                            child:
-                                CustomPercentIndicator(currentIndicator: viewModel.currentIndicator)),
+                            child: CustomPercentIndicator(
+                                currentIndicator: viewModel.currentIndicator)),
                         CustomRegisterPagesView(viewModel: viewModel),
                       ],
                     );
@@ -155,5 +108,18 @@ class _RegisterViewState extends State<RegisterView> {
         ),
       ),
     );
+  }
+
+  void Function()? _onTap() {
+    log(viewModel.currentIndicator.toString());
+    viewModel.pageController.previousPage(
+        duration: Duration(milliseconds: 500), curve: Curves.easeIn);
+    if (viewModel.currentIndicator > 0) {
+      viewModel.doAction(ChangeIndicatorIntent(viewModel.currentIndicator - 1));
+    }
+    if (viewModel.currentIndicator == 0) {
+      viewModel.doAction(ShowBackIntent(true));
+    }
+    return null;
   }
 }

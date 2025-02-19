@@ -9,6 +9,7 @@ final class WeightChange extends EditProfileState {}
 final class HeightChange extends EditProfileState {}
 final class GoalChange extends EditProfileState {}
 final class ActivityLevelChange extends EditProfileState {}
+final class ImageChange extends EditProfileState {}
 
 
 
@@ -40,4 +41,9 @@ class ChangeGoalIntent extends EditProfileScreenIntent {
 class ChangeActivityLevelIntent extends EditProfileScreenIntent {
   final int activityLevel;
   ChangeActivityLevelIntent(this.activityLevel);
+}
+
+class ChangeUserImageIntent extends EditProfileScreenIntent {
+  final File imageFile;
+  ChangeUserImageIntent(this.imageFile);
 }

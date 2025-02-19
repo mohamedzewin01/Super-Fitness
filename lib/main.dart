@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:super_fitness/features/edit_profile/presentation/pages/edite_profile_view.dart';
-import 'package:super_fitness/features/edit_profile/presentation/widgets/edit_age.dart';
+import 'package:super_fitness/features/edit_profile/presentation/widgets/edit_weight.dart';
 
 import 'core/di/di.dart';
 import 'core/resources/routes_manager.dart';
@@ -47,7 +47,7 @@ class SuperFitness extends StatelessWidget {
             debugShowCheckedModeBanner: false,
             onGenerateRoute: RouteGenerator.getRoute,
             initialRoute: RoutesManager.onBoarding,
-             // home: EditeProfileView(),
+             home: EditeProfileView(),
           );
         },
       ),
