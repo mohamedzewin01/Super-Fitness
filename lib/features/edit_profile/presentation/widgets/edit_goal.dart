@@ -1,6 +1,8 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:super_fitness/core/resources/app_constants.dart';
 import 'package:super_fitness/core/widgets/custom_text_form_field.dart';
 import 'package:super_fitness/features/edit_profile/presentation/manager/edit_profile_cubit.dart';
 import 'package:super_fitness/features/edit_profile/presentation/widgets/custom_backgroung.dart';
@@ -29,6 +31,23 @@ class _EditGoalViewState extends State<EditGoalView> {
           padding: const EdgeInsets.all(22),
           child: Column(
             children: [
+              Align(
+                alignment: Alignment.topLeft,
+                child: GestureDetector(
+                  onTap: (){
+                    Navigator.pop(context)  ;
+                  },
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: SvgPicture.asset(
+                      AssetsManager.back,
+                      fit: BoxFit.cover,
+                      width: 24,
+                      height: 24,
+                    ),
+                  ),
+                ),
+              ),
               Padding(
                 padding: const EdgeInsets.all(46.0),
                 child: Image.asset(
@@ -52,11 +71,11 @@ class _EditGoalViewState extends State<EditGoalView> {
                       widget.viewModel.changeActivityLevel(index!);
                     },
                     enabled: true,
-                    hintText: activityLevel[index],
+                    hintText: AppConstants.goal[index],
                     onTap: () {
                       setState(() {});
                       widget.viewModel.changeActivityLevel(index);
-                      log(activityLevel[widget.viewModel.currentRadioActivityLevel]);
+                      log( AppConstants.goal[widget.viewModel.currentRadioActivityLevel]);
                     },
                   ),
                 ),
@@ -70,7 +89,9 @@ class _EditGoalViewState extends State<EditGoalView> {
                       child: CustomElevatedButton(
                           buttonColor: ColorManager.orange,
                           title: 'Done',
-                          onPressed: () {}),
+                          onPressed: () {
+                            Navigator.pop(context);
+                          },),
                     ),
                   ),
                 ],
@@ -83,10 +104,3 @@ class _EditGoalViewState extends State<EditGoalView> {
   }
 }
 
-List<String> activityLevel = [
-  'Rookie',
-  'Beginner',
-  'Intermediate',
-  'Advance',
-  'True Beast'
-];

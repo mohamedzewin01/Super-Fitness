@@ -35,17 +35,18 @@ class EditProfileCubit extends Cubit<EditProfileState> {
   void doAction(EditProfileScreenIntent intent) {
     switch (intent) {
 
+
       case EditProfileIntent():
         // TODO: Handle this case.
         throw UnimplementedError();
       case ChangeAgeIntent():
         _changeAge(intent.age);
       case ChangeWeightIntent():
-        _changeWeight(intent.weight);
+        changeWeight(intent.weight);
       case ChangeHeightIntent():
         _changeHeight(intent.height);
       case ChangeGoalIntent():
-        _changeGoal(intent.goal, intent.goalName);
+        changeGoal(intent.goal, intent.goalName);
       case ChangeActivityLevelIntent():
         changeActivityLevel(intent.activityLevel);
       case ChangeUserImageIntent():
@@ -61,7 +62,7 @@ void _changeImage(File image) {
     useAge = age;
     emit(AgeChange());
   }
-  void _changeWeight(int weight) {
+  void changeWeight(int weight) {
     useWeight = weight;
     emit(WeightChange());
   }
@@ -69,7 +70,7 @@ void _changeImage(File image) {
     useHeight = height;
     emit(HeightChange());
   }
-  void _changeGoal(int goal, String goalName) {
+  void changeGoal(int goal, String goalName) {
     currentRadioGoal = goal;
     currentGoal = goalName;
     log('currentGoal $currentRadioGoal');
@@ -79,4 +80,40 @@ void _changeImage(File image) {
     currentRadioActivityLevel = activityLevel;
     emit(ActivityLevelChange());
   }
+}
+
+
+sealed class EditProfileScreenIntent {}
+
+class EditProfileIntent extends EditProfileScreenIntent {}
+
+class ChangeAgeIntent extends EditProfileScreenIntent {
+  final int age;
+  ChangeAgeIntent(this.age);
+}
+
+class ChangeWeightIntent extends EditProfileScreenIntent {
+  final int weight;
+  ChangeWeightIntent(this.weight);
+}
+
+class ChangeHeightIntent extends EditProfileScreenIntent {
+  final int height;
+  ChangeHeightIntent(this.height);
+}
+
+class ChangeGoalIntent extends EditProfileScreenIntent {
+  final int goal;
+  final String goalName;
+  ChangeGoalIntent(this.goal, this.goalName);
+}
+
+class ChangeActivityLevelIntent extends EditProfileScreenIntent {
+  final int activityLevel;
+  ChangeActivityLevelIntent(this.activityLevel);
+}
+
+class ChangeUserImageIntent extends EditProfileScreenIntent {
+  final File imageFile;
+  ChangeUserImageIntent(this.imageFile);
 }

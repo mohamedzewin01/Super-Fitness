@@ -152,18 +152,13 @@ class CustomTextFormFieldRegister extends StatelessWidget {
           fillColor: ColorManager.placeHolderColor.withAlpha(100),
           filled: true,
           prefixIconColor: ColorManager.white,
-          suffixIcon:suffix != null?Row(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Radio(
-                value: value!,
-                groupValue: groupValue,
-                fillColor: WidgetStateProperty.all(ColorManager.white),
-                onChanged:onChangeRadio,
+          suffixIcon:Radio(
+            value: value!,
+            groupValue: groupValue,
+            fillColor: WidgetStateProperty.all(ColorManager.white),
+            onChanged:onChangeRadio,
 
-              ),
-            ],
-          ):null,
+          ),
           suffixIconColor: ColorManager.placeHolderColor,
           labelText: labelText,
           labelStyle: getRegularStyle(

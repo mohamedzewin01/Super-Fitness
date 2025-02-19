@@ -41,30 +41,33 @@ class ChangeUserImage extends StatelessWidget {
         alignment: Alignment.center,
         children: [
           Container(
+            padding: EdgeInsets.all(0),
+            clipBehavior: Clip.antiAlias,
+            height: 103,
+            width: 103,
             decoration: BoxDecoration(
-              border: Border.all(color: ColorManager.orange, width: .5),
-              borderRadius: BorderRadius.circular(50),
+              shape: BoxShape.circle,
+                color: ColorManager.primary,
+              boxShadow: [
+                BoxShadow(
+                  color: ColorManager.orange.withAlpha(65),
+                  blurRadius: 10,
+                  spreadRadius: 3,
+                  offset: Offset(0, 0),
+                ),
+              ]
             ),
-            child: Container(
-              padding: EdgeInsets.all(0),
-              clipBehavior: Clip.antiAlias,
-              height: 103,
-              width: 103,
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-              ),
-              child: viewModel.logeImageFile != null
-                  ? Image.file(
-                      viewModel.logeImageFile!,
-                      fit: BoxFit.cover,
-                      width: double.infinity,
-                    )
-                  : Image.asset(
-                      AssetsManager.userImageDefault,
-                      fit: BoxFit.fill,
-                      width: double.infinity,
-                    ),
-            ),
+            child: viewModel.logeImageFile != null
+                ? Image.file(
+                    viewModel.logeImageFile!,
+                    fit: BoxFit.cover,
+                    width: double.infinity,
+                  )
+                : Image.asset(
+                    AssetsManager.userImageDefault,
+                    fit: BoxFit.fill,
+                    width: double.infinity,
+                  ),
           ),
           Container(
             padding: EdgeInsets.all(5),

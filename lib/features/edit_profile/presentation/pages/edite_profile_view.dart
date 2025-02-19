@@ -65,7 +65,7 @@ class _EditeProfileViewState extends State<EditeProfileView> {
                         ChangeUserImage(viewModel: viewModel),
                         Center(
                           child: Text(
-                            'Mohammed zewin',
+                            '${viewModel.firstNameController.text} ${viewModel.lastNameController.text}',
                             style: getBoldStyle(
                                 color: ColorManager.white, fontSize: 20),
                           ),
@@ -89,7 +89,7 @@ class _EditeProfileViewState extends State<EditeProfileView> {
                               ),
                             ),
                             CustomTextFormField(
-                              controller: viewModel.firstNameController,
+                              controller: viewModel.lastNameController,
                               prefixIcon: SizedBox(
                                 height: 20,
                                 width: 20,
@@ -101,7 +101,7 @@ class _EditeProfileViewState extends State<EditeProfileView> {
                               ),
                             ),
                             CustomTextFormField(
-                              controller: viewModel.firstNameController,
+                              controller: viewModel.emailController,
                               prefixIcon: SizedBox(
                                 height: 20,
                                 width: 20,
@@ -118,22 +118,8 @@ class _EditeProfileViewState extends State<EditeProfileView> {
                           height: 35,
                         ),
                         CustomFiled(
-                          text: "70 kg",
+                          text: "${viewModel.useWeight} kg",
                           title1: 'Your Weight',
-                          onTap: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) =>
-                                    EditGoalView(viewModel: viewModel),
-                              ),
-                            );
-                          },
-                        ),
-                        SizedBox(height: 16,),
-                        CustomFiled(
-                          text: "70 kg",
-                          title1: 'Your Goal',
                           onTap: () {
                             Navigator.push(
                               context,
@@ -144,9 +130,28 @@ class _EditeProfileViewState extends State<EditeProfileView> {
                             );
                           },
                         ),
-                        SizedBox(height: 16,),
+                        SizedBox(
+                          height: 16,
+                        ),
                         CustomFiled(
-                          text: "70 kg",title1:'Your activity level' ,
+                          text: "${AppConstants.goal[viewModel.currentRadioGoal ]} ",
+                          title1: 'Your Goal',
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) =>
+                                    EditGoalView(viewModel: viewModel),
+                              ),
+                            );
+                          },
+                        ),
+                        SizedBox(
+                          height: 16,
+                        ),
+                        CustomFiled(
+                          text: "${AppConstants.activityLevel[viewModel.currentRadioActivityLevel ]} ",
+                          title1: 'Your activity level',
                           onTap: () {
                             Navigator.push(
                               context,
@@ -157,7 +162,6 @@ class _EditeProfileViewState extends State<EditeProfileView> {
                             );
                           },
                         ),
-
                       ],
                     ),
                   ),
@@ -179,6 +183,7 @@ class CustomFiled extends StatelessWidget {
     this.onTap,
   });
 
+
   final String text;
   final String title1;
 
@@ -194,7 +199,6 @@ class CustomFiled extends StatelessWidget {
               '$title1 (',
               style: getBoldStyle(color: ColorManager.white, fontSize: 14),
             ),
-
             GestureDetector(
                 onTap: onTap,
                 child: Text(
@@ -207,7 +211,9 @@ class CustomFiled extends StatelessWidget {
             ),
           ],
         ),
-        SizedBox(height: 8,),
+        SizedBox(
+          height: 8,
+        ),
         Container(
           height: 40,
           padding: EdgeInsets.symmetric(

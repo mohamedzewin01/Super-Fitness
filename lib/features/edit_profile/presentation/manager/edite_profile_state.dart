@@ -12,38 +12,3 @@ final class ActivityLevelChange extends EditProfileState {}
 final class ImageChange extends EditProfileState {}
 
 
-
-sealed class EditProfileScreenIntent {}
-
-class EditProfileIntent extends EditProfileScreenIntent {}
-
-class ChangeAgeIntent extends EditProfileScreenIntent {
-  final int age;
-  ChangeAgeIntent(this.age);
-}
-
-class ChangeWeightIntent extends EditProfileScreenIntent {
-  final int weight;
-  ChangeWeightIntent(this.weight);
-}
-
-class ChangeHeightIntent extends EditProfileScreenIntent {
-  final int height;
-  ChangeHeightIntent(this.height);
-}
-
-class ChangeGoalIntent extends EditProfileScreenIntent {
-  final int goal;
-  final String goalName;
-  ChangeGoalIntent(this.goal, this.goalName);
-}
-
-class ChangeActivityLevelIntent extends EditProfileScreenIntent {
-  final int activityLevel;
-  ChangeActivityLevelIntent(this.activityLevel);
-}
-
-class ChangeUserImageIntent extends EditProfileScreenIntent {
-  final File imageFile;
-  ChangeUserImageIntent(this.imageFile);
-}

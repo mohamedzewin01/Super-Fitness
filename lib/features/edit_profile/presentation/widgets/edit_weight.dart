@@ -41,13 +41,13 @@ class _EditeWeightViewState extends State<EditeWeightView> {
                Navigator.pop(context);
                 },
                 bodyScreen: CustomCarouseSlider(
-                  items: AppConstants.ageList,
+                  items: AppConstants.weightList,
                   carouselController:widget.viewModel.controllerAge ,
-                  initialPage: widget.viewModel.useAge,
+                  initialPage: widget.viewModel.useWeight,
                   title:"Year" ,
                   onPageChanged:(index) {
                     setState(() {
-                      widget.viewModel.doAction(ChangeAgeIntent(index));
+                      widget.viewModel.changeWeight(index);
                       log('Age is $index');
                     });
 

@@ -1,5 +1,6 @@
 import 'dart:developer';
 import 'package:flutter/material.dart';
+import '../../../../core/resources/app_constants.dart';
 import '../../../../core/widgets/custom_text_form_field.dart';
 import '../view_model/view_model_register/register_cubit.dart';
 
@@ -25,11 +26,11 @@ class CustomActivityLevel extends StatelessWidget {
                   log(viewModel.currentRadioActivityLevel.toString());
                 },
                 enabled: true,
-                hintText: activityLevel[index],
+                hintText: AppConstants.activityLevel[index],
                 value: index + 1,
                 onChangeRadio: (value) {
                   viewModel.doAction(ChangeActivityLevelIntent(value!));
-                  log('${activityLevel[index]} $value');
+                  log('${AppConstants.activityLevel[index]} $value');
                 },
                 groupValue: viewModel.currentRadioActivityLevel,
               ),
@@ -117,10 +118,4 @@ class CustomActivityLevel extends StatelessWidget {
   }
 }
 
-List<String> activityLevel = [
-  'Rookie',
-  'Beginner',
-  'Intermediate',
-  'Advance',
-  'True Beast'
-];
+

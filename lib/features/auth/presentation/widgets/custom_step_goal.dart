@@ -1,5 +1,6 @@
 import 'dart:developer';
 import 'package:flutter/material.dart';
+import 'package:super_fitness/core/resources/app_constants.dart';
 import '../../../../core/widgets/custom_text_form_field.dart';
 import '../view_model/view_model_register/register_cubit.dart';
 
@@ -23,15 +24,15 @@ class CustomStepGoal extends StatelessWidget {
           children: List.generate(5, (index) =>
             CustomTextFormFieldRegister(
         onTap: () {
-          viewModel.doAction(ChangeGoalIntent(index+1,goal[index]));
+          viewModel.doAction(ChangeGoalIntent(index+1,AppConstants.goal[index]));
         },
         controller: TextEditingController(),
         enabled: true,
-        hintText:goal[index],
+        hintText:AppConstants.goal[index],
         value: index+1,
         onChangeRadio:(value) {
-          viewModel.doAction(ChangeGoalIntent(value!,goal[index]));
-          log('$value ${goal[index]}');
+          viewModel.doAction(ChangeGoalIntent(value!,AppConstants.goal[index]));
+          log('$value ${AppConstants.goal[index]}');
         } ,
         groupValue:viewModel.currentRadioGoal ,
       ),),
@@ -114,4 +115,3 @@ class CustomStepGoal extends StatelessWidget {
     );
   }
 }
- List<String> goal = ['Gain Weight', 'Lose Weight', 'Get Fitter', 'Gain More Flexible', 'Learn The Basic'];

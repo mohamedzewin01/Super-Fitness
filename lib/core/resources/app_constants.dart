@@ -18,4 +18,6 @@ class AppConstants {
   static final List<int> ageList = List.generate(90, (index) => index);
   static final List<int> weightList = List.generate(300, (index) => index);
   static final List<int> heightList = List.generate(300, (index) => index);
+  static const List<String> goal = ['Gain Weight', 'Lose Weight', 'Get Fitter', 'Gain More Flexible', 'Learn The Basic'];
+  static const  List<String> activityLevel = ['Rookie', 'Beginner', 'Intermediate', 'Advance', 'True Beast'];
 }
