@@ -6,4 +6,5 @@ class ApiConstants {
 
   static const String loginRoute = "auth/signin";
   static const String register = "auth/signup";
+  static const String logoutRoute = "auth/logout";
 }
