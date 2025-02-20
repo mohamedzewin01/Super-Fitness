@@ -10,7 +10,7 @@ import 'package:super_fitness/core/resources/values_manager.dart';
 import 'package:super_fitness/core/widgets/custom_dialog.dart';
 import 'package:super_fitness/core/widgets/custom_elevated_button.dart';
 import 'package:super_fitness/core/widgets/custom_text_form_field.dart';
-import 'package:super_fitness/features/edit_profile/presentation/widgets/custom_backgroung.dart';
+import 'package:super_fitness/features/edit_profile/presentation/widgets/custom_background.dart';
 import '../../../../core/resources/assets_manager.dart';
 import '../../../../core/widgets/custom_app_bar.dart';
 import '../manager/edit_profile_cubit.dart';
@@ -134,6 +134,7 @@ class _EditeProfileViewState extends State<EditeProfileView> {
                           height: 16,
                         ),
                         CustomFiled(
+
                           text: "${AppConstants.goal[viewModel.currentRadioGoal ]} ",
                           title1: 'Your Goal',
                           onTap: () {

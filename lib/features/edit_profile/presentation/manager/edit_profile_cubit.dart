@@ -46,7 +46,7 @@ class EditProfileCubit extends Cubit<EditProfileState> {
       case ChangeHeightIntent():
         _changeHeight(intent.height);
       case ChangeGoalIntent():
-        changeGoal(intent.goal, intent.goalName);
+        changeGoal(intent.goal,);
       case ChangeActivityLevelIntent():
         changeActivityLevel(intent.activityLevel);
       case ChangeUserImageIntent():
@@ -70,9 +70,9 @@ void _changeImage(File image) {
     useHeight = height;
     emit(HeightChange());
   }
-  void changeGoal(int goal, String goalName) {
+  void changeGoal(int goal) {
     currentRadioGoal = goal;
-    currentGoal = goalName;
+
     log('currentGoal $currentRadioGoal');
     emit(GoalChange());
   }
@@ -104,8 +104,8 @@ class ChangeHeightIntent extends EditProfileScreenIntent {
 
 class ChangeGoalIntent extends EditProfileScreenIntent {
   final int goal;
-  final String goalName;
-  ChangeGoalIntent(this.goal, this.goalName);
+
+  ChangeGoalIntent(this.goal,);
 }
 
 class ChangeActivityLevelIntent extends EditProfileScreenIntent {

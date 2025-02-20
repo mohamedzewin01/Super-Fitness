@@ -2,7 +2,7 @@ import 'dart:developer';
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:super_fitness/core/widgets/custom_app_bar.dart';
+import 'package:flutter_svg/svg.dart';
 import '../../../../core/di/di.dart';
 import '../../../../core/resources/color_manager.dart';
 import '../../../../core/utils/utilss.dart';
@@ -83,13 +83,40 @@ class _RegisterViewState extends State<RegisterView> {
                     return Column(
                       spacing: 16,
                       children: [
-                        viewModel.isShow ||
-                                viewModel.currentIndicator == -1
-                            ? SizedBox()
-                            : CustomAppBar(
-                                isLogo: true,
-                                onTap: _onTap,
-                              ),
+                        Padding(
+                          padding: const EdgeInsets.only(top: 25, bottom: 16),
+                          child: Align(
+                            alignment: Alignment.center,
+                            child: Stack(
+                              children: [
+                                viewModel.isShow ||
+                                    viewModel.currentIndicator == -1
+                                    ? Container()
+                                    : GestureDetector(
+                                  onTap: _onTap,
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: SvgPicture.asset(
+                                      AssetsManager.back,
+                                      fit: BoxFit.cover,
+                                      width: 24,
+                                      height: 24,
+                                    ),
+                                  ),
+                                ),
+                                Align(
+                                  alignment: Alignment.center,
+                                  child: Image.asset(
+                                    AssetsManager.logo,
+                                    fit: BoxFit.cover,
+                                    width: 70,
+                                    height: 48,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
                         SizedBox(
                           height: 4,
                         ),

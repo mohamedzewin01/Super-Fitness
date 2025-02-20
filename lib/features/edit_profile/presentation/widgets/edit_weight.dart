@@ -6,7 +6,7 @@ import 'package:super_fitness/core/resources/app_constants.dart';
 import 'package:super_fitness/core/widgets/custom_app_bar.dart';
 import 'package:super_fitness/core/widgets/custom_carouse_slider.dart';
 import 'package:super_fitness/core/widgets/custom_register_step.dart';
-import 'package:super_fitness/features/edit_profile/presentation/widgets/custom_backgroung.dart';
+import 'package:super_fitness/features/edit_profile/presentation/widgets/custom_background.dart';
 
 import '../../../../core/resources/assets_manager.dart';
 import '../manager/edit_profile_cubit.dart';
@@ -27,8 +27,6 @@ class _EditeWeightViewState extends State<EditeWeightView> {
       body: SingleChildScrollView(
         child: Column(
           children: [
-
-
             CustomAppBar(isLogo: true,onTap: () => Navigator.pop(context),),
             SizedBox(
               height: 102,
@@ -44,11 +42,11 @@ class _EditeWeightViewState extends State<EditeWeightView> {
                   items: AppConstants.weightList,
                   carouselController:widget.viewModel.controllerAge ,
                   initialPage: widget.viewModel.useWeight,
-                  title:"Year" ,
+                  title:"Kg" ,
                   onPageChanged:(index) {
                     setState(() {
                       widget.viewModel.changeWeight(index);
-                      log('Age is $index');
+                      log('weight is $index');
                     });
 
                   } ,
