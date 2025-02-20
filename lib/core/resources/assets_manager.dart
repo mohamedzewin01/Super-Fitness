@@ -15,4 +15,8 @@ class AssetsManager {
   static String onBoardingImage1 = "assets/images/iamgepage1.png";
   static String onBoardingImage2 = "assets/images/iamgepage2.png";
   static String onBoardingImage3 = "assets/images/iamgepage3.png";
+  static String vector = "assets/images/Vector.svg";
+  static String backgroundGeminiWelcome =
+      "assets/images/backgroundgeminichat.png";
+  static String robotGemini = "assets/images/robotchatgemini.png";
 }
