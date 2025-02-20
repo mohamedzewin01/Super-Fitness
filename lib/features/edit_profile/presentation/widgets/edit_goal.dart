@@ -85,7 +85,6 @@ class _EditGoalViewState extends State<EditGoalView> {
                           hintText: AppConstants.goal[index],
                           onTap: () {
                             setState(() {});
-
                             widget.viewModel.changeGoal(index);
                             log(AppConstants.goal[index]);
                           },
@@ -106,6 +105,9 @@ class _EditGoalViewState extends State<EditGoalView> {
                             buttonColor: ColorManager.orange,
                             title: 'Done',
                             onPressed: () {
+
+                              widget.viewModel.editProfile();
+
                               Navigator.pop(context);
                             },
                           ),

@@ -41,7 +41,7 @@ class _EditeWeightViewState extends State<EditeWeightView> {
                 bodyScreen: CustomCarouseSlider(
                   items: AppConstants.weightList,
                   carouselController:widget.viewModel.controllerAge ,
-                  initialPage: widget.viewModel.useWeight,
+                  initialPage: widget.viewModel.userWeight,
                   title:"Kg" ,
                   onPageChanged:(index) {
                     setState(() {

@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:super_fitness/core/di/di.dart';
 import 'package:super_fitness/core/resources/app_constants.dart';
 import 'package:super_fitness/core/resources/color_manager.dart';
 import 'package:super_fitness/core/resources/style_manager.dart';
@@ -32,7 +33,7 @@ class _EditeProfileViewState extends State<EditeProfileView> {
 
   @override
   initState() {
-    viewModel = EditProfileCubit();
+    viewModel = getIt.get<EditProfileCubit>();
     super.initState();
   }
 
@@ -78,6 +79,9 @@ class _EditeProfileViewState extends State<EditeProfileView> {
                             ),
                             CustomTextFormField(
                               controller: viewModel.firstNameController,
+                              onChanged: (p0) {
+                                viewModel.editProfile();
+                              },
                               prefixIcon: SizedBox(
                                 height: 20,
                                 width: 20,
@@ -90,6 +94,9 @@ class _EditeProfileViewState extends State<EditeProfileView> {
                             ),
                             CustomTextFormField(
                               controller: viewModel.lastNameController,
+                              onChanged: (p0) {
+                                viewModel.editProfile();
+                              },
                               prefixIcon: SizedBox(
                                 height: 20,
                                 width: 20,
@@ -102,6 +109,9 @@ class _EditeProfileViewState extends State<EditeProfileView> {
                             ),
                             CustomTextFormField(
                               controller: viewModel.emailController,
+                              onChanged: (p0) {
+                                viewModel.editProfile();
+                              },
                               prefixIcon: SizedBox(
                                 height: 20,
                                 width: 20,
@@ -118,7 +128,7 @@ class _EditeProfileViewState extends State<EditeProfileView> {
                           height: 35,
                         ),
                         CustomFiled(
-                          text: "${viewModel.useWeight} kg",
+                          text: "${viewModel.userWeight} kg",
                           title1: 'Your Weight',
                           onTap: () {
                             Navigator.push(

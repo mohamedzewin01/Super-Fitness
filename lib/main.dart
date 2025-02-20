@@ -47,7 +47,7 @@ class SuperFitness extends StatelessWidget {
             debugShowCheckedModeBanner: false,
             onGenerateRoute: RouteGenerator.getRoute,
             initialRoute: RoutesManager.onBoarding,
-             home: EditeProfileView(),
+             // home: EditeProfileView(),
           );
         },
       ),
