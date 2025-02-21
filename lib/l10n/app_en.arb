@@ -47,6 +47,8 @@
   "tapToEdit": "tap To Edit",
   "yourRegularPhysicalActivityLevel": "Your Regular Physical Activity Level ?",
   "whatIsYourGoal": "What Is Your Goal ?",
+  "whatIsYourWeight": "What Is Your Weight ?",
+
   "thisHelpsUsCreateYourPersonalizedPlan": "This Helps Us create Your Personalized Plan",
   "activityLevel": "{value, select, 0{Not exercising} 1{Rookie} 2{Beginner} 3{Intermediate} 4{Advanced} other{True Beast}}",
   "@activityLevel": {

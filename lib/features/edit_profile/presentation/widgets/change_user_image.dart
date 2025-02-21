@@ -1,9 +1,7 @@
 import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:image_picker/image_picker.dart';
-
 import '../../../../core/resources/app_constants.dart';
 import '../../../../core/resources/assets_manager.dart';
 import '../../../../core/resources/color_manager.dart';

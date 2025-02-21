@@ -40,8 +40,8 @@ class _EditeWeightViewState extends State<EditeWeightView> {
               height: AppSize.s102,
             ),
             CustomRegisterStep(
-                title: 'what is your weight ?',
-                subTitle: 'this helps us create Your personalized plan',
+                title:AppLocalizations.of(context)!.whatIsYourWeight,
+                subTitle: AppLocalizations.of(context)!.thisHelpsUsCreateYourPersonalizedPlan,
                 isNotShowButton: false,
                 onPressed: () {
                   widget.viewModel.editProfile();
@@ -51,7 +51,7 @@ class _EditeWeightViewState extends State<EditeWeightView> {
                   items: AppConstants.weightList,
                   carouselController: widget.viewModel.controllerAge,
                   initialPage: widget.viewModel.userWeight,
-                  title: "Kg",
+                  title:AppLocalizations.of(context)!.kg ,
                   onPageChanged: (index) {
                     setState(() {
                       widget.viewModel.doAction(ChangeWeightIntent(index));
@@ -59,7 +59,7 @@ class _EditeWeightViewState extends State<EditeWeightView> {
                     });
                   },
                 ),
-                titleButton: 'Done'),
+                titleButton: AppLocalizations.of(context)!.done),
           ],
         ),
       ),

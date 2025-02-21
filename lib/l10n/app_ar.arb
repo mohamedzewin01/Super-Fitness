@@ -46,7 +46,9 @@
   "yourActivityLevel": "مستوى نشاطك",
   "tapToEdit": "انقر للتعديل",
   "yourRegularPhysicalActivityLevel": "مستوى النشاط البدني المنتظم لديك ؟",
+
   "whatIsYourGoal": "ما هو هدفك؟",
+  "whatIsYourWeight ?": "ما هو وزنك ؟",
   "thisHelpsUsCreateYourPersonalizedPlan": "هذا يساعدنا على إنشاء خطة شخصية مخصصة لك",
   "activityLevel": "{value, select, 0{لا يمارس الرياضة} 1{مبتدئ جديد} 2{مبتدئ} 3{ممارس} 4{متقدم} other{قوى}}",
   "@activityLevel": {

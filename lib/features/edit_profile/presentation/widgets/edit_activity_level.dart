@@ -1,7 +1,5 @@
 import 'dart:developer';
-
 import 'package:flutter/material.dart';
-
 import 'package:super_fitness/core/resources/app_constants.dart';
 import 'package:super_fitness/core/resources/values_manager.dart';
 import 'package:super_fitness/core/widgets/custom_text_form_field.dart';
