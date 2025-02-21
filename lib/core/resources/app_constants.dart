@@ -20,4 +20,6 @@ class AppConstants {
   static final List<int> heightList = List.generate(300, (index) => index);
   static const List<String> goal = ['Gain Weight', 'Lose Weight', 'Get Fitter', 'Gain More Flexible', 'Learn The Basic'];
   static const  List<String> activityLevel = ['Rookie', 'Beginner', 'Intermediate', 'Advance', 'True Beast'];
+  static const  List<String> activityLevelBackend = ['level1', 'level2', 'level3', 'level4', 'level5'];
+  static const String defaultPhoto='https://fitness.elevateegy.com/uploads/default-profile.png';
 }

@@ -7,8 +7,11 @@ import 'package:super_fitness/features/edit_profile/presentation/widgets/custom_
 import '../../../../core/resources/assets_manager.dart';
 import '../../../../core/resources/color_manager.dart';
 import '../../../../core/resources/style_manager.dart';
+import '../../../../core/resources/values_manager.dart';
 import '../../../../core/widgets/custom_app_bar.dart';
 import '../../../../core/widgets/custom_elevated_button.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 
 class EditGoalView extends StatefulWidget {
   const EditGoalView({super.key, required this.viewModel});
@@ -28,64 +31,67 @@ class _EditGoalViewState extends State<EditGoalView> {
         child: Column(
           children: [
             Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: CustomAppBar(
-                  isLogo: true, onTap: () => Navigator.pop(context)),
-            ),
+                padding: const EdgeInsets.all(AppSize.s8),
+                child: CustomAppBar(
+                    isLogo: true, onTap: () => Navigator.pop(context))),
             SizedBox(
-              height: 40,
+              height: AppSize.s40,
             ),
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16),
+              padding: const EdgeInsets.symmetric(horizontal: AppSize.s16),
               child: Column(
-                spacing: 8,
+                spacing: AppSize.s8,
                 children: [
                   Align(
-                    alignment: Alignment.centerLeft,
+                    alignment:AlignmentDirectional.centerStart,
                     child: Text(
-                      "What Is Your Goal ?",
-                      style:
-                          getSemiBoldStyle(color: Colors.white, fontSize: 20),
+                      AppLocalizations.of(context)!.whatIsYourGoal,
+                      style: getSemiBoldStyle(
+                          color: Colors.white, fontSize: AppSize.s20),
                     ),
                   ),
                   Align(
-                    alignment: Alignment.centerLeft,
+                    alignment:AlignmentDirectional.centerStart,
                     child: Text(
-                      "This Helps Us create Your Personalized Plan",
-                      style: getRegularStyle(color: Colors.white, fontSize: 20),
+                      AppLocalizations.of(context)!.thisHelpsUsCreateYourPersonalizedPlan,
+                      style: getRegularStyle(
+                          color: Colors.white, fontSize: AppSize.s20),
                     ),
                   ),
                 ],
               ),
             ),
             SizedBox(
-              height: 16,
+              height: AppSize.s16,
             ),
             Container(
-              padding: const EdgeInsets.symmetric(vertical: 24),
+              padding: const EdgeInsets.symmetric(vertical: AppSize.s24),
               decoration: BoxDecoration(
-                color: ColorManager.primary.withAlpha(150),
-                borderRadius: BorderRadius.circular(20),
+                color: ColorManager.primary.withAlpha(AppSizeInt.s150),
+                borderRadius: BorderRadius.circular(AppSize.s20),
               ),
               child: Column(
                 children: [
                   Column(
-                    spacing: 16,
+                    spacing: AppSize.s16,
                     children: List.generate(
-                      5,
+                      AppSizeInt.s5,
                       (index) => Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 32),
+                        padding:
+                            const EdgeInsets.symmetric(horizontal: AppSize.s32),
                         child: CustomTextFormFieldRegister(
                           value: index,
                           groupValue: widget.viewModel.currentRadioGoal,
                           onChangeRadio: (index) {
-                            widget.viewModel.changeGoal(index!);
+                            widget.viewModel.doAction(ChangeGoalIntent(index!));
                           },
                           enabled: true,
-                          hintText: AppConstants.goal[index],
+                          hintText:  AppLocalizations.of(context)!
+                              .goalLevel((index + 1).toString()),
+                          // AppConstants.goal[index],
                           onTap: () {
                             setState(() {});
-                            widget.viewModel.changeGoal(index);
+                            widget.viewModel.doAction(ChangeGoalIntent(index));
                             log(AppConstants.goal[index]);
                           },
                         ),
@@ -97,17 +103,15 @@ class _EditGoalViewState extends State<EditGoalView> {
                       Expanded(
                         child: Padding(
                           padding: const EdgeInsets.only(
-                            top: 16,
-                            left: 16,
-                            right: 16,
+                            top: AppSize.s16,
+                            left: AppSize.s16,
+                            right: AppSize.s16,
                           ),
                           child: CustomElevatedButton(
                             buttonColor: ColorManager.orange,
-                            title: 'Done',
+                            title: AppLocalizations.of(context)!.done,
                             onPressed: () {
-
                               widget.viewModel.editProfile();
-
                               Navigator.pop(context);
                             },
                           ),

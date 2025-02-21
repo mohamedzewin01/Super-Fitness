@@ -27,6 +27,7 @@ class LoginViewModel extends Cubit<LoginState> {
         await CacheService.setData(key: CacheConstants.weight, value: result.data.user?.weight);
         await CacheService.setData(key: CacheConstants.activityLevel, value: result.data.user?.activityLevel);
         await CacheService.setData(key: CacheConstants.goal, value: result.data.user?.goal);
+        await CacheService.setData(key: CacheConstants.userImage, value: result.data.user?.photo);
         emit(SuccessLoginState(result.data));
       case Fail<LoginResponseEntity>():
         emit(ErrorLoginState(result.exception));

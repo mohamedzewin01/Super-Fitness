@@ -38,5 +38,42 @@
   "alreadyHaveAccount": "هل لديك حساب بالفعل؟",
   "entervalidfirstName": "أدخل اسم أول صالح",
   "entervalidLastName": "ادخل اسم اخير صالح",
-  "invalidInput": "بيانات غير صحيحة"
+  "invalidInput": "بيانات غير صحيحة",
+  "editProfile": "تعديل الملف الشخصي",
+  "kg": "كجم",
+  "yourWeight": "وزنك",
+  "yourGoal": "هدفك",
+  "yourActivityLevel": "مستوى نشاطك",
+  "tapToEdit": "انقر للتعديل",
+  "yourRegularPhysicalActivityLevel": "مستوى النشاط البدني المنتظم لديك ؟",
+  "whatIsYourGoal": "ما هو هدفك؟",
+  "thisHelpsUsCreateYourPersonalizedPlan": "هذا يساعدنا على إنشاء خطة شخصية مخصصة لك",
+  "activityLevel": "{value, select, 0{لا يمارس الرياضة} 1{مبتدئ جديد} 2{مبتدئ} 3{ممارس} 4{متقدم} other{قوى}}",
+  "@activityLevel": {
+    "level": {
+      "value": {
+        "0": "Rookie",
+        "1": "Beginner",
+        "2": "Intermediate",
+        "3": "Advance",
+        "4": "True Beast",
+        "other": "True Beast"
+      }
+    }
+  },
+  "goalLevel": "{value, select, 0{لا يمارس الرياضة} 1{زيادة الوزن} 2{فقدان الوزن} 3{تحسين اللياقة} 4{زيادة المرونة} other{تعلم الأساسيات}}",
+  "@goalLevel": {
+    "level": {
+      "value": {
+        "0": "Not exercising",
+        "1": "Gain Weight",
+        "2": "Lose Weight",
+        "3": "Get Fitter",
+        "4": "Gain More Flexible",
+        "other": "Learn The Basic"
+      }
+    }
+  }
+
+
 }

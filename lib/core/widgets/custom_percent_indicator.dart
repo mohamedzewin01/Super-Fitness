@@ -3,7 +3,6 @@ import 'package:percent_indicator/circular_percent_indicator.dart';
 
 import '../resources/color_manager.dart';
 import '../resources/style_manager.dart';
-import '../../features/auth/presentation/view_model/view_model_register/register_cubit.dart';
 
 class CustomPercentIndicator extends StatelessWidget {
   const CustomPercentIndicator({

@@ -41,19 +41,19 @@ class ChangeUserImage extends StatelessWidget {
         alignment: Alignment.center,
         children: [
           Container(
-            padding: EdgeInsets.all(0),
+            padding: EdgeInsets.all(AppSize.s0),
             clipBehavior: Clip.antiAlias,
-            height: 103,
-            width: 103,
+            height: AppSize.s103,
+            width: AppSize.s103,
             decoration: BoxDecoration(
               shape: BoxShape.circle,
                 color: ColorManager.primary,
               boxShadow: [
                 BoxShadow(
-                  color: ColorManager.orange.withAlpha(65),
-                  blurRadius: 10,
-                  spreadRadius: 3,
-                  offset: Offset(0, 0),
+                  color: ColorManager.orange.withAlpha(AppSizeInt.s65),
+                  blurRadius: AppSize.s10,
+                  spreadRadius:  AppSize.s3,
+                  offset: Offset(AppSize.s0, AppSize.s0),
                 ),
               ]
             ),
@@ -63,16 +63,21 @@ class ChangeUserImage extends StatelessWidget {
                     fit: BoxFit.cover,
                     width: double.infinity,
                   )
-                : Image.asset(
+                : viewModel.urlImage ==AppConstants.defaultPhoto
+                ?Image.asset(
                     AssetsManager.userImageDefault,
                     fit: BoxFit.fill,
                     width: double.infinity,
-                  ),
+                  ):Image.network(
+              viewModel.urlImage,
+              fit: BoxFit.fill,
+              width: double.infinity,
+            ),
           ),
           Container(
-            padding: EdgeInsets.all(5),
+            padding: EdgeInsets.all(AppPadding.p4),
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(8),
+              borderRadius: BorderRadius.circular(AppPadding.p8),
             ),
             child: SvgPicture.asset(
               AssetsManager.editImage,

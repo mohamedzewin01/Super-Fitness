@@ -1,18 +1,18 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
+
 import 'package:super_fitness/core/resources/app_constants.dart';
+import 'package:super_fitness/core/resources/values_manager.dart';
 import 'package:super_fitness/core/widgets/custom_text_form_field.dart';
 import 'package:super_fitness/features/edit_profile/presentation/manager/edit_profile_cubit.dart';
 import 'package:super_fitness/features/edit_profile/presentation/widgets/custom_background.dart';
-
 import '../../../../core/resources/assets_manager.dart';
 import '../../../../core/resources/color_manager.dart';
 import '../../../../core/resources/style_manager.dart';
 import '../../../../core/widgets/custom_app_bar.dart';
 import '../../../../core/widgets/custom_elevated_button.dart';
-import '../../../auth/presentation/view_model/view_model_register/register_cubit.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class EditActivityLevelView extends StatefulWidget {
   const EditActivityLevelView({super.key, required this.viewModel});
@@ -32,53 +32,58 @@ class _EditActivityLevelViewState extends State<EditActivityLevelView> {
         child: Column(
           children: [
             Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: CustomAppBar(isLogo: true, onTap: () => Navigator.pop(context)),
+              padding: const EdgeInsets.all(AppPadding.p8),
+              child: CustomAppBar(
+                  isLogo: true, onTap: () => Navigator.pop(context)),
             ),
-
             SizedBox(
-              height: 40,
+              height: AppSize.s40,
             ),
             Align(
               alignment: Alignment.centerLeft,
               child: Padding(
-                padding: const EdgeInsets.all(24.0),
+                padding: const EdgeInsets.all(AppSize.s24),
                 child: Text(
-                  "your regular physical activity level ?",
-                  style: getSemiBoldStyle(color: Colors.white, fontSize: 20),
+                  AppLocalizations.of(context)!
+                      .yourRegularPhysicalActivityLevel,
+                  style: getSemiBoldStyle(
+                      color: Colors.white, fontSize: AppSize.s20),
                 ),
               ),
             ),
             SizedBox(
-              height: 16,
+              height: AppSize.s16,
             ),
             Container(
-              padding: const EdgeInsets.symmetric(vertical: 24),
+              padding: const EdgeInsets.symmetric(vertical: AppSize.s24),
               decoration: BoxDecoration(
-                color: ColorManager.primary.withAlpha(150),
-                borderRadius: BorderRadius.circular(20),
+                color: ColorManager.primary.withAlpha(AppSizeInt.s150),
+                borderRadius: BorderRadius.circular(AppSize.s20),
               ),
               child: Column(
                 children: [
                   Column(
-                    spacing: 16,
+                    spacing: AppSize.s16,
                     children: List.generate(
                       5,
                       (index) => Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 32),
+                        padding:
+                            const EdgeInsets.symmetric(horizontal: AppSize.s32),
                         child: CustomTextFormFieldRegister(
                           value: index,
-                          groupValue: widget.viewModel.currentRadioActivityLevel,
+                          groupValue: widget.viewModel.currentActivityLevel,
                           onChangeRadio: (index) {
-                            widget.viewModel.changeActivityLevel(index!);
+                            widget.viewModel
+                                .doAction(ChangeLevelIntent(index!));
                           },
                           enabled: true,
-                          hintText: AppConstants.activityLevel[index],
+                          hintText: AppLocalizations.of(context)!
+                              .activityLevel((index + 1).toString()),
                           onTap: () {
                             setState(() {});
-                            widget.viewModel.changeActivityLevel(index);
+                            widget.viewModel.doAction(ChangeLevelIntent(index));
                             log(AppConstants.activityLevel[
-                                widget.viewModel.currentRadioActivityLevel]);
+                                widget.viewModel.currentActivityLevel]);
                           },
                         ),
                       ),
@@ -88,11 +93,14 @@ class _EditActivityLevelViewState extends State<EditActivityLevelView> {
                     children: [
                       Expanded(
                         child: Padding(
-                          padding:
-                          const EdgeInsets.only( top: 16, left: 16, right: 16,),
+                          padding: const EdgeInsets.only(
+                            top: AppSize.s16,
+                            left: AppSize.s16,
+                            right: AppSize.s16,
+                          ),
                           child: CustomElevatedButton(
                               buttonColor: ColorManager.orange,
-                              title: 'Done',
+                              title: AppLocalizations.of(context)!.done,
                               onPressed: () {
                                 Navigator.pop(context);
                               }),
@@ -103,7 +111,6 @@ class _EditActivityLevelViewState extends State<EditActivityLevelView> {
                 ],
               ),
             ),
-
           ],
         ),
       ),

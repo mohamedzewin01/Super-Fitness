@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-
 import '../resources/assets_manager.dart';
 import '../resources/color_manager.dart';
 import '../resources/style_manager.dart';
+import '../resources/values_manager.dart';
 
 
 class CustomAppBar extends StatelessWidget {
@@ -16,21 +16,21 @@ class CustomAppBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(top: 25, bottom: 16),
+      padding: const EdgeInsets.only(top: AppSize.s25, bottom: AppSize.s16),
       child: Stack(
         alignment: Alignment.center,
         children: [
           Align(
-            alignment: Alignment.bottomLeft,
+            alignment:AlignmentDirectional.bottomStart,
             child: GestureDetector(
               onTap: onTap,
               child: Padding(
-                padding: const EdgeInsets.all(8.0),
+                padding: const EdgeInsets.all(AppSize.s8),
                 child: SvgPicture.asset(
                   AssetsManager.back,
                   fit: BoxFit.cover,
-                  width: 24,
-                  height: 24,
+                  width: AppSize.s24,
+                  height: AppSize.s24,
                 ),
               ),
             ),
@@ -39,12 +39,12 @@ class CustomAppBar extends StatelessWidget {
             child: isLogo?Image.asset(
               AssetsManager.logo,
               fit: BoxFit.cover,
-              width: 70,
-              height: 48,
+              width: AppSize.s70,
+              height: AppSize.s48,
             ): Text(
               title??'',
               style:
-              getSemiBoldStyle(color: ColorManager.white, fontSize: 24),
+              getSemiBoldStyle(color: ColorManager.white, fontSize: AppSize.s25),
             ),
           ),
         ],

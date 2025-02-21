@@ -5,13 +5,14 @@ import 'package:carousel_slider/carousel_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:injectable/injectable.dart';
 import 'package:meta/meta.dart';
+import 'package:super_fitness/core/resources/values_manager.dart';
 import 'package:super_fitness/core/utils/cashed_data_shared_preferences.dart';
 import 'package:super_fitness/features/edit_profile/domain/use_cases/edit_profile_useCase.dart';
+import '../../../../core/api/upload_image_api.dart';
 import '../../../../core/common/api_result.dart';
-import '../../../../core/utils/utilss.dart';
+import '../../../../core/resources/app_constants.dart';
 import '../../data/models/edit_profile_request.dart';
 import '../../domain/entities/edit_profile_entity.dart';
-
 part 'edite_profile_state.dart';
 
 @injectable
@@ -20,50 +21,41 @@ class EditProfileCubit extends Cubit<EditProfileState> {
 
   final EditProfileUseCase _editProfileUseCase;
 
-  int currentIndicator = 0;
-  bool isMale = false;
-  String userGender = '';
-  List<int> pageNotCompeted = [];
-  int useAge = 25;
   int userWeight = CacheService.getData(key: CacheConstants.weight);
-  int useHeight = 167;
+  int currentRadioGoal = AppConstants.goal
+      .indexOf(CacheService.getData(key: CacheConstants.goal));
+  String userGoal = CacheService.getData(key: CacheConstants.goal);
 
-  // int initialPage = 0;
-  bool isShow = true;
-  int currentRadioGoal = 0;
-  int totalSteps = 6;
-  String currentGoal = CacheService.getData(key: CacheConstants.goal);
-  int currentRadioActivityLevel = 0;
   File? logeImageFile;
+  String urlImage = CacheService.getData(key: CacheConstants.userImage);
+  int currentActivityLevel = AppConstants.activityLevelBackend
+      .indexOf(CacheService.getData(key: CacheConstants.activityLevel));
+
+  final formKey = GlobalKey<FormState>();
   final CarouselSliderController? controllerAge = CarouselSliderController();
   TextEditingController firstNameController = TextEditingController(
       text: CacheService.getData(key: CacheConstants.userFirstName));
-  TextEditingController lastNameController =
-      TextEditingController(text: CacheService.getData(key: CacheConstants.userLastName));
-  TextEditingController emailController =
-      TextEditingController(text: CacheService.getData(key: CacheConstants.userEmail));
+  TextEditingController lastNameController = TextEditingController(
+      text: CacheService.getData(key: CacheConstants.userLastName));
+  TextEditingController emailController = TextEditingController(
+      text: CacheService.getData(key: CacheConstants.userEmail));
 
   void doAction(EditProfileScreenIntent intent) {
     switch (intent) {
       case EditProfileIntent():
-        // TODO: Handle this case.
-        throw UnimplementedError();
-      case ChangeAgeIntent():
-        _changeAge(intent.age);
+        editProfile();
       case ChangeWeightIntent():
-        changeWeight(intent.weight);
-      case ChangeHeightIntent():
-        _changeHeight(intent.height);
+        _changeWeight(intent.weight);
       case ChangeGoalIntent():
-        changeGoal(
-          intent.goal,
-        );
-      case ChangeActivityLevelIntent():
-        changeActivityLevel(intent.activityLevel);
+        _changeGoal(intent.goal);
       case ChangeUserImageIntent():
         _changeImage(intent.imageFile);
+      case ChangeLevelIntent():
+        _changeActivityLevel(intent.activityLevel);
     }
   }
+
+  UploadImageApiManger imageApiManger = UploadImageApiManger();
 
   Future<void> editProfile() async {
     EditProfileRequest editProfileRequest = EditProfileRequest(
@@ -71,8 +63,8 @@ class EditProfileCubit extends Cubit<EditProfileState> {
         lastName: lastNameController.text,
         email: emailController.text,
         weight: userWeight,
-        activityLevel: 'level1',
-        goal: currentGoal);
+        activityLevel: 'level${currentActivityLevel + AppSizeInt.s1}',
+        goal: userGoal);
     var result = await _editProfileUseCase.editProfileRepo
         .editProfile(editProfileRequest);
 
@@ -94,57 +86,44 @@ class EditProfileCubit extends Cubit<EditProfileState> {
 
   void _changeImage(File image) {
     logeImageFile = image;
+    imageApiManger.uploadImage(imageFile: logeImageFile!);
     emit(ImageChange());
   }
 
-  void _changeAge(int age) {
-    useAge = age;
-    emit(AgeChange());
-  }
-
-  void changeWeight(int weight) {
+  void _changeWeight(int weight) {
     userWeight = weight;
     emit(WeightChange());
   }
 
-  void _changeHeight(int height) {
-    useHeight = height;
-    emit(HeightChange());
-  }
-
-  void changeGoal(int goal) {
+  void _changeGoal(int goal) {
     currentRadioGoal = goal;
+    userGoal = AppConstants.goal[goal];
 
     log('currentGoal $currentRadioGoal');
     emit(GoalChange());
   }
 
-  void changeActivityLevel(int activityLevel) {
-    currentRadioActivityLevel = activityLevel;
+  void _changeActivityLevel(int activityLevel)
+  {
+    currentActivityLevel = activityLevel;
+    currentActivityLevel =
+        AppConstants.activityLevelBackend.indexOf("level${activityLevel + AppSizeInt.s1}");
+    log("userActivityLevel  ====> $currentActivityLevel");
+    editProfile();
     emit(ActivityLevelChange());
   }
 }
 
 sealed class EditProfileScreenIntent {}
 
-class EditProfileIntent extends EditProfileScreenIntent {}
+class EditProfileIntent extends EditProfileScreenIntent {
 
-class ChangeAgeIntent extends EditProfileScreenIntent {
-  final int age;
-
-  ChangeAgeIntent(this.age);
 }
 
 class ChangeWeightIntent extends EditProfileScreenIntent {
   final int weight;
 
   ChangeWeightIntent(this.weight);
-}
-
-class ChangeHeightIntent extends EditProfileScreenIntent {
-  final int height;
-
-  ChangeHeightIntent(this.height);
 }
 
 class ChangeGoalIntent extends EditProfileScreenIntent {
@@ -155,10 +134,10 @@ class ChangeGoalIntent extends EditProfileScreenIntent {
   );
 }
 
-class ChangeActivityLevelIntent extends EditProfileScreenIntent {
+class ChangeLevelIntent extends EditProfileScreenIntent {
   final int activityLevel;
 
-  ChangeActivityLevelIntent(this.activityLevel);
+  ChangeLevelIntent(this.activityLevel);
 }
 
 class ChangeUserImageIntent extends EditProfileScreenIntent {
