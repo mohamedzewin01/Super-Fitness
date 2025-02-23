@@ -60,7 +60,7 @@ class _LoginViewState extends State<LoginView> {
               if (state is LoadingLoginState) {
                 CustomDialog.showLoadingDialog(context);
               } else if (state is SuccessLoginState) {
-                Navigator.pushNamed(context, RoutesManager.layOutView);
+                Navigator.pushNamed(context, RoutesManager.profileView);
               } else if (state is ErrorLoginState) {
                 var message = extractErrorMessage(state.exception);
                 Navigator.of(context).pop();
@@ -108,7 +108,7 @@ class _LoginViewState extends State<LoginView> {
                     child: Form(
                       key: _formKey,
                       child: Container(
-                        color: Colors.white.withValues(alpha: .08),
+                        // color: Colors.white.withValues(alpha: .08),
                         padding:
                             EdgeInsets.symmetric(vertical: 20, horizontal: 16),
                         child: Column(

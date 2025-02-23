@@ -48,13 +48,13 @@ class CustomRegisterStep extends StatelessWidget {
           ),
           Column(
             mainAxisAlignment: MainAxisAlignment.center,
-            spacing: 16,
+            // spacing: 16,
             children: [
               Container(
                 width: double.infinity,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(30),
-                  color: ColorManager.white.withValues(alpha: 0.11),
+                  // color: ColorManager.white.withValues(alpha: 0.11),
                 ),
                 child: Padding(
                   padding: const EdgeInsets.only(bottom: 16),

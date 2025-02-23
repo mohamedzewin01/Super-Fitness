@@ -80,7 +80,7 @@ class _RegisterViewState extends State<RegisterView> {
                   },
                   builder: (context, state) {
                     return Column(
-                      spacing: 16,
+                      // spacing: 16,
                       children: [
                         Padding(
                           padding: const EdgeInsets.only(top: 25, bottom: 16),

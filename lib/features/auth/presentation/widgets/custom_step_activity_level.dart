@@ -17,7 +17,7 @@ class CustomActivityLevel extends StatelessWidget {
         height: 300,
         child: SingleChildScrollView(
           child: Column(
-            spacing: 16,
+            // spacing: 16,
             children: [
               CustomTextFormFieldRegister(
                 onTap: () {

@@ -89,6 +89,9 @@ class _OnBoardingState extends State<OnBoarding> {
                             padding: const EdgeInsets.only(right: 17, top: 40),
                             child: GestureDetector(
                               onTap: () {
+                                // Navigator.pushNamed(
+                                //     context, RoutesManager.profileView);
+
                                 Navigator.pushNamed(
                                     context, RoutesManager.loginView);
                               },
@@ -130,7 +133,7 @@ class _OnBoardingState extends State<OnBoarding> {
                     padding:
                         const EdgeInsets.only(top: 30, left: 16, right: 16),
                     decoration: BoxDecoration(
-                      color: Colors.white.withValues(alpha: .08),
+                      // color: Colors.white.withValues(alpha: .08),
                     ),
                     child: Column(
                       children: [
