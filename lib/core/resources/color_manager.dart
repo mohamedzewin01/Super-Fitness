@@ -14,4 +14,6 @@ class ColorManager {
   static const Color basicColor = Color(0xffFF4100);
   static const Color offwhite = Color(0xffD9D9D9);
   static const Color mainColor = Color(0XFFFF4100);
+  static const Color assistantGeminiRsponseColor = Color(0xff1c1c1c);
+  static const Color userSendMessageColor = Color(0xFF863c07);
 }
