@@ -15,6 +15,12 @@ class AssetsManager {
   static String onBoardingImage1 = "assets/images/iamgepage1.png";
   static String onBoardingImage2 = "assets/images/iamgepage2.png";
   static String onBoardingImage3 = "assets/images/iamgepage3.png";
+  static String backgroundEditProfile =
+      "assets/images/backgroundEditProfile.png";
+  static String backgroundEditProfile1 =
+      "assets/images/backgroundEditProfile1.png";
+  static String editImage = "assets/images/edit_image.svg";
+  static String userImageDefault = "assets/images/user_image_default.png";
   static const String forgetPasswordBGImage =
       "assets/images/background_forget_password.png";
   static String home = 'assets/images/home.svg';
@@ -28,5 +34,4 @@ class AssetsManager {
   static String backgroundChat = "assets/images/chatBackground.png";
   static String botUiImage = "assets/images/aiImage.png";
   static String userImage = "assets/images/ahmedimage.jpg";
-
 }

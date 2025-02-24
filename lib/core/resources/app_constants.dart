@@ -17,6 +17,8 @@ class AppConstants {
   static const int millisecondsDelayed = 100;
 
   static const String loading = "Loading...";
+  static const String imageNetwork =
+      "https://thumbs.dreamstime.com/b/letter-w-vm-logo-icon-design-template-element-like-lightning-vector-illustration-128839214.jpg";
   static const String chatHistoryBox = "chat_history";
   static const String userBox = "user_box";
   static const String settingsBox = "settings_box";
@@ -26,6 +28,29 @@ class AppConstants {
   static final List<int> ageList = List.generate(90, (index) => index);
   static final List<int> weightList = List.generate(300, (index) => index);
   static final List<int> heightList = List.generate(300, (index) => index);
+  static const List<String> goal = [
+    'Gain Weight',
+    'Lose Weight',
+    'Get Fitter',
+    'Gain More Flexible',
+    'Learn The Basic'
+  ];
+  static const List<String> activityLevel = [
+    'Rookie',
+    'Beginner',
+    'Intermediate',
+    'Advance',
+    'True Beast'
+  ];
+  static const List<String> activityLevelBackend = [
+    'level1',
+    'level2',
+    'level3',
+    'level4',
+    'level5'
+  ];
+  static const String defaultPhoto =
+      'https://fitness.elevateegy.com/uploads/default-profile.png';
 
   static const viewOptions = <Widget>[
     HomeView(),

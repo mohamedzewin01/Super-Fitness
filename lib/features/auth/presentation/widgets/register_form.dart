@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import '../../../../core/resources/routes_manager.dart';
 import '../../../../core/resources/assets_manager.dart';
+import '../../../../core/resources/values_manager.dart';
 import '../../../../core/widgets/custom_text_form_field.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../../../../core/functions/helper.dart';
@@ -27,22 +28,24 @@ class RegisterForm extends StatelessWidget {
         child: Column(
           children: [
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+              padding: const EdgeInsets.symmetric(
+                  horizontal: AppSize.s16, vertical: AppSize.s16),
               child: Column(
                 children: [
                   Align(
                     alignment: Alignment.topLeft,
                     child: Text(
                       'Hey There',
-                      style: getMediumStyle(color: Colors.white, fontSize: 20),
+                      style: getMediumStyle(
+                          color: Colors.white, fontSize: AppSize.s20),
                     ),
                   ),
                   Align(
                     alignment: Alignment.topLeft,
                     child: Text(
                       'create an account',
-                      style:
-                          getSemiBoldStyle(color: Colors.white, fontSize: 24),
+                      style: getSemiBoldStyle(
+                          color: Colors.white, fontSize: AppSize.s24),
                     ),
                   ),
                 ],
@@ -55,8 +58,8 @@ class RegisterForm extends StatelessWidget {
                 Container(
                   width: double.infinity,
                   decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(30),
-                    // color: ColorManager.primary.withValues(alpha: 0.6),
+                    borderRadius: BorderRadius.circular(AppSize.s30),
+                    color: ColorManager.primary.withValues(alpha: 0.6),
                   ),
                   child: Padding(
                     padding: const EdgeInsets.symmetric(

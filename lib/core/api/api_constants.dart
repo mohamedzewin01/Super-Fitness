@@ -5,6 +5,8 @@ class ApiConstants {
   static const String resetPasswordRoute = "auth/resetPassword";
   static const String loginRoute = "auth/signin";
   static const String register = "auth/signup";
+  static const String editProfile = "auth/editProfile";
+  static const String uploadPhoto = "auth/upload-photo";
   static const String profileRoute = 'auth/profile-data';
   static const String logoutRoute = "auth/logout";
   static const String geminiApiKey = "AIzaSyBWgEYiZBXnRBiBp034mKUKGMa4YZJhlK8";

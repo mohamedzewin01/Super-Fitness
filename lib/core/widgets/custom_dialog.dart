@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:super_fitness/core/widgets/permission_service.dart';
 
 import '../resources/color_manager.dart';
 import '../resources/style_manager.dart';
@@ -20,13 +21,13 @@ class CustomDialog {
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
-                 CircularProgressIndicator(
+                CircularProgressIndicator(
                   color: ColorManager.orange,
                 ),
                 const SizedBox(height: 20),
-                 Text(
+                Text(
                   "Loading...",
-                  style:getBoldStyle(color: ColorManager.white) ,
+                  style: getBoldStyle(color: ColorManager.white),
                 ),
               ],
             ),
@@ -51,10 +52,10 @@ class CustomDialog {
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
-                 Text(
+                Text(
                   "Are You Sure To Close The Application?",
                   textAlign: TextAlign.center,
-                  style:getBoldStyle(color: ColorManager.white,fontSize: 18),
+                  style: getBoldStyle(color: ColorManager.white, fontSize: 18),
                 ),
                 const SizedBox(height: 20),
                 Row(
@@ -65,7 +66,8 @@ class CustomDialog {
                       onPressed: () => Navigator.pop(context),
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.transparent,
-                        side: const BorderSide(color: ColorManager.orange, width: 2),
+                        side: const BorderSide(
+                            color: ColorManager.orange, width: 2),
                         padding: const EdgeInsets.symmetric(
                             horizontal: 20, vertical: 10),
                         shape: RoundedRectangleBorder(
@@ -110,7 +112,7 @@ class CustomDialog {
       barrierDismissible: false,
       builder: (context) {
         Future.delayed(const Duration(seconds: 2), () {
-          if(context.mounted){
+          if (context.mounted) {
             Navigator.of(context).pop();
             if (goto != null) {
               Navigator.push(
@@ -120,7 +122,6 @@ class CustomDialog {
                   ));
             }
           }
-
         });
 
         return Dialog(
@@ -254,7 +255,7 @@ class CustomDialog {
                 ),
                 const SizedBox(height: 20),
                 ElevatedButton(
-                  onPressed:onPressed,
+                  onPressed: onPressed,
                   style: ElevatedButton.styleFrom(
                     backgroundColor: ColorManager.orange,
                     shape: RoundedRectangleBorder(
@@ -273,6 +274,69 @@ class CustomDialog {
           ),
         );
       },
+    );
+  }
+  static Future<dynamic> showDialogAddImage(
+      BuildContext context, {
+        required Function gallery,
+        required Function camera,
+      }) async {
+    return showDialog(
+      context: context,
+      barrierDismissible: true,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          contentPadding: const EdgeInsets.all(20),
+          backgroundColor: ColorManager.primary.withAlpha(250),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(15),
+          ),
+          title: Text(
+            "Choose Image Source",
+            textAlign: TextAlign.center,
+            style:getBoldStyle(color: ColorManager.white, fontSize: 20),
+          ),
+          content: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: <Widget>[
+              _buildOption(
+                icon: Icons.photo_library,
+                label: "Gallery",
+                onTap: () async {
+                  var permission = await isPermissionStorageGranted();
+                  if (permission == false) return;
+                  gallery();
+                  if (context.mounted) Navigator.pop(context);
+                },
+              ),
+              _buildOption(
+                icon: Icons.camera_alt,
+                label: "Camera",
+                onTap: () async {
+                  var permission = await isPermissionCameraGranted();
+                  if (permission == false) return;
+                  camera();
+                  if (context.mounted) Navigator.pop(context);
+                },
+              ),
+            ],
+          ),
+        );
+      },
+    );
+  }
+  static Widget _buildOption(
+      {required IconData icon, required String label, required Function onTap}) {
+    return GestureDetector(
+      onTap: () => onTap(),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Icon(icon, size: 40, color: ColorManager.orange),
+          SizedBox(height: 8),
+          Text(label, style:getBoldStyle(color: ColorManager.white, fontSize: 16)),
+        ],
+      ),
     );
   }
 }

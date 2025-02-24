@@ -10,7 +10,7 @@ import '../../../../core/widgets/custom_dialog.dart';
 import 'login_view.dart';
 import '../../../../core/resources/assets_manager.dart';
 import '../view_model/view_model_register/register_cubit.dart';
-import '../widgets/custom_percent_indicator.dart';
+import '../../../../core/widgets/custom_percent_indicator.dart';
 import '../widgets/custom_register_pages_view_body.dart';
 
 class RegisterView extends StatefulWidget {
@@ -31,8 +31,8 @@ class _RegisterViewState extends State<RegisterView> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => viewModel,
+    return BlocProvider.value(
+      value: viewModel,
       child: SafeArea(
         child: GestureDetector(
           onTap: () {
@@ -66,9 +66,10 @@ class _RegisterViewState extends State<RegisterView> {
                         builder: (context) => AlertDialog(
                           backgroundColor: Colors.transparent,
                           content: Center(
-                              child: CircularProgressIndicator(
-                            color: ColorManager.orange,
-                          )),
+                            child: CircularProgressIndicator(
+                              color: ColorManager.orange,
+                            ),
+                          ),
                         ),
                       );
                     }
@@ -89,43 +90,20 @@ class _RegisterViewState extends State<RegisterView> {
                             child: Stack(
                               children: [
                                 viewModel.isShow ||
-                                        viewModel.currentIndicator == -1
+                                    viewModel.currentIndicator == -1
                                     ? Container()
                                     : GestureDetector(
-                                        onTap: () {
-                                          log('5555555555555555555555555555555');
-                                          log(viewModel.currentIndicator
-                                              .toString());
-                                          log('5555555555555555555555555555555');
-                                          viewModel.pageController.previousPage(
-                                              duration:
-                                                  Duration(milliseconds: 1000),
-                                              curve: Curves.easeIn);
-                                          if (viewModel.currentIndicator > 0) {
-                                            viewModel.doAction(
-                                                ChangeIndicatorIntent(
-                                                    viewModel.currentIndicator -
-                                                        1));
-                                            // changeIndicator(
-                                            //     viewModel.currentIndicator - 1);
-                                          }
-                                          if (viewModel.currentIndicator == 0) {
-                                            viewModel
-                                                .doAction(ShowBackIntent(true));
-                                            // showBack(
-                                            //     isShowBack: true);
-                                          }
-                                        },
-                                        child: Padding(
-                                          padding: const EdgeInsets.all(8.0),
-                                          child: SvgPicture.asset(
-                                            AssetsManager.back,
-                                            fit: BoxFit.cover,
-                                            width: 24,
-                                            height: 24,
-                                          ),
-                                        ),
-                                      ),
+                                  onTap: _onTap,
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: SvgPicture.asset(
+                                      AssetsManager.back,
+                                      fit: BoxFit.cover,
+                                      width: 24,
+                                      height: 24,
+                                    ),
+                                  ),
+                                ),
                                 Align(
                                   alignment: Alignment.center,
                                   child: Image.asset(
@@ -144,10 +122,8 @@ class _RegisterViewState extends State<RegisterView> {
                         ),
                         Visibility(
                             visible: viewModel.currentIndicator != 0,
-                            // viewModel.currentIndicator == -1 ||
-                            // viewModel.isShow,
-                            child:
-                                CustomPercentIndicator(viewModel: viewModel)),
+                            child: CustomPercentIndicator(
+                                currentIndicator: viewModel.currentIndicator)),
                         CustomRegisterPagesView(viewModel: viewModel),
                       ],
                     );
@@ -159,5 +135,18 @@ class _RegisterViewState extends State<RegisterView> {
         ),
       ),
     );
+  }
+
+  void Function()? _onTap() {
+    log(viewModel.currentIndicator.toString());
+    viewModel.pageController.previousPage(
+        duration: Duration(milliseconds: 500), curve: Curves.easeIn);
+    if (viewModel.currentIndicator > 0) {
+      viewModel.doAction(ChangeIndicatorIntent(viewModel.currentIndicator - 1));
+    }
+    if (viewModel.currentIndicator == 0) {
+      viewModel.doAction(ShowBackIntent(true));
+    }
+    return null;
   }
 }

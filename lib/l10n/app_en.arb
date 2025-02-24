@@ -4,6 +4,7 @@
   "name": "Ahmed",
   "appName": "Super Fitness",
   "enterYourEmail": "Enter Your Email",
+  "enterYourEmail": "Enter Your Email",
   "forgetPassword": "Forget Password",
   "email": "Email",
   "sendOTP": "Send OTP",
@@ -16,6 +17,7 @@
   "doNotReceiveCode": "Didn't Receive Verification Code?",
   "resend": "Resend Code?",
   "otpCode": "OTP CODE",
+  "makeSureItsOrMore": "Make Sure Its 8 Characters Or More",
   "makeSureItsOrMore": "Make Sure Its 8 Characters Or More",
   "createNewPassword": "create new password",
   "done": "Done",
@@ -38,6 +40,44 @@
   "entervalidfirstName": "Enter a valid first name",
   "entervalidLastName": "Enter a valid last name",
   "invalidInput": "Invalid input",
+  "passwordNotMatch": "Passwords do not match",
+  "editProfile": "Edit Profile",
+  "kg": "Kg",
+  "yourWeight": "Your Weight",
+  "yourGoal": "Your Goal",
+  "yourActivityLevel": "Your Activity Level",
+  "tapToEdit": "tap To Edit",
+  "yourRegularPhysicalActivityLevel": "Your Regular Physical Activity Level ?",
+  "whatIsYourGoal": "What Is Your Goal ?",
+  "whatIsYourWeight": "What Is Your Weight ?",
+
+  "thisHelpsUsCreateYourPersonalizedPlan": "This Helps Us create Your Personalized Plan",
+  "activityLevel": "{value, select, 0{Not exercising} 1{Rookie} 2{Beginner} 3{Intermediate} 4{Advanced} other{True Beast}}",
+  "@activityLevel": {
+    "level": {
+      "value": {
+        "0": "Not exercising",
+        "1": "Beginner",
+        "2": "Novice",
+        "3": "Intermediate",
+        "4": "Advanced",
+        "other": "True Beast"
+      }
+    }
+  },
+  "goalLevel": "{value, select, 0{Not exercising} 1{Gain Weight} 2{Lose Weight} 3{Get Fitter} 4{Gain More Flexible} other{Learn The Basic}}",
+  "@goalLevel": {
+    "level": {
+      "value": {
+        "0": "Not exercising",
+        "1": "Gain Weight",
+        "2": "Lose Weight",
+        "3": "Get Fitter",
+        "4": "Gain More Flexible",
+        "other": "Learn The Basic"
+      }
+    }
+  }
   "passwordNotMatch": "Passwords do not match",
   "editProfile": "Edit Profile",
   "changePassword": "Change Password",

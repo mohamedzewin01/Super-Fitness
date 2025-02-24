@@ -15,6 +15,8 @@ import '../../../features/auth/data/models/register_models/register_response.dar
 import '../../../features/auth/data/models/request/login_model_dto.dart';
 import '../../../features/auth/data/models/response/Logout_Response.dart';
 import '../../../features/auth/data/models/response/login_response_dto.dart';
+import '../../../features/edit_profile/data/models/Edit_response.dart';
+import '../../../features/edit_profile/data/models/edit_profile_request.dart';
 import '../api_constants.dart';
 
 part 'api_manager.g.dart';
@@ -46,6 +48,10 @@ abstract class ApiService {
   Future<RegisterModelResponse> register(
       @Body() RegisterModelRequest registerModelDto);
 
+  @PUT(ApiConstants.editProfile)
+  Future<EditProfileResponse> editProfile(@Header("Authorization") String token,
+      @Body() EditProfileRequest editProfileRequest);
+
   @GET(ApiConstants.profileRoute)
   Future<ProfileResponseDto> getProfileData(
     @Header("Authorization") String token,
@@ -53,6 +59,4 @@ abstract class ApiService {
 
   @GET(ApiConstants.logoutRoute)
   Future<LogoutResponse> logout(@Header("Authorization") String token);
-
-
 }

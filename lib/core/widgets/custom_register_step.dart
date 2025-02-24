@@ -1,22 +1,25 @@
 import 'package:flutter/material.dart';
+import '../resources/color_manager.dart';
+import '../resources/style_manager.dart';
+import 'custom_elevated_button.dart';
 
-import '../../../../core/resources/color_manager.dart';
-import '../../../../core/resources/style_manager.dart';
-import '../../../../core/widgets/custom_elevated_button.dart';
-import '../view_model/view_model_register/register_cubit.dart';
 
 class CustomRegisterStep extends StatelessWidget {
   const CustomRegisterStep(
       {super.key,
       required this.title,
       required this.subTitle,
-      required this.viewModel,
+      required this.isNotShowButton,
       required this.onPressed,
-      required this.bodyScreen});
+      required this.bodyScreen,
+      required this.titleButton
+
+      });
 
   final String title;
+  final String titleButton;
   final String subTitle;
-  final RegisterCubit viewModel;
+  final bool isNotShowButton;
   final void Function() onPressed;
   final Widget bodyScreen;
 
@@ -62,7 +65,7 @@ class CustomRegisterStep extends StatelessWidget {
                     // spacing: 16,
                     children: [
                       bodyScreen,
-                      viewModel.currentIndicator == 0
+                      isNotShowButton
                           ? SizedBox()
                           : Row(
                               children: [
@@ -72,14 +75,12 @@ class CustomRegisterStep extends StatelessWidget {
                                         right: 10, left: 16, top: 16),
                                     child: CustomElevatedButton(
                                         buttonColor: ColorManager.orange,
-                                        title: viewModel.currentIndicator == 6
-                                            ? 'REGISTER'
-                                            : 'NEXT',
+                                        title: titleButton,
                                         onPressed: onPressed),
                                   ),
                                 ),
                               ],
-                            )
+                            ),
                     ],
                   ),
                 ),
