@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:super_fitness/features/gemini/presentation/views/chat_history.dart';
+import 'package:super_fitness/features/gemini/presentation/views/chat_view.dart';
 import 'package:super_fitness/features/gemini/presentation/views/welcome_page_chat_gemini.dart';
 import '../../features/auth/presentation/pages/email_verification_view.dart';
 import '../../features/auth/presentation/pages/forget_password.dart';
@@ -19,6 +21,8 @@ class RoutesManager {
   static const String loginView = '/LoginView';
   static const String layOutView = '/layOut';
   static const String geminiWelcomePage = '/geminiWelcomePage';
+  static const String geminiChatPage = '/geminiChatPage';
+  static const String chatHistoryScreen = '/chatHistoryScreen';
 }
 
 class RouteGenerator {
@@ -41,6 +45,10 @@ class RouteGenerator {
         return MaterialPageRoute(builder: (_) => const LayoutView());
       case RoutesManager.geminiWelcomePage:
         return MaterialPageRoute(builder: (_) => const WelcomePageChatGemini());
+      case RoutesManager.geminiChatPage:
+        return MaterialPageRoute(builder: (_) => const ChatView());
+      // case RoutesManager.chatHistoryScreen:
+      //   return MaterialPageRoute(builder: (_) => const ChatHistoryScreen());
       default:
         return unDefinedRoute();
     }

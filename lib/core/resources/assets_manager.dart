@@ -19,4 +19,7 @@ class AssetsManager {
   static String backgroundGeminiWelcome =
       "assets/images/backgroundgeminichat.png";
   static String robotGemini = "assets/images/robotchatgemini.png";
+  static String backgroundChat = "assets/images/chatBackground.png";
+  static String botUiImage = "assets/images/aiImage.png";
+  static String userImage = "assets/images/ahmedimage.jpg";
 }

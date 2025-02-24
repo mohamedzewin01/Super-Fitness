@@ -4,6 +4,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:super_fitness/core/resources/assets_manager.dart';
 import 'package:super_fitness/core/resources/color_manager.dart';
+import 'package:super_fitness/core/resources/routes_manager.dart';
 import 'package:super_fitness/core/widgets/custom_elevated_button.dart';
 
 class WelcomePageChatGemini extends StatefulWidget {
@@ -115,7 +116,10 @@ class _WelcomePageChatGeminiState extends State<WelcomePageChatGemini> {
                               fontSize: isPortrait ? 16 : 12,
                               fontWeight: FontWeight.w800,
                             ),
-                            onPressed: () {},
+                            onPressed: () {
+                              Navigator.pushNamed(
+                                  context, RoutesManager.geminiChatPage);
+                            },
                           ),
                         ],
                       ),

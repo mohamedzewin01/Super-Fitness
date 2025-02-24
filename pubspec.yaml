@@ -21,6 +21,8 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_bloc: ^9.0.0
+  flutter_chat_ui: ^1.6.15
+  flutter_dotenv: ^5.2.1
   flutter_local_notifications: ^18.0.1
   flutter_localizations:
     sdk: flutter
