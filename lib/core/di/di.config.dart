@@ -35,6 +35,7 @@ import '../../features/auth/domain/repositories/register_repo.dart' as _i629;
 import '../../features/auth/domain/use_cases/forget_password_use_case.dart'
     as _i483;
 import '../../features/auth/domain/use_cases/login_use_case.dart' as _i1038;
+import '../../features/auth/domain/use_cases/logout_usecase.dart' as _i844;
 import '../../features/auth/domain/use_cases/register_usecase.dart' as _i957;
 import '../../features/auth/domain/use_cases/reset_password_usecase.dart'
     as _i348;
@@ -43,6 +44,8 @@ import '../../features/auth/presentation/view_model/forget_password_view_model/f
     as _i1043;
 import '../../features/auth/presentation/view_model/login_view_model/login_cubit.dart'
     as _i925;
+import '../../features/auth/presentation/view_model/logout_view_model/logout_view_model.dart'
+    as _i334;
 import '../../features/auth/presentation/view_model/reset_password_view_model/reset_password_cubit.dart'
     as _i609;
 import '../../features/auth/presentation/view_model/verify_password_view_model/verify_password_cubit.dart'
@@ -80,10 +83,14 @@ extension GetItInjectableX on _i174.GetIt {
         _i327.ForgetPasswordRepoImpl(gh<_i35.ForgetPasswordDataSource>()));
     gh.factory<_i957.RegisterUseCase>(
         () => _i957.RegisterUseCase(gh<_i629.RegisterRepo>()));
+    gh.factory<_i844.LogoutUseCases>(
+        () => _i844.LogoutUseCases(gh<_i502.AuthRepo>()));
     gh.factory<_i1038.LoginUseCases>(
         () => _i1038.LoginUseCases(gh<_i502.AuthRepo>()));
     gh.factory<_i475.RegisterCubit>(
         () => _i475.RegisterCubit(gh<_i957.RegisterUseCase>()));
+    gh.factory<_i334.LogoutViewModel>(
+        () => _i334.LogoutViewModel(gh<_i844.LogoutUseCases>()));
     gh.factory<_i483.ForgetPasswordUseCase>(
         () => _i483.ForgetPasswordUseCase(gh<_i786.ForgetPasswordRepo>()));
     gh.factory<_i348.ResetPasswordUseCase>(

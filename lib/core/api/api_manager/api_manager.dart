@@ -13,6 +13,7 @@ import '../../../features/auth/data/models/forget_password_models/response/verif
 import '../../../features/auth/data/models/register_models/register_request.dart';
 import '../../../features/auth/data/models/register_models/register_response.dart';
 import '../../../features/auth/data/models/request/login_model_dto.dart';
+import '../../../features/auth/data/models/response/Logout_Response.dart';
 import '../../../features/auth/data/models/response/login_response_dto.dart';
 import '../api_constants.dart';
 
@@ -49,4 +50,9 @@ abstract class ApiService {
   Future<ProfileResponseDto> getProfileData(
     @Header("Authorization") String token,
   );
+
+  @GET(ApiConstants.logoutRoute)
+  Future<LogoutResponse> logout(@Header("Authorization") String token);
+
+
 }

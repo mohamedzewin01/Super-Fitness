@@ -47,4 +47,9 @@
   "help": "Help",
   "logout": "Logout",
   "profile": "Profile"
+  "home": "Home",
+  "gym":"Work Outs",
+  "profile": "profile",
+  "chatAi": "Chat AI"
+
 }

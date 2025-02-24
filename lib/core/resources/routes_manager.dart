@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:super_fitness/features/profile/presentation/pages/profile_tab.dart';
+import 'package:super_fitness/features/gemini/presentation/views/chat_history.dart';
+import 'package:super_fitness/features/gemini/presentation/views/chat_view.dart';
+import 'package:super_fitness/features/gemini/presentation/views/welcome_page_chat_gemini.dart';
 import '../../features/auth/presentation/pages/email_verification_view.dart';
 import '../../features/auth/presentation/pages/forget_password.dart';
 import '../../features/auth/presentation/pages/reset_password_view.dart';
@@ -27,6 +30,9 @@ class RoutesManager {
   static const String helpView = '/helpScreen';
 
 
+  static const String geminiWelcomePage = '/geminiWelcomePage';
+  static const String geminiChatPage = '/geminiChatPage';
+  static const String chatHistoryScreen = '/chatHistoryScreen';
 }
 
 class RouteGenerator {
@@ -56,6 +62,12 @@ class RouteGenerator {
       case RoutesManager.helpView:
         return MaterialPageRoute(builder: (_) => const HelpScreen());
 
+      case RoutesManager.geminiWelcomePage:
+        return MaterialPageRoute(builder: (_) => const WelcomePageChatGemini());
+      case RoutesManager.geminiChatPage:
+        return MaterialPageRoute(builder: (_) => const ChatView());
+      // case RoutesManager.chatHistoryScreen:
+      //   return MaterialPageRoute(builder: (_) => const ChatHistoryScreen());
       default:
         return unDefinedRoute();
     }

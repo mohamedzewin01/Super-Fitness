@@ -54,7 +54,7 @@ class _OnBoardingState extends State<OnBoarding> {
         dotHeight: 8,
         dotWidth: 8,
         activeDotColor: ColorManager.mainColor,
-        dotColor: ColorManager.offwhite,
+        dotColor: ColorManager.offWhite,
         spacing: 8,
       ),
     );
@@ -98,7 +98,7 @@ class _OnBoardingState extends State<OnBoarding> {
                               child: Text(
                                 "Skip",
                                 style: GoogleFonts.balooThambi2(
-                                  color: ColorManager.offwhite,
+                                  color: ColorManager.offWhite,
                                   fontSize: 14,
                                   fontWeight: FontWeight.w400,
                                 ),
@@ -151,7 +151,7 @@ class _OnBoardingState extends State<OnBoarding> {
                           onboardingData[currentPage]["description"]!,
                           textAlign: TextAlign.center,
                           style: GoogleFonts.balooThambi2(
-                            color: ColorManager.offwhite,
+                            color: ColorManager.offWhite,
                             fontSize: 14,
                             fontWeight: FontWeight.w400,
                           ),
@@ -184,7 +184,7 @@ class _OnBoardingState extends State<OnBoarding> {
                                 child: Text(
                                   "Back",
                                   style: GoogleFonts.balooThambi2(
-                                    color: ColorManager.offwhite,
+                                    color: ColorManager.offWhite,
                                     fontSize: 16,
                                     fontWeight: FontWeight.w800,
                                   ),

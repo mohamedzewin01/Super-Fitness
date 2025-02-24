@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:super_fitness/features/auth/presentation/pages/logout_view.dart';
+import 'package:provider/provider.dart';
+import 'package:super_fitness/hive/providers/chat_provider.dart';
 
 import 'core/di/di.dart';
 import 'core/resources/routes_manager.dart';
@@ -12,10 +15,18 @@ import 'localization/locale_cubit.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await ChatProvider.initHive();
   await CacheService.cacheInitialization();
   configureDependencies();
   Bloc.observer = MyBlocObserver();
-  runApp(const SuperFitness());
+  runApp(
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (context) => ChatProvider()),
+      ],
+      child: const SuperFitness(),
+    ),
+  );
 }
 
 class SuperFitness extends StatelessWidget {
@@ -43,7 +54,7 @@ class SuperFitness extends StatelessWidget {
             themeMode: ThemeMode.dark,
             debugShowCheckedModeBanner: false,
             onGenerateRoute: RouteGenerator.getRoute,
-            initialRoute: RoutesManager.onBoarding,
+            initialRoute: RoutesManager.geminiWelcomePage,
           );
         },
       ),
