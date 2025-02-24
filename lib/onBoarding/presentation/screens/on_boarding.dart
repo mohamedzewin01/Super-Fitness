@@ -54,7 +54,7 @@ class _OnBoardingState extends State<OnBoarding> {
         dotHeight: 8,
         dotWidth: 8,
         activeDotColor: ColorManager.mainColor,
-        dotColor: ColorManager.offwhite,
+        dotColor: ColorManager.offWhite,
         spacing: 8,
       ),
     );
@@ -89,13 +89,16 @@ class _OnBoardingState extends State<OnBoarding> {
                             padding: const EdgeInsets.only(right: 17, top: 40),
                             child: GestureDetector(
                               onTap: () {
+                                // Navigator.pushNamed(
+                                //     context, RoutesManager.profileView);
+
                                 Navigator.pushNamed(
                                     context, RoutesManager.loginView);
                               },
                               child: Text(
                                 "Skip",
                                 style: GoogleFonts.balooThambi2(
-                                  color: ColorManager.offwhite,
+                                  color: ColorManager.offWhite,
                                   fontSize: 14,
                                   fontWeight: FontWeight.w400,
                                 ),
@@ -130,7 +133,7 @@ class _OnBoardingState extends State<OnBoarding> {
                     padding:
                         const EdgeInsets.only(top: 30, left: 16, right: 16),
                     decoration: BoxDecoration(
-                      color: Colors.white.withValues(alpha: .08),
+                      // color: Colors.white.withValues(alpha: .08),
                     ),
                     child: Column(
                       children: [
@@ -148,7 +151,7 @@ class _OnBoardingState extends State<OnBoarding> {
                           onboardingData[currentPage]["description"]!,
                           textAlign: TextAlign.center,
                           style: GoogleFonts.balooThambi2(
-                            color: ColorManager.offwhite,
+                            color: ColorManager.offWhite,
                             fontSize: 14,
                             fontWeight: FontWeight.w400,
                           ),
@@ -181,7 +184,7 @@ class _OnBoardingState extends State<OnBoarding> {
                                 child: Text(
                                   "Back",
                                   style: GoogleFonts.balooThambi2(
-                                    color: ColorManager.offwhite,
+                                    color: ColorManager.offWhite,
                                     fontSize: 16,
                                     fontWeight: FontWeight.w800,
                                   ),

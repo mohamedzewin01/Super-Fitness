@@ -1,16 +1,16 @@
 import 'dart:developer';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import '../../../../core/resources/app_constants.dart';
 import '../../../../core/widgets/custom_dialog.dart';
+import '../../../../core/widgets/custom_carouse_slider.dart';
 import 'register_form.dart';
 import '../view_model/view_model_register/register_cubit.dart';
-import 'custom_register_step.dart';
-import 'custom_step_Age.dart';
+import '../../../../core/widgets/custom_register_step.dart';
 import 'custom_step_activity_level.dart';
 import 'custom_step_gender.dart';
 import 'custom_step_goal.dart';
-import 'custom_step_height.dart';
-import 'custom_step_weight.dart';
+
 
 class CustomRegisterPagesView extends StatelessWidget {
   const CustomRegisterPagesView({
@@ -28,7 +28,8 @@ class CustomRegisterPagesView extends StatelessWidget {
         physics: NeverScrollableScrollPhysics(),
         onPageChanged: (value) {
           if (value < viewModel.currentIndicator - 1) {
-            viewModel.doAction(ChangeIndicatorIntent(viewModel.currentIndicator - 1));
+            viewModel.doAction(
+                ChangeIndicatorIntent(viewModel.currentIndicator - 1));
           }
         },
         children: [
@@ -36,13 +37,15 @@ class CustomRegisterPagesView extends StatelessWidget {
           CustomRegisterStep(
               title: 'TELL US ABOUT YOURSELF',
               subTitle: 'We Need To Know Your Gender',
-              viewModel: viewModel,
+              isNotShowButton: viewModel.currentIndicator == 0,
+              titleButton:
+                  viewModel.currentIndicator == 6 ? 'REGISTER' : 'NEXT',
               bodyScreen: CustomStepGender(
                 viewModel: viewModel,
               ),
               onPressed: () {
                 viewModel.pageController.nextPage(
-                    duration: Duration(milliseconds: 1000),
+                    duration: Duration(milliseconds: 500),
                     curve: Curves.easeIn);
 
                 viewModel.doAction(ChangeIndicatorIntent(2));
@@ -51,13 +54,21 @@ class CustomRegisterPagesView extends StatelessWidget {
           CustomRegisterStep(
               title: 'HOW OLD ARE YOU ?',
               subTitle: 'This Helps Us Create Your Personalized Plan',
-              viewModel: viewModel,
-              bodyScreen: CustomStepAge(
-                viewModel: viewModel,
+              isNotShowButton: viewModel.currentIndicator == 0,
+              titleButton:
+                  viewModel.currentIndicator == 6 ? 'REGISTER' : 'NEXT',
+              bodyScreen: CustomCarouseSlider(
+                items: AppConstants.ageList,
+                carouselController:viewModel.controllerAge ,
+                initialPage: viewModel.useAge,
+                title:"Year" ,
+                onPageChanged:(index) {viewModel.doAction(ChangeAgeIntent(index));
+                log('Age is $index');
+                } ,
               ),
               onPressed: () {
                 viewModel.pageController.nextPage(
-                    duration: Duration(milliseconds: 1000),
+                    duration: Duration(milliseconds: 500),
                     curve: Curves.easeIn);
                 viewModel.doAction(ChangeIndicatorIntent(3));
 
@@ -66,13 +77,22 @@ class CustomRegisterPagesView extends StatelessWidget {
           CustomRegisterStep(
             title: 'WHAT IS YOUR WEIGHT ?',
             subTitle: 'This Helps Us Create Your Personalized Plan',
-            viewModel: viewModel,
-            bodyScreen: CustomStepWeight(
-              viewModel: viewModel,
+            isNotShowButton: viewModel.currentIndicator == 0,
+            titleButton: viewModel.currentIndicator == 6 ? 'REGISTER' : 'NEXT',
+            bodyScreen: CustomCarouseSlider(
+              onPageChanged:  (index) {
+                viewModel.doAction(ChangeWeightIntent(index));
+                log("weight is $index");
+              } ,
+             title:'Kg' ,
+             initialPage:viewModel.useWeight ,
+             carouselController:viewModel.controllerWeight ,
+             items:AppConstants.weightList,
+
             ),
             onPressed: () {
               viewModel.pageController.nextPage(
-                  duration: Duration(milliseconds: 1000), curve: Curves.easeIn);
+                  duration: Duration(milliseconds: 500), curve: Curves.easeIn);
               viewModel.doAction(ChangeIndicatorIntent(4));
               log(viewModel.currentIndicator.toString());
             },
@@ -80,13 +100,22 @@ class CustomRegisterPagesView extends StatelessWidget {
           CustomRegisterStep(
             title: 'WHAT IS YOUR HEIGHT ?',
             subTitle: 'This Helps Us Create Your Personalized Plan',
-            viewModel: viewModel,
-            bodyScreen: CustomStepHeight(
-              viewModel: viewModel,
+            isNotShowButton: viewModel.currentIndicator == 0,
+            titleButton: viewModel.currentIndicator == 6 ? 'REGISTER' : 'NEXT',
+            bodyScreen: CustomCarouseSlider(
+              title:'CM' ,
+              initialPage:viewModel.useHeight ,
+              carouselController:viewModel.controllerHeight ,
+              onPageChanged:  (index ) {
+                viewModel.doAction(ChangeHeightIntent(AppConstants.heightList[index]));
+                log("height is ${AppConstants.heightList[index]}");
+              },
+              items: AppConstants.heightList,
+
             ),
             onPressed: () {
               viewModel.pageController.nextPage(
-                  duration: Duration(milliseconds: 1000), curve: Curves.easeIn);
+                  duration: Duration(milliseconds: 500), curve: Curves.easeIn);
               viewModel.doAction(ChangeIndicatorIntent(5));
               log(viewModel.currentIndicator.toString());
             },
@@ -94,13 +123,14 @@ class CustomRegisterPagesView extends StatelessWidget {
           CustomRegisterStep(
             title: 'WHAT IS YOUR GOAL ?',
             subTitle: 'This Helps Us Create Your Personalized Plan',
-            viewModel: viewModel,
+            isNotShowButton: viewModel.currentIndicator == 0,
+            titleButton: viewModel.currentIndicator == 6 ? 'REGISTER' : 'NEXT',
             bodyScreen: CustomStepGoal(
               viewModel: viewModel,
             ),
             onPressed: () {
               viewModel.pageController.nextPage(
-                  duration: Duration(milliseconds: 1000), curve: Curves.easeIn);
+                  duration: Duration(milliseconds: 500), curve: Curves.easeIn);
 
               viewModel.doAction(ChangeIndicatorIntent(6));
               log(viewModel.currentIndicator.toString());
@@ -109,7 +139,8 @@ class CustomRegisterPagesView extends StatelessWidget {
           CustomRegisterStep(
             title: 'YOUR REGULAR PHYSICAL ACTIVITY LEVEL?',
             subTitle: 'This Helps Us Create Your Personalized Plan',
-            viewModel: viewModel,
+            isNotShowButton: viewModel.currentIndicator == 0,
+            titleButton: viewModel.currentIndicator == 6 ? 'REGISTER' : 'NEXT',
             bodyScreen: CustomActivityLevel(
               viewModel: viewModel,
             ),
@@ -127,7 +158,7 @@ class CustomRegisterPagesView extends StatelessWidget {
                   if (viewModel.currentRadioActivityLevel == 0) {
                     await viewModel.pageController.animateToPage(
                       6,
-                      duration: Duration(milliseconds: 1000),
+                      duration: Duration(milliseconds: 500),
                       curve: Curves.easeIn,
                     );
                     viewModel.doAction(ChangeIndicatorIntent(6));
@@ -142,7 +173,7 @@ class CustomRegisterPagesView extends StatelessWidget {
                   if (viewModel.currentRadioGoal == 0) {
                     await viewModel.pageController.animateToPage(5,
                         curve: Curves.easeIn,
-                        duration: Duration(milliseconds: 1000));
+                        duration: Duration(milliseconds: 500));
 
                     viewModel.doAction(ChangeIndicatorIntent(5));
                     log('jumpToPage      5');

@@ -20,19 +20,19 @@ class LoginViewModel extends Cubit<LoginState> {
 
     switch (result) {
       case Success<LoginResponseEntity>():
-        await _saveToken(result.data.token!);
-        // print("===========================================");
-        // print(result.data.token);
-        // print("===========================================");
-        // print(StringCache.userToken);
-        await _saveToken(result.data.token!);
+        await CacheService.setData(key: CacheConstants.userToken, value: result.data.token);
+        await CacheService.setData(key: CacheConstants.userEmail, value: result.data.user?.email);
+        await CacheService.setData(key: CacheConstants.userFirstName, value: result.data.user?.firstName);
+        await CacheService.setData(key: CacheConstants.userLastName, value: result.data.user?.lastName);
+        await CacheService.setData(key: CacheConstants.weight, value: result.data.user?.weight);
+        await CacheService.setData(key: CacheConstants.activityLevel, value: result.data.user?.activityLevel);
+        await CacheService.setData(key: CacheConstants.goal, value: result.data.user?.goal);
+        await CacheService.setData(key: CacheConstants.userImage, value: result.data.user?.photo);
         emit(SuccessLoginState(result.data));
       case Fail<LoginResponseEntity>():
         emit(ErrorLoginState(result.exception));
     }
   }
 
-  Future<void> _saveToken(String token) async {
-    await CacheService.setData(key: CacheConstants.userToken, value: token);
-  }
+
 }

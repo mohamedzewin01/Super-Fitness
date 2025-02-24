@@ -4,7 +4,6 @@ import 'package:bloc/bloc.dart';
 import 'package:carousel_slider/carousel_controller.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:injectable/injectable.dart';
-import 'package:meta/meta.dart';
 import '../../../data/models/register_models/register_request.dart';
 import '../../../domain/entities/register_entities.dart';
 import '../../../domain/use_cases/register_usecase.dart';
@@ -21,7 +20,7 @@ class RegisterCubit extends Cubit<RegisterState> {
   int currentIndicator = 0;
   bool isMale = false;
   String userGender = '';
-  List<int> pageNotCompeted = [];
+  // List<int> pageNotCompeted = [];
   int useAge = 25;
   int useWeight = 90;
   int useHeight = 167;

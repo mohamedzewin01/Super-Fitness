@@ -3,6 +3,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:super_fitness/core/resources/assets_manager.dart';
 import '../../../../core/functions/helper.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../../../../core/resources/app_constants.dart';
@@ -83,7 +84,7 @@ class _ResetPasswordViewState extends State<ResetPasswordView> {
               child: Stack(
                 children: [
                   Positioned.fill(
-                      child: Image.asset(AppConstants.forgetPasswordBGImage,
+                      child: Image.asset(AssetsManager.forgetPasswordBGImage,
                           fit: BoxFit.cover)),
                   Positioned.fill(
                       child: BackdropFilter(
@@ -102,7 +103,7 @@ class _ResetPasswordViewState extends State<ResetPasswordView> {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         Image.asset(
-                          AppConstants.appLogo,
+                          AssetsManager.logo,
                           height: AppSize.s80,
                         ),
                         SizedBox(
@@ -159,12 +160,12 @@ class _ResetPasswordViewState extends State<ResetPasswordView> {
                                       FitnessTextFormField(
                                         obscureText: true,
                                         prefixIcon: SvgPicture.asset(
-                                            AppConstants.iconLock,
+                                           AssetsManager.lock,
                                             width: AppSize.s20,
                                             height: AppSize.s20,
                                             fit: BoxFit.scaleDown),
                                         suffix: SvgPicture.asset(
-                                            AppConstants.iconEye,
+                                            AssetsManager.eye,
                                             width: AppSize.s20,
                                             height: AppSize.s20,
                                             fit: BoxFit.scaleDown),
@@ -187,13 +188,13 @@ class _ResetPasswordViewState extends State<ResetPasswordView> {
                                       FitnessTextFormField(
                                         obscureText: true,
                                         prefixIcon: SvgPicture.asset(
-                                          AppConstants.iconLock,
+                                          AssetsManager.lock,
                                           width: AppSize.s20,
                                           height: AppSize.s20,
                                           fit: BoxFit.scaleDown,
                                         ),
                                         suffix: SvgPicture.asset(
-                                            AppConstants.iconEye,
+                                            AssetsManager.eye,
                                             width: AppSize.s20,
                                             height: AppSize.s20,
                                             fit: BoxFit.scaleDown),

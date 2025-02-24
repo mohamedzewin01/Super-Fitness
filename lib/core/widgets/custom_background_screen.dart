@@ -37,7 +37,7 @@ class CustomBackgroundScreen extends StatelessWidget {
               body: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.center,
-                spacing: 16,
+                // spacing: 16,
                 children: [
                   Padding(
                     padding: const EdgeInsets.all(16.0),

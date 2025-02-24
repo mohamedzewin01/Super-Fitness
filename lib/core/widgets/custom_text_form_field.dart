@@ -104,32 +104,36 @@ import '../resources/values_manager.dart';
 class CustomTextFormFieldRegister extends StatelessWidget {
   const CustomTextFormFieldRegister({
     super.key,
-    required this.controller,
+     this.controller,
     this.labelText,
     this.hintText,
     this.obscureText,
     this.validator,
-    this.suffix,
+
     this.keyboardType,
     this.enabled,
     this.prefixIcon,
     this.initialValue,
     this.onChanged,
-    this.onTap,
+    this.onTap, this.onChangeRadio, this.groupValue, this.value, this.suffix,
   });
 
-  final TextEditingController controller;
+  final TextEditingController? controller;
   final String? labelText;
   final String? hintText;
   final String? initialValue;
   final bool? obscureText;
   final bool? enabled;
   final String? Function(String?)? validator;
-  final Widget? suffix;
+
   final Widget? prefixIcon;
   final TextInputType? keyboardType;
   final void Function(String)? onChanged;
   final void Function()? onTap;
+  final void Function(int?)? onChangeRadio;
+  final int? groupValue;
+  final int? value;
+  final Widget? suffix;
 
   @override
   Widget build(BuildContext context) {
@@ -148,14 +152,13 @@ class CustomTextFormFieldRegister extends StatelessWidget {
           fillColor: ColorManager.placeHolderColor.withAlpha(100),
           filled: true,
           prefixIconColor: ColorManager.white,
-          suffixIcon: suffix != null
-              ? Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    suffix!,
-                  ],
-                )
-              : null,
+          suffixIcon:Radio(
+            value: value!,
+            groupValue: groupValue,
+            fillColor: WidgetStateProperty.all(ColorManager.white),
+            onChanged:onChangeRadio,
+
+          ),
           suffixIconColor: ColorManager.placeHolderColor,
           labelText: labelText,
           labelStyle: getRegularStyle(
