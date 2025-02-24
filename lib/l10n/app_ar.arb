@@ -47,27 +47,31 @@
   "whatIsYourGoal": "ما هو هدفك؟",
   "whatIsYourWeight": "ما هو وزنك؟",
   "thisHelpsUsCreateYourPersonalizedPlan": "هذا يساعدنا على إنشاء خطة شخصية مخصصة لك",
-  "activityLevel": "{level, select, 0{لا يمارس الرياضة} 1{مبتدئ جديد} 2{مبتدئ} 3{ممارس} 4{متقدم} other{متقدم جدًا}}",
+  "activityLevel": "{value, select, 0{لا يمارس الرياضة} 1{مبتدئ جديد} 2{مبتدئ} 3{ممارس} 4{متقدم} other{قوى}}",
   "@activityLevel": {
-    "description": "مستوى النشاط البدني مع متغير level",
-    "placeholders": {
-      "level": {}
+    "level": {
+      "value": {
+        "0": "Rookie",
+        "1": "Beginner",
+        "2": "Intermediate",
+        "3": "Advance",
+        "4": "True Beast",
+        "other": "True Beast"
+      }
     }
   },
-  "goalLevel": "{level, select, 0{لا يمارس الرياضة} 1{زيادة الوزن} 2{فقدان الوزن} 3{تحسين اللياقة} 4{زيادة المرونة} other{تعلم الأساسيات}}",
+  "goalLevel": "{value, select, 0{لا يمارس الرياضة} 1{زيادة الوزن} 2{فقدان الوزن} 3{تحسين اللياقة} 4{زيادة المرونة} other{تعلم الأساسيات}}",
   "@goalLevel": {
-    "description": "مستوى الهدف مع متغير level",
-    "placeholders": {
-      "level": {}
+    "level": {
+      "value": {
+        "0": "Not exercising",
+        "1": "Gain Weight",
+        "2": "Lose Weight",
+        "3": "Get Fitter",
+        "4": "Gain More Flexible",
+        "other": "Learn The Basic"
+      }
     }
-  },
-  "value": {
-    "0": "لا يمارس الرياضة",
-    "1": "زيادة الوزن",
-    "2": "فقدان الوزن",
-    "3": "تحسين اللياقة",
-    "4": "زيادة المرونة",
-    "other": "تعلم الأساسيات"
   },
   "invalidInput": "بيانات غير صحيحة",
   "editProfile": "تعديل الملف الشخصي",

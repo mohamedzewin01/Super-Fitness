@@ -48,7 +48,7 @@ class _EditeProfileViewState extends State<EditeProfileView> {
                 children: [
                   CustomAppBar(
                     onTap: () {
-                      ///  toDo: Navigator.pop(context);
+                      Navigator.pop(context);
                     },
                     isLogo: false,
                     title: AppLocalizations.of(context)!.editProfile,
