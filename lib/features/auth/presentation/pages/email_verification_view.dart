@@ -4,6 +4,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:super_fitness/core/resources/assets_manager.dart';
 import '../../../../core/di/di.dart';
 import '../../../../core/resources/app_constants.dart';
 import '../../../../core/resources/app_strings.dart';
@@ -74,7 +75,7 @@ class _OtpVerificationPageState extends State<OtpVerificationPage> {
                 body: Stack(children: [
                   Positioned.fill(
                       child: Image.asset(
-                         AppConstants.forgetPasswordBGImage,
+                         AssetsManager.forgetPasswordBGImage,
                           fit: BoxFit.cover)),
                   Positioned.fill(
                       child: BackdropFilter(
@@ -91,7 +92,7 @@ class _OtpVerificationPageState extends State<OtpVerificationPage> {
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
                             Image.asset(
-                              AppConstants.appLogo,
+                              AssetsManager.logo,
                               height: AppSize.s80,
                             ),
                             SizedBox(

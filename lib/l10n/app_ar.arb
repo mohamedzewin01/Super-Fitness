@@ -38,5 +38,9 @@
   "alreadyHaveAccount": "هل لديك حساب بالفعل؟",
   "entervalidfirstName": "أدخل اسم أول صالح",
   "entervalidLastName": "ادخل اسم اخير صالح",
-  "invalidInput": "بيانات غير صحيحة"
+  "invalidInput": "بيانات غير صحيحة",
+  "home": "الرئيسية",
+  "gym":"التمرينات",
+  "profile": "الملف الشخصي",
+  "chatAi": "الذكاء الصناعي"
 }

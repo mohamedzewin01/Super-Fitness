@@ -91,14 +91,14 @@ Widget buildIcon(String assetPath, int index, int currentIndex) {
     padding: const EdgeInsets.symmetric(
         horizontal: AppPadding.p20, vertical: AppPadding.p4),
     decoration: BoxDecoration(
-      borderRadius: BorderRadius.circular(12),
+      borderRadius: BorderRadius.circular(AppSize.s12),
     ),
     child: SvgPicture.asset(
       assetPath,
-      width: 24,
-      height: 24,
+      width: AppSize.s24,
+      height:AppSize.s24,
       colorFilter: ColorFilter.mode(
-        isSelected ? ColorManager.orange : ColorManager.placeHolderColor,
+        isSelected ? ColorManager.basicColor : ColorManager.placeHolderColor,
         BlendMode.srcIn,
       ),
     ),
