@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -12,7 +11,6 @@ import '../../../../core/utils/cashed_data_shared_preferences.dart';
 import '../../../../core/utils/utilss.dart';
 import '../../../../core/widgets/show_error_dialog.dart';
 import '../widgets/profile_item.dart';
-import 'security_screen.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class ProfileTab extends StatefulWidget {
@@ -37,7 +35,8 @@ class _ProfileTabState extends State<ProfileTab> {
     return BlocProvider(
       create: (context) => viewModel
         ..getProfileData(
-          "Bearer ${CacheService.getData(key: CacheConstants.userToken)}"),      child: Container(
+            "Bearer ${CacheService.getData(key: CacheConstants.userToken)}"),
+      child: Container(
         width: double.infinity,
         height: double.infinity,
         decoration: BoxDecoration(

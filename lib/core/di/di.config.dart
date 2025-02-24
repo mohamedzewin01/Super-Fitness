@@ -52,6 +52,17 @@ import '../../features/auth/presentation/view_model/verify_password_view_model/v
     as _i1002;
 import '../../features/auth/presentation/view_model/view_model_register/register_cubit.dart'
     as _i475;
+import '../../features/profile/data/data_sources/profile_online_data_source.dart'
+    as _i99;
+import '../../features/profile/data/data_sources/profile_online_data_source_impl.dart'
+    as _i797;
+import '../../features/profile/data/repositories/profile_repo_impl.dart'
+    as _i988;
+import '../../features/profile/domain/repositories/profile_repo.dart' as _i790;
+import '../../features/profile/domain/use_cases/profile_use_cases.dart'
+    as _i995;
+import '../../features/profile/presentation/cubit/profile_view_model.dart'
+    as _i516;
 import '../api/api_manager/api_manager.dart' as _i680;
 import '../api/dio_module.dart' as _i784;
 
@@ -77,20 +88,26 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i349.ForgetPasswordDataSourceImpl(gh<_i680.ApiService>()));
     gh.factory<_i994.AuthOnlineDataSource>(
         () => _i140.AuthOnlineDataSourceImpl(gh<_i680.ApiService>()));
+    gh.factory<_i99.ProfileOnlineDataSource>(
+        () => _i797.ProfileOnlineDataSourceImpl(gh<_i680.ApiService>()));
     gh.factory<_i502.AuthRepo>(
         () => _i886.AuthRepoImpl(gh<_i994.AuthOnlineDataSource>()));
     gh.factory<_i786.ForgetPasswordRepo>(() =>
         _i327.ForgetPasswordRepoImpl(gh<_i35.ForgetPasswordDataSource>()));
     gh.factory<_i957.RegisterUseCase>(
         () => _i957.RegisterUseCase(gh<_i629.RegisterRepo>()));
-    gh.factory<_i844.LogoutUseCases>(
-        () => _i844.LogoutUseCases(gh<_i502.AuthRepo>()));
     gh.factory<_i1038.LoginUseCases>(
         () => _i1038.LoginUseCases(gh<_i502.AuthRepo>()));
+    gh.factory<_i844.LogoutUseCases>(
+        () => _i844.LogoutUseCases(gh<_i502.AuthRepo>()));
+    gh.factory<_i790.ProfileRepo>(
+        () => _i988.ProfileRepoImpl(gh<_i99.ProfileOnlineDataSource>()));
     gh.factory<_i475.RegisterCubit>(
         () => _i475.RegisterCubit(gh<_i957.RegisterUseCase>()));
     gh.factory<_i334.LogoutViewModel>(
         () => _i334.LogoutViewModel(gh<_i844.LogoutUseCases>()));
+    gh.factory<_i995.ProfileUseCases>(
+        () => _i995.ProfileUseCases(gh<_i790.ProfileRepo>()));
     gh.factory<_i483.ForgetPasswordUseCase>(
         () => _i483.ForgetPasswordUseCase(gh<_i786.ForgetPasswordRepo>()));
     gh.factory<_i348.ResetPasswordUseCase>(
@@ -101,6 +118,8 @@ extension GetItInjectableX on _i174.GetIt {
         _i1043.ForgetPasswordViewModel(gh<_i483.ForgetPasswordUseCase>()));
     gh.factory<_i609.ResetPasswordViewModel>(
         () => _i609.ResetPasswordViewModel(gh<_i348.ResetPasswordUseCase>()));
+    gh.factory<_i516.ProfileViewModel>(
+        () => _i516.ProfileViewModel(gh<_i995.ProfileUseCases>()));
     gh.factory<_i925.LoginViewModel>(
         () => _i925.LoginViewModel(gh<_i1038.LoginUseCases>()));
     gh.factory<_i1002.VerifyPasswordViewModel>(

@@ -5,7 +5,6 @@ import 'package:super_fitness/features/profile/domain/use_cases/profile_use_case
 import 'package:super_fitness/features/profile/presentation/cubit/profile_states.dart';
 
 import '../../../../../core/common/api_result.dart';
-import '../../../../../core/utils/cashed_data_shared_preferences.dart';
 
 @injectable
 class ProfileViewModel extends Cubit<ProfileStates> {

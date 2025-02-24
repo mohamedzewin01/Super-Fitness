@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:super_fitness/features/gemini/presentation/views/welcome_page_chat_gemini.dart';
+import 'package:super_fitness/features/layout/presentation/pages/home_view.dart';
+import 'package:super_fitness/features/profile/presentation/pages/profile_tab.dart';
 
 import '../../features/layout/presentation/pages/exercisers_view.dart';
-import '../../features/layout/presentation/pages/gemini_ai_view.dart';
-import '../../features/layout/presentation/pages/home_view.dart';
-import '../../features/layout/presentation/pages/profile_view.dart';
 
 class AppConstants {
   static const int listGenerate = 6;
@@ -11,7 +11,6 @@ class AppConstants {
   static const double blurConst34 = 34.5;
   static const int blurConst50 = 50;
   static const int blurConst20 = 20;
-
 
   static const String defaultEmail = "default_email@example.com";
   static const String timerUnit = "sec";
@@ -30,8 +29,8 @@ class AppConstants {
 
   static const viewOptions = <Widget>[
     HomeView(),
-    GeminiAiView(),
+    WelcomePageChatGemini(),
     ExercisersView(),
-    ProfileView(),
+    ProfileTab(),
   ];
 }

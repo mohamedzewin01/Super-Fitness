@@ -77,6 +77,7 @@ class HelpItem extends StatelessWidget {
   final String subtitle;
 
   const HelpItem({
+    super.key,
     required this.icon,
     required this.title,
     required this.subtitle,

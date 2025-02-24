@@ -7,11 +7,13 @@ class ProfileView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.transparent,
-      body: Container(
-        child: Text("Profile",style: TextStyle(fontSize: 40,color: Colors.white),),
+      body: Text(
+        "Profile",
+        style: TextStyle(
+          fontSize: 40,
+          color: Colors.white,
+        ),
       ),
-
-
     );
   }
 }

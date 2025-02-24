@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -21,7 +20,11 @@ class ProfileItem extends StatelessWidget {
       children: [
         Row(
           children: [
-            Image.asset(imagePath,height: 20,width: 20,),
+            Image.asset(
+              imagePath,
+              height: 20,
+              width: 20,
+            ),
             Padding(
               padding: const EdgeInsets.only(left: 16),
               child: Text(

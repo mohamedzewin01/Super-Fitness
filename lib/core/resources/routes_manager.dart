@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:super_fitness/features/profile/presentation/pages/profile_tab.dart';
-import 'package:super_fitness/features/gemini/presentation/views/chat_history.dart';
 import 'package:super_fitness/features/gemini/presentation/views/chat_view.dart';
 import 'package:super_fitness/features/gemini/presentation/views/welcome_page_chat_gemini.dart';
 import '../../features/auth/presentation/pages/email_verification_view.dart';
@@ -28,7 +27,6 @@ class RoutesManager {
   static const String securityView = '/securityScreen';
   static const String privacyView = '/privacyScreen';
   static const String helpView = '/helpScreen';
-
 
   static const String geminiWelcomePage = '/geminiWelcomePage';
   static const String geminiChatPage = '/geminiChatPage';

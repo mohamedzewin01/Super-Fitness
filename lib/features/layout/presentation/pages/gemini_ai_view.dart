@@ -7,11 +7,13 @@ class GeminiAiView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.transparent,
-      body: Container(
-        child: Text("Chat With Gemini",style: TextStyle(fontSize: 40,color: Colors.white),),
+      body: Text(
+        "Chat With Gemini",
+        style: TextStyle(
+          fontSize: 40,
+          color: Colors.white,
+        ),
       ),
-
-
     );
   }
 }

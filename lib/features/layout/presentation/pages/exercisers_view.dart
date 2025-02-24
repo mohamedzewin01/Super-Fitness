@@ -7,11 +7,10 @@ class ExercisersView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.transparent,
-      body: Container(
-        child: Text("Gym",style: TextStyle(fontSize: 40,color: Colors.white),),
+      body: Text(
+        "Gym",
+        style: TextStyle(fontSize: 40, color: Colors.white),
       ),
-
-
     );
   }
 }

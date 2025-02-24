@@ -17,118 +17,138 @@ class WelcomePageChatGemini extends StatefulWidget {
 class _WelcomePageChatGeminiState extends State<WelcomePageChatGemini> {
   @override
   Widget build(BuildContext context) {
-    final size = MediaQuery.of(context).size;
-    final isPortrait = size.height > size.width;
-
     return SafeArea(
       child: Scaffold(
-        body: Stack(
-          children: [
-            Image.asset(
-              AssetsManager.backgroundGeminiWelcome,
-              fit: BoxFit.fill,
-              width: double.infinity,
-              height: double.infinity,
-            ),
-            Column(
+        body: LayoutBuilder(
+          builder: (context, constraints) {
+            final size = MediaQuery.of(context).size;
+            final isPortrait = size.height > size.width;
+
+            return Stack(
               children: [
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 16),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      SvgPicture.asset(AssetsManager.back),
-                      Align(
-                        alignment: Alignment.center,
-                        child: Text.rich(
-                          TextSpan(
-                            text: "Hi Ahmed ,\n",
-                            style: GoogleFonts.balooThambi2(
-                              color: ColorManager.offwhite,
-                              fontSize: isPortrait ? 16 : 12,
-                              fontWeight: FontWeight.w500,
-                            ),
-                            children: [
+                Image.asset(
+                  AssetsManager.backgroundGeminiWelcome,
+                  fit: BoxFit.fill,
+                  width: double.infinity,
+                  height: double.infinity,
+                ),
+                Column(
+                  children: [
+                    Padding(
+                      padding: EdgeInsets.symmetric(
+                          horizontal: constraints.maxWidth * 0.04),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          SvgPicture.asset(AssetsManager.back),
+                          Align(
+                            alignment: Alignment.center,
+                            child: Text.rich(
                               TextSpan(
-                                text: "I Am Your Smart Coach",
+                                text: "Hi Ahmed ,\n",
+                                style: GoogleFonts.balooThambi2(
+                                  color: ColorManager.offWhite,
+                                  fontSize: isPortrait
+                                      ? constraints.maxWidth * 0.04
+                                      : constraints.maxWidth * 0.03,
+                                  fontWeight: FontWeight.w500,
+                                ),
+                                children: [
+                                  TextSpan(
+                                    text: "I Am Your Smart Coach",
+                                    style: GoogleFonts.balooThambi2(
+                                      color: ColorManager.white,
+                                      fontSize: isPortrait
+                                          ? constraints.maxWidth * 0.045
+                                          : constraints.maxWidth * 0.035,
+                                      fontWeight: FontWeight.w800,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              textAlign: TextAlign.center,
+                            ),
+                          ),
+                          SvgPicture.asset(AssetsManager.vector),
+                        ],
+                      ),
+                    ),
+                    SizedBox(
+                        height: isPortrait
+                            ? constraints.maxHeight * 0.1
+                            : constraints.maxHeight * 0.05),
+                    Image.asset(
+                      AssetsManager.robotGemini,
+                      fit: BoxFit.contain,
+                      height: isPortrait
+                          ? constraints.maxHeight * 0.4
+                          : constraints.maxHeight * 0.3,
+                    ),
+                  ],
+                ),
+                Padding(
+                  padding: EdgeInsets.symmetric(
+                      vertical: constraints.maxHeight * 0.05),
+                  child: Align(
+                    alignment: Alignment.bottomCenter,
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(constraints.maxWidth * 0.1),
+                      ),
+                      child: BackdropFilter(
+                        filter: ImageFilter.blur(sigmaX: 14, sigmaY: 14),
+                        child: Container(
+                          height: isPortrait
+                              ? constraints.maxHeight * 0.25
+                              : constraints.maxHeight * 0.2,
+                          width: double.infinity,
+                          padding: EdgeInsets.symmetric(
+                              horizontal: constraints.maxWidth * 0.04,
+                              vertical: constraints.maxHeight * 0.04),
+                          decoration: BoxDecoration(
+                            color: Colors.white.withOpacity(0.04),
+                          ),
+                          child: Column(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              Text(
+                                "How Can I Assist You \nToday? ",
+                                textAlign: TextAlign.center,
                                 style: GoogleFonts.balooThambi2(
                                   color: ColorManager.white,
-                                  fontSize: isPortrait ? 18 : 14,
+                                  fontSize: isPortrait
+                                      ? constraints.maxWidth * 0.06
+                                      : constraints.maxWidth * 0.045,
                                   fontWeight: FontWeight.w800,
                                 ),
                               ),
+                              SizedBox(height: constraints.maxHeight * 0.03),
+                              CustomElevatedButton(
+                                width: double.infinity,
+                                buttonColor: ColorManager.mainColor,
+                                title: "Get Started",
+                                style: GoogleFonts.balooThambi2(
+                                  color: ColorManager.white,
+                                  fontSize: isPortrait
+                                      ? constraints.maxWidth * 0.04
+                                      : constraints.maxWidth * 0.03,
+                                  fontWeight: FontWeight.w800,
+                                ),
+                                onPressed: () {
+                                  Navigator.pushNamed(
+                                      context, RoutesManager.geminiChatPage);
+                                },
+                              ),
                             ],
                           ),
-                          textAlign: TextAlign.center,
                         ),
-                      ),
-                      SvgPicture.asset(AssetsManager.vector),
-                    ],
-                  ),
-                ),
-                SizedBox(
-                    height:
-                        isPortrait ? size.height * 0.1 : size.height * 0.05),
-                Image.asset(
-                  AssetsManager.robotGemini,
-                  fit: BoxFit.contain,
-                  height: isPortrait ? size.height * 0.4 : size.height * 0.3,
-                ),
-              ],
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 42),
-              child: Align(
-                alignment: Alignment.bottomCenter,
-                child: ClipRRect(
-                  borderRadius: const BorderRadius.all(
-                    Radius.circular(40),
-                  ),
-                  child: BackdropFilter(
-                    filter: ImageFilter.blur(sigmaX: 14, sigmaY: 14),
-                    child: Container(
-                      height: isPortrait ? 200 : 150,
-                      width: double.infinity,
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 16, vertical: 30),
-                      decoration: BoxDecoration(
-                        color: Colors.white.withOpacity(0.04),
-                      ),
-                      child: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          Text(
-                            "How Can I Assist You \nToday? ",
-                            textAlign: TextAlign.center,
-                            style: GoogleFonts.balooThambi2(
-                              color: ColorManager.white,
-                              fontSize: isPortrait ? 24 : 18,
-                              fontWeight: FontWeight.w800,
-                            ),
-                          ),
-                          const SizedBox(height: 24),
-                          CustomElevatedButton(
-                            width: double.infinity,
-                            buttonColor: ColorManager.mainColor,
-                            title: "Get Started",
-                            style: GoogleFonts.balooThambi2(
-                              color: ColorManager.white,
-                              fontSize: isPortrait ? 16 : 12,
-                              fontWeight: FontWeight.w800,
-                            ),
-                            onPressed: () {
-                              Navigator.pushNamed(
-                                  context, RoutesManager.geminiChatPage);
-                            },
-                          ),
-                        ],
                       ),
                     ),
                   ),
                 ),
-              ),
-            ),
-          ],
+              ],
+            );
+          },
         ),
       ),
     );

@@ -15,7 +15,6 @@ import '../../../../core/utils/utilss.dart';
 import '../../../../core/widgets/custom_elevated_button.dart';
 import '../../../../core/widgets/custom_text_form_field.dart';
 import '../../../../core/widgets/show_error_dialog.dart';
-import '../../../../core/widgets/show_loading_dialog.dart';
 import '../view_model/login_view_model/login_cubit.dart';
 import '../view_model/login_view_model/login_state.dart';
 
@@ -60,7 +59,7 @@ class _LoginViewState extends State<LoginView> {
               if (state is LoadingLoginState) {
                 CustomDialog.showLoadingDialog(context);
               } else if (state is SuccessLoginState) {
-                Navigator.pushNamed(context, RoutesManager.profileView);
+                Navigator.pushNamed(context, RoutesManager.layOutView);
               } else if (state is ErrorLoginState) {
                 var message = extractErrorMessage(state.exception);
                 Navigator.of(context).pop();
