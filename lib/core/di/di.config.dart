@@ -100,10 +100,10 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i349.ForgetPasswordDataSourceImpl(gh<_i680.ApiService>()));
     gh.factory<_i994.AuthOnlineDataSource>(
         () => _i140.AuthOnlineDataSourceImpl(gh<_i680.ApiService>()));
-    gh.factory<_i164.EditProfileRepo>(
-        () => _i960.EditProfileRepoImpl(gh<_i950.EditProfileDataSource>()));
     gh.factory<_i99.ProfileOnlineDataSource>(
         () => _i797.ProfileOnlineDataSourceImpl(gh<_i680.ApiService>()));
+    gh.factory<_i164.EditProfileRepo>(
+        () => _i960.EditProfileRepoImpl(gh<_i950.EditProfileDataSource>()));
     gh.factory<_i502.AuthRepo>(
         () => _i886.AuthRepoImpl(gh<_i994.AuthOnlineDataSource>()));
     gh.factory<_i786.ForgetPasswordRepo>(() =>

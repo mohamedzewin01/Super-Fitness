@@ -207,9 +207,10 @@ class _EditeProfileViewState extends State<EditeProfileView> {
                             ),
                             CustomFiled(
                               text: AppLocalizations.of(context)!.activityLevel(
-                                  (viewModel.currentActivityLevel +
-                                          AppSizeInt.s1)
-                                      .toString()),
+                                (viewModel.currentActivityLevel + AppSizeInt.s1)
+                                    .toString()
+                                    .toUpperCase(),
+                              ),
                               title: AppLocalizations.of(context)!
                                   .yourActivityLevel,
                               onTap: () {

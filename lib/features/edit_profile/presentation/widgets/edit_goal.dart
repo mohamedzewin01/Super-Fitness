@@ -12,7 +12,6 @@ import '../../../../core/widgets/custom_app_bar.dart';
 import '../../../../core/widgets/custom_elevated_button.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-
 class EditGoalView extends StatefulWidget {
   const EditGoalView({super.key, required this.viewModel});
 
@@ -43,7 +42,7 @@ class _EditGoalViewState extends State<EditGoalView> {
                 spacing: AppSize.s8,
                 children: [
                   Align(
-                    alignment:AlignmentDirectional.centerStart,
+                    alignment: AlignmentDirectional.centerStart,
                     child: Text(
                       AppLocalizations.of(context)!.whatIsYourGoal,
                       style: getSemiBoldStyle(
@@ -51,9 +50,10 @@ class _EditGoalViewState extends State<EditGoalView> {
                     ),
                   ),
                   Align(
-                    alignment:AlignmentDirectional.centerStart,
+                    alignment: AlignmentDirectional.centerStart,
                     child: Text(
-                      AppLocalizations.of(context)!.thisHelpsUsCreateYourPersonalizedPlan,
+                      AppLocalizations.of(context)!
+                          .thisHelpsUsCreateYourPersonalizedPlan,
                       style: getRegularStyle(
                           color: Colors.white, fontSize: AppSize.s20),
                     ),
@@ -86,7 +86,7 @@ class _EditGoalViewState extends State<EditGoalView> {
                             widget.viewModel.doAction(ChangeGoalIntent(index!));
                           },
                           enabled: true,
-                          hintText:  AppLocalizations.of(context)!
+                          hintText: AppLocalizations.of(context)!
                               .goalLevel((index + 1).toString()),
                           // AppConstants.goal[index],
                           onTap: () {
