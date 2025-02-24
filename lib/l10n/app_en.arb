@@ -38,5 +38,10 @@
   "entervalidfirstName": "Enter a valid first name",
   "entervalidLastName": "Enter a valid last name",
   "invalidInput": "Invalid input",
-  "passwordNotMatch": "Passwords do not match"
+  "passwordNotMatch": "Passwords do not match",
+  "home": "Home",
+  "gym":"Work Outs",
+  "profile": "profile",
+  "chatAi": "Chat AI"
+
 }
