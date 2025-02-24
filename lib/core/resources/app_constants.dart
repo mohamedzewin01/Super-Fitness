@@ -18,6 +18,11 @@ class AppConstants {
   static const int millisecondsDelayed = 100;
 
   static const String loading = "Loading...";
+  static const String chatHistoryBox = "chat_history";
+  static const String userBox = "user_box";
+  static const String settingsBox = "settings_box";
+  static const String chatMessagesBox = "chat_messages_";
+  static const String geminiDB = "gemini.db";
 
   static final List<int> ageList = List.generate(90, (index) => index);
   static final List<int> weightList = List.generate(300, (index) => index);
