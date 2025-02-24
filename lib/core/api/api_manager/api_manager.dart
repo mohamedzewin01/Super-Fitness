@@ -2,6 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
 import 'package:retrofit/error_logger.dart';
 import 'package:retrofit/http.dart';
+import 'package:super_fitness/features/profile/data/models/profile_response_dto.dart';
 
 import '../../../features/auth/data/models/forget_password_models/request/forget_password_request.dart';
 import '../../../features/auth/data/models/forget_password_models/request/reset_password_request.dart';
@@ -35,14 +36,20 @@ abstract class ApiService {
   @PUT(ApiConstants.resetPasswordRoute)
   Future<ResetPasswordResponse> resetPassword(
       @Body() ResetPasswordRequest requestOtp);
+
   @POST(ApiConstants.loginRoute)
   Future<LoginResponseDto> login(@Body() LoginModelDto loginModelDto);
+
 // @POST(ApiConstants.signupRoute)
   // Future<RegisterResponseDto> signUp(@Body() RegisterModelDto registerModelDto);
   @POST(ApiConstants.register)
   Future<RegisterModelResponse> register(
       @Body() RegisterModelRequest registerModelDto);
 
+  @GET(ApiConstants.profileRoute)
+  Future<ProfileResponseDto> getProfileData(
+    @Header("Authorization") String token,
+  );
 
   @GET(ApiConstants.logoutRoute)
   Future<LogoutResponse> logout(@Header("Authorization") String token);

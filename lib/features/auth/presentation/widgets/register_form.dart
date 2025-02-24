@@ -51,26 +51,26 @@ class RegisterForm extends StatelessWidget {
             ),
             Column(
               mainAxisAlignment: MainAxisAlignment.center,
-              spacing: 16,
+              // spacing: 16,
               children: [
                 Container(
                   width: double.infinity,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(30),
-                    color: ColorManager.primary.withValues(alpha: 0.6),
+                    // color: ColorManager.primary.withValues(alpha: 0.6),
                   ),
                   child: Padding(
                     padding: const EdgeInsets.symmetric(
                         vertical: 16, horizontal: 16),
                     child: Column(
-                      spacing: 16,
+                      // spacing: 16,
                       children: [
                         Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 16),
                           child: Form(
                             key: viewModel.formKey,
                             child: Column(
-                              spacing: 16,
+                              // spacing: 16,
                               children: [
                                 Text(
                                   'Register',
