@@ -28,6 +28,7 @@ class _ProfileTabState extends State<ProfileTab> {
   @override
   void initState() {
     viewModel = getIt.get<ProfileViewModel>();
+    super.initState();
   }
 
   @override
@@ -51,7 +52,7 @@ class _ProfileTabState extends State<ProfileTab> {
               child: BlocBuilder<ProfileViewModel, ProfileStates>(
                   builder: (context, state) {
                 if (state is LoadingProfileState) {
-                  return Center(child: CircularProgressIndicator());
+                  return Center(child: CircularProgressIndicator(color: ColorManager.orange,));
                 } else if (state is SuccessProfileState) {
                   return Column(
                     crossAxisAlignment: CrossAxisAlignment.center,
@@ -114,15 +115,21 @@ class _ProfileTabState extends State<ProfileTab> {
                           padding: const EdgeInsets.all(10.0),
                           child: Column(
                             children: [
-                              ProfileItem(
-                                imagePath: "assets/images/pofile_icon.png",
-                                icon: Icon(
-                                  Icons.navigate_next,
-                                  size: 24,
-                                  color: ColorManager.mainColor,
+                              GestureDetector(
+                                onTap:(){
+                                  Navigator.pushNamed(
+                                      context, RoutesManager.editeProfileView);
+                                },
+                                child: ProfileItem(
+                                  imagePath: "assets/images/pofile_icon.png",
+                                  icon: Icon(
+                                    Icons.navigate_next,
+                                    size: 24,
+                                    color: ColorManager.mainColor,
+                                  ),
+                                  tittle:
+                                      AppLocalizations.of(context)!.editProfile,
                                 ),
-                                tittle:
-                                    AppLocalizations.of(context)!.editProfile,
                               ),
                               ProfileItem(
                                 imagePath: "assets/images/password_icon.png",

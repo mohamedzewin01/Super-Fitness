@@ -59,7 +59,7 @@ class _LoginViewState extends State<LoginView> {
               if (state is LoadingLoginState) {
                 CustomDialog.showLoadingDialog(context);
               } else if (state is SuccessLoginState) {
-                Navigator.pushNamed(context, RoutesManager.editeProfileView);
+                Navigator.pushNamed(context, RoutesManager.layOutView);
               } else if (state is ErrorLoginState) {
                 var message = extractErrorMessage(state.exception);
                 Navigator.of(context).pop();
