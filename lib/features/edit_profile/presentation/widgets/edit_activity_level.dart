@@ -75,8 +75,9 @@ class _EditActivityLevelViewState extends State<EditActivityLevelView> {
                                 .doAction(ChangeLevelIntent(index!));
                           },
                           enabled: true,
-                          hintText: AppLocalizations.of(context)!
-                              .activityLevel((index + 1).toString()),
+                          hintText: AppLocalizations.of(context)!.activityLevel(
+                            (index + 1).toString(),
+                          ),
                           onTap: () {
                             setState(() {});
                             widget.viewModel.doAction(ChangeLevelIntent(index));

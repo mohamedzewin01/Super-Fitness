@@ -7,10 +7,13 @@ class LayoutCubit extends Cubit<LayoutState> {
   LayoutCubit() : super(LayoutInitial());
 
   static LayoutCubit get(context) => BlocProvider.of(context);
-  int index = 0;
 
-  void changeIndex(int selectIndex) {
-    index = selectIndex;
+  int index = 0;
+  bool isAiPage = false;
+
+  void changeIndex(int newIndex) {
+    index = newIndex;
+    isAiPage = (index == 1); // إخفاء الـ BottomNavigationBar لو الصفحة AI
     emit(LayoutChangePage());
   }
 }

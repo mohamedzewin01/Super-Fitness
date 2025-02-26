@@ -86,8 +86,9 @@ class _EditGoalViewState extends State<EditGoalView> {
                             widget.viewModel.doAction(ChangeGoalIntent(index!));
                           },
                           enabled: true,
-                          hintText: AppLocalizations.of(context)!
-                              .goalLevel((index + 1).toString()),
+                          hintText: AppLocalizations.of(context)!.goalLevel(
+                            (index + 1).toString(),
+                          ),
                           // AppConstants.goal[index],
                           onTap: () {
                             setState(() {});

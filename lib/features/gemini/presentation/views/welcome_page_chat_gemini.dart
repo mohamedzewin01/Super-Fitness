@@ -122,8 +122,9 @@ class _WelcomePageChatGeminiState extends State<WelcomePageChatGemini> {
                                   fontWeight: FontWeight.w800,
                                 ),
                               ),
-                              SizedBox(height: constraints.maxHeight * 0.03),
+                              SizedBox(height: constraints.maxHeight * 0.02),
                               CustomElevatedButton(
+                                height: 37,
                                 width: double.infinity,
                                 buttonColor: ColorManager.mainColor,
                                 title: "Get Started",

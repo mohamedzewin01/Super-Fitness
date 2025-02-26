@@ -189,8 +189,9 @@ class _EditeProfileViewState extends State<EditeProfileView> {
                             ),
                             CustomFiled(
                               text: AppLocalizations.of(context)!.goalLevel(
-                                  (viewModel.currentRadioGoal + AppSizeInt.s1)
-                                      .toString()),
+                                (viewModel.currentRadioGoal + AppSizeInt.s1)
+                                    .toString(),
+                              ),
                               title: AppLocalizations.of(context)!.yourGoal,
                               onTap: () {
                                 Navigator.push(

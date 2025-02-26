@@ -33,41 +33,44 @@ class LayoutBody extends StatelessWidget {
     return BlocBuilder<LayoutCubit, LayoutState>(
       builder: (context, state) {
         return Scaffold(
-         // resizeToAvoidBottomInset: false,
           extendBody: true,
           body: Stack(
-           // fit: StackFit.expand,
             children: [
               Positioned.fill(
-                  child: Image.asset(AssetsManager.forgetPasswordBGImage,
-                      fit: BoxFit.cover)),
+                child: Image.asset(AssetsManager.forgetPasswordBGImage,
+                    fit: BoxFit.cover),
+              ),
               Positioned.fill(
-                  child: BackdropFilter(
-                    filter: ImageFilter.blur(
-                        sigmaX: AppConstants.blurConst12,
-                        sigmaY: AppConstants.blurConst12),
-                    child: Container(
-                      color: Colors.black.withAlpha(AppConstants.blurConst50),
-                    ),
-                  )),
+                child: BackdropFilter(
+                  filter: ImageFilter.blur(
+                    sigmaX: AppConstants.blurConst12,
+                    sigmaY: AppConstants.blurConst12,
+                  ),
+                  child: Container(
+                    color: Colors.black.withAlpha(AppConstants.blurConst50),
+                  ),
+                ),
+              ),
               AppConstants.viewOptions[cubit.index],
             ],
           ),
-
-          bottomNavigationBar: Container(
-            decoration: BoxDecoration(
-              color: ColorManager.primary,
-              borderRadius: BorderRadius.circular(AppSize.s20),
-            ),
-            padding: EdgeInsets.only(left: AppPadding.p10,right:AppPadding.p10,top:AppPadding.p10 ,bottom: AppPadding.p10 ),
-            margin: EdgeInsets.symmetric(horizontal:AppPadding.p40,vertical: AppPadding.p20),
-            child: CustomBottomNavigationBar(
-              currentIndex: cubit.index,
-              onItemTapped: (index) {
-                cubit.changeIndex(index);
-              },
-            ),
-          ),
+          bottomNavigationBar: cubit.isAiPage
+              ? null
+              : Container(
+                  decoration: BoxDecoration(
+                    color: ColorManager.primary,
+                    borderRadius: BorderRadius.circular(AppSize.s20),
+                  ),
+                  padding: EdgeInsets.all(AppPadding.p10),
+                  margin: EdgeInsets.symmetric(
+                      horizontal: AppPadding.p40, vertical: AppPadding.p20),
+                  child: CustomBottomNavigationBar(
+                    currentIndex: cubit.index,
+                    onItemTapped: (index) {
+                      cubit.changeIndex(index);
+                    },
+                  ),
+                ),
         );
       },
     );
