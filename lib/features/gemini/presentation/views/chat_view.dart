@@ -166,7 +166,7 @@ class _ChatViewState extends State<ChatView> {
                                       if (message.role == Role.user)
                                         CircleAvatar(
                                           backgroundImage: AssetImage(
-                                              AssetsManager.userImage),
+                                              AssetsManager.userImageDefault),
                                           radius: 20,
                                         ),
                                     ],

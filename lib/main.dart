@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:super_fitness/features/edit_profile/presentation/pages/edite_profile_view.dart';
-import 'package:super_fitness/features/edit_profile/presentation/widgets/edit_weight.dart';
 import 'package:provider/provider.dart';
 import 'package:super_fitness/hive/providers/chat_provider.dart';
 
@@ -12,7 +10,6 @@ import 'core/resources/routes_manager.dart';
 import 'core/resources/theme_manager.dart';
 import 'core/utils/cashed_data_shared_preferences.dart';
 import 'core/utils/my_bloc_observer.dart';
-import 'features/edit_profile/presentation/widgets/edit_activity_level.dart';
 import 'localization/locale_cubit.dart';
 
 Future<void> main() async {

@@ -5,6 +5,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:super_fitness/core/resources/assets_manager.dart';
 import 'package:super_fitness/core/resources/color_manager.dart';
 import 'package:super_fitness/core/resources/routes_manager.dart';
+import 'package:super_fitness/core/utils/cashed_data_shared_preferences.dart';
 import 'package:super_fitness/core/widgets/custom_elevated_button.dart';
 
 class WelcomePageChatGemini extends StatefulWidget {
@@ -45,7 +46,8 @@ class _WelcomePageChatGeminiState extends State<WelcomePageChatGemini> {
                             alignment: Alignment.center,
                             child: Text.rich(
                               TextSpan(
-                                text: "Hi Ahmed ,\n",
+                                text:
+                                    "Hi ${CacheService.getData(key: CacheConstants.userFirstName)} ,\n",
                                 style: GoogleFonts.balooThambi2(
                                   color: ColorManager.offWhite,
                                   fontSize: isPortrait
