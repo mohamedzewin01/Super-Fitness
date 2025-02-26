@@ -71,6 +71,9 @@ class EditProfileCubit extends Cubit<EditProfileState> {
     switch (result) {
       case Success<EditProfileEntity?>():
         if (!isClosed) {
+          CacheService.setData(key: CacheConstants.userFirstName, value: firstNameController.text);
+          CacheService.setData(key: CacheConstants.userLastName, value: lastNameController.text);
+          CacheService.setData(key: CacheConstants.userEmail, value: emailController.text);
           emit(SuccessEditProfileState(result.data!));
           log('Success');
         }

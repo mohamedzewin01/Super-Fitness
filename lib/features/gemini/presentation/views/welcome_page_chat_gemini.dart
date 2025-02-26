@@ -41,7 +41,11 @@ class _WelcomePageChatGeminiState extends State<WelcomePageChatGemini> {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          SvgPicture.asset(AssetsManager.back),
+                          InkWell(
+                            onTap: (){
+                              Navigator.pushNamed(context,RoutesManager.layOutView);
+                            },
+                              child: SvgPicture.asset(AssetsManager.back)),
                           Align(
                             alignment: Alignment.center,
                             child: Text.rich(

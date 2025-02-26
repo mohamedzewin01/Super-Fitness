@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:super_fitness/features/auth/presentation/pages/logout_view.dart';
 import 'package:super_fitness/features/profile/presentation/pages/profile_tab.dart';
 import 'package:super_fitness/features/gemini/presentation/views/chat_view.dart';
 import 'package:super_fitness/features/gemini/presentation/views/welcome_page_chat_gemini.dart';
@@ -32,6 +33,7 @@ class RoutesManager {
   static const String geminiWelcomePage = '/geminiWelcomePage';
   static const String geminiChatPage = '/geminiChatPage';
   static const String chatHistoryScreen = '/chatHistoryScreen';
+  static const String logOutScreen = '/logOutScreen';
 }
 
 class RouteGenerator {
@@ -67,6 +69,8 @@ class RouteGenerator {
         return MaterialPageRoute(builder: (_) => const WelcomePageChatGemini());
       case RoutesManager.geminiChatPage:
         return MaterialPageRoute(builder: (_) => const ChatView());
+      case RoutesManager.logOutScreen:
+        return MaterialPageRoute(builder: (_) => const LogoutConfirmationDialogue());
       // case RoutesManager.chatHistoryScreen:
       //   return MaterialPageRoute(builder: (_) => const ChatHistoryScreen());
       default:

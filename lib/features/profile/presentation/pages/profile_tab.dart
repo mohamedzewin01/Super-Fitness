@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:super_fitness/core/di/di.dart';
+import 'package:super_fitness/features/auth/presentation/pages/logout_view.dart';
 import 'package:super_fitness/features/profile/presentation/cubit/profile_states.dart';
 import 'package:super_fitness/features/profile/presentation/cubit/profile_view_model.dart';
 
@@ -96,7 +97,7 @@ class _ProfileTabState extends State<ProfileTab> {
                         height: 8,
                       ),
                       Text(
-                        "${state.profileResponseEntity.user!.firstName} + ${state.profileResponseEntity.user!.lastName}",
+                        "${state.profileResponseEntity.user!.firstName}  ${state.profileResponseEntity.user!.lastName}",
                         style: GoogleFonts.balooThambi2(
                             fontWeight: FontWeight.w600,
                             fontSize: 20,
@@ -117,8 +118,7 @@ class _ProfileTabState extends State<ProfileTab> {
                             children: [
                               GestureDetector(
                                 onTap:(){
-                                  Navigator.pushNamed(
-                                      context, RoutesManager.editeProfileView);
+                                 Navigator.pushNamed(context, RoutesManager.editeProfileView);
                                 },
                                 child: ProfileItem(
                                   imagePath: "assets/images/pofile_icon.png",
@@ -259,10 +259,16 @@ class _ProfileTabState extends State<ProfileTab> {
                                     ),
                                   ),
                                   Spacer(),
-                                  Icon(
-                                    Icons.navigate_next,
-                                    size: 24,
-                                    color: ColorManager.mainColor,
+                                  InkWell(
+                                    onTap: (){
+                                      showDialog(context: context, builder: (context) => LogoutConfirmationDialogue(),);
+                                     // Navigator.pushNamed(context,RoutesManager.logOutScreen);
+                                    },
+                                    child: Icon(
+                                      Icons.navigate_next,
+                                      size: 24,
+                                      color: ColorManager.mainColor,
+                                    ),
                                   ),
                                 ],
                               ),

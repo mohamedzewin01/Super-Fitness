@@ -5,6 +5,7 @@ import 'package:super_fitness/core/di/di.dart';
 import 'package:super_fitness/core/resources/color_manager.dart';
 import 'package:super_fitness/core/resources/style_manager.dart';
 import 'package:super_fitness/core/resources/values_manager.dart';
+import 'package:super_fitness/core/utils/cashed_data_shared_preferences.dart';
 import 'package:super_fitness/core/widgets/custom_text_form_field.dart';
 import 'package:super_fitness/features/edit_profile/presentation/widgets/custom_background.dart';
 import '../../../../core/functions/helper.dart';
@@ -87,6 +88,7 @@ class _EditeProfileViewState extends State<EditeProfileView> {
                                     if (viewModel.formKey.currentState!
                                         .validate()) {
                                       viewModel.editProfile();
+
                                     }
                                   },
                                   validator: (value) => validateString(
