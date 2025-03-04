@@ -96,9 +96,9 @@ class _EditGoalViewState extends State<EditGoalView> {
                               (index + 1).toString(),
                             ),
                             // AppConstants.goal[index],
-                            onTap: () {
+                            onTap: () async {
                               setState(() {});
-                              CacheService.setData(
+                            await  CacheService.setData(
                                   key: CacheConstants.goal,
                                   value: widget.viewModel.userGoal);
                               widget.viewModel
@@ -121,9 +121,12 @@ class _EditGoalViewState extends State<EditGoalView> {
                             child: CustomElevatedButton(
                               buttonColor: ColorManager.orange,
                               title: AppLocalizations.of(context)!.done,
-                              onPressed: () {
-                                widget.viewModel.editProfile();
-                                Navigator.pop(context);
+                              onPressed: ()async {
+                               await widget.viewModel.editProfile();
+                               if(context.mounted){
+                                 Navigator.pop(context);
+                               }
+
                               },
                             ),
                           ),

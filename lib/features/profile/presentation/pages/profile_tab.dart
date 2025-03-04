@@ -11,6 +11,7 @@ import '../../../../core/resources/routes_manager.dart';
 import '../../../../core/utils/cashed_data_shared_preferences.dart';
 import '../../../../core/utils/utilss.dart';
 import '../../../../core/widgets/show_error_dialog.dart';
+import '../../../edit_profile/presentation/pages/edite_profile_view.dart';
 import '../widgets/profile_item.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -117,8 +118,11 @@ class _ProfileTabState extends State<ProfileTab> {
                           child: Column(
                             children: [
                               GestureDetector(
+
+
                                 onTap:(){
-                                 Navigator.pushNamed(context, RoutesManager.editeProfileView);
+                                  Navigator.push(context, MaterialPageRoute(builder: (context) => EditeProfileView(profileViewModel: viewModel,)));
+                                 // Navigator.pushNamed(context, RoutesManager.editeProfileView);
                                 },
                                 child: ProfileItem(
                                   imagePath: "assets/images/pofile_icon.png",

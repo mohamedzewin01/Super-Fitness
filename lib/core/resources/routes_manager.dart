@@ -8,7 +8,7 @@ import '../../features/auth/presentation/pages/forget_password.dart';
 import '../../features/auth/presentation/pages/reset_password_view.dart';
 import '../../features/auth/presentation/pages/login_view.dart';
 import '../../features/auth/presentation/pages/register_view.dart';
-import '../../features/edit_profile/presentation/pages/edite_profile_view.dart';
+
 import '../../features/layout/presentation/pages/layout_view.dart';
 
 import '../../features/profile/presentation/pages/help_screen.dart';
@@ -54,8 +54,8 @@ class RouteGenerator {
         return MaterialPageRoute(builder: (_) => const LoginView());
       case RoutesManager.layOutView:
         return MaterialPageRoute(builder: (_) => const LayoutView());
-      case RoutesManager.editeProfileView:
-        return MaterialPageRoute(builder: (_) => const EditeProfileView());
+      // case RoutesManager.editeProfileView:
+      //   return MaterialPageRoute(builder: (_) => const EditeProfileView());
       case RoutesManager.profileView:
         return MaterialPageRoute(builder: (_) => const ProfileTab());
       case RoutesManager.securityView:

@@ -8,6 +8,7 @@ import 'package:super_fitness/features/edit_profile/presentation/widgets/custom_
 import '../../../../core/resources/assets_manager.dart';
 import '../../../../core/resources/color_manager.dart';
 import '../../../../core/resources/style_manager.dart';
+import '../../../../core/utils/cashed_data_shared_preferences.dart';
 import '../../../../core/widgets/custom_app_bar.dart';
 import '../../../../core/widgets/custom_elevated_button.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -78,8 +79,11 @@ class _EditActivityLevelViewState extends State<EditActivityLevelView> {
                           hintText: AppLocalizations.of(context)!.activityLevel(
                             (index + 1).toString(),
                           ),
-                          onTap: () {
+                          onTap: ()async {
                             setState(() {});
+                            // await  CacheService.setData(
+                            //     key: CacheConstants.activityLevel,
+                            //     value: widget.viewModel.currentActivityLevel);
                             widget.viewModel.doAction(ChangeLevelIntent(index));
                             log(AppConstants.activityLevel[
                                 widget.viewModel.currentActivityLevel]);
